@@ -1,0 +1,42 @@
+{
+  "project_name": "leopoldo-house",
+  "project_slug": "leopoldo-house",
+  "client": "Leopoldo House",
+  "environment": "development",
+  "tracking": {
+    "gtm_id": "",
+    "enabled": false
+  },
+  "forms": {
+    "lead-form": {
+      "id": "lead-form",
+      "redirect_on_success": "",
+      "webhooks": [
+        "https://server3n8n.dmove.com.br/webhook/leopoldo-house"
+      ],
+      "fields_required": [
+        "Nome",
+        "WhatsApp",
+        "E-mail",
+        "Tipo de evento",
+        "Data do evento",
+        "Convidados"
+      ]
+    }
+  },
+  "whatsapp_popup": {
+    "phone": "",
+    "form_id": "whats-popup",
+    "show_after_ms": 3000
+  },
+  "deploy": {
+    "user": "root",
+    "server": "157.173.197.116",
+    "remote_path": "/var/www/eventos.leopoldohouse.com.br"
+  },
+  "meta": {
+    "created_at": "2026-06-10",
+    "last_updated": "2026-06-10",
+    "owner": "Rodrigo"
+  }
+}
