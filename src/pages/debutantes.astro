@@ -1,0 +1,194 @@
+---
+import Base from '../layouts/Base.astro';
+import config from '../../config.json';
+import LeadForm from '../components/forms/LeadForm.astro';
+import Img from '../components/ui/Img.astro';
+import Video from '../components/ui/Video.astro';
+import '../styles/debutantes.css';
+---
+
+<Base
+  title="Leopoldo House — Festa de 15 Anos no Itaim Bibi"
+  description="Realize a festa de debutante dos seus sonhos no Itaim Bibi, São Paulo. Sofisticação, estrutura e alta gastronomia para uma noite inesquecível."
+  ogImage="/images/og-debutantes.jpg"
+>
+<!-- ════════════ HERO ════════════ -->
+<section class="hero" id="top">
+  <Img src="hero-debutantes.png" alt="Salão do Leopoldo House decorado para festa de debutante" priority width={1920} class="hero-bg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1" />
+  <div class="hero-overlay"></div>
+  <div class="hero-inner wrap">
+    <Img src="logo-leopoldo.png" alt="Leopoldo House" class="hero-logo" width={280} priority />
+    <h1 class="display">Você sonhou com essa festa.<br>Agora é hora de viver<br>cada momento dela.</h1>
+    <p class="lede">Espaço de eventos para 15 anos | Itaim Bibi, São Paulo</p>
+    <div class="actions">
+      <a href="#contato" class="btn btn-primary">Solicite um orçamento <span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ SOBRE ════════════ -->
+<section class="about" id="sobre">
+  <div class="wrap">
+    <div class="about-split reveal">
+      <div class="about-split__text">
+        <span class="eyebrow">O Espaço</span>
+        <h2 class="h2">Para debutantes que sabem o que querem.</h2>
+        <p class="lede">Localizado em um dos endereços mais privilegiados de São Paulo, o Leopoldo House foi criado para receber festas de 15 anos inesquecíveis. Com ambientes sofisticados e serviços exclusivos, proporcionamos uma experiência completa para que cada detalhe aconteça exatamente como foi imaginado.</p>
+      </div>
+      <div class="about-split__video">
+        <Video
+          src="/videos/sobre-debutantes.mp4"
+          poster=""
+          title="Festa de debutante no Leopoldo House — Entre flashes, risadas e expectativas"
+          description="Cada detalhe do sonho dela ganhou vida no Leopoldo House."
+          uploadDate="2026-06-12"
+          class="about-video-player"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════ ESTRUTURA ════════════ -->
+<section class="structure" id="estrutura">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow center">Estrutura</span>
+      <h2 class="h2">Sofisticação que acompanha cada momento da sua festa de 15 anos.</h2>
+      <p class="lede">Conheça nossos ambientes.</p>
+    </div>
+
+    <div class="amb reveal">
+      <div class="amb-media"><Img src="salao-debutantes.jpg" alt="Salão principal do Leopoldo House com pé-direito de 7 metros" width={900} style="width:100%;height:100%;object-fit:cover;border-radius:inherit" /></div>
+      <div class="amb-text">
+        <span class="amb-num">01</span>
+        <h3 class="h3">Salão amplo com 7m de pé-direito</h3>
+        <p>Um espaço versátil para realizar a valsa, aproveitar a pista de dança e celebrar ao lado de amigos e familiares.</p>
+      </div>
+    </div>
+
+    <div class="amb reveal">
+      <div class="amb-media"><Img src="mezanino-debutantes.jpg" alt="Mezanino do Leopoldo House" width={900} class="amb-img-up" style="width:100%;height:100%;object-fit:cover;border-radius:inherit" /></div>
+      <div class="amb-text">
+        <span class="amb-num">02</span>
+        <h3 class="h3">Mezanino</h3>
+        <p>Ambiente reservado para se arrumar, fazer o making of e ter mais privacidade antes e durante a festa.</p>
+      </div>
+    </div>
+
+    <div class="amb reveal">
+      <div class="amb-media"><Img src="rooftop.jpg" alt="Rooftop Garden do Leopoldo House com teto de vidro" width={900} style="width:100%;height:100%;object-fit:cover;border-radius:inherit" /></div>
+      <div class="amb-text">
+        <span class="amb-num">03</span>
+        <h3 class="h3">Rooftop Garden</h3>
+        <p>Espaço ao ar livre que funciona como apoio à celebração, oferecendo um ambiente leve e descontraído para os convidados.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ GASTRONOMIA ════════════ -->
+<section class="gastro" id="gastronomia">
+  <Img src="gastronomia.png" alt="Mesa de gastronomia do Leopoldo House" width={1920} style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;opacity:.55" />
+  <div class="gastro-veil"></div>
+  <div class="wrap">
+    <div class="gastro-inner reveal">
+      <span class="eyebrow center light">Gastronomia</span>
+      <h2 class="h2">Mais do que um buffet. Uma experiência gastronômica.</h2>
+      <p class="lede">Os seus convidados serão surpreendidos com um cardápio desenvolvido especialmente para sua festa, com diversidade de sabores e apresentações que valorizam a celebração.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ GALERIA ════════════ -->
+<section class="gallery" id="galeria">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow center">Galeria</span>
+      <h2 class="h2">Detalhes pensados para valorizar a sua noite.</h2>
+      <p class="lede">Conheça o Leopoldo House.</p>
+    </div>
+    <div class="gallery-grid reveal">
+      <div class="gallery-item"><Img src="galeria-deb-1.jpg" alt="Leopoldo House — festa de debutante" width={800} /></div>
+      <div class="gallery-item"><Img src="galeria-deb-2.jpg" alt="Leopoldo House — decoração debutante" width={800} /></div>
+      <div class="gallery-item"><Img src="galeria-deb-3.jpg" alt="Leopoldo House — ambiente debutante" width={800} class="amb-img-up" /></div>
+      <div class="gallery-item"><Img src="galeria-deb-4.jpg" alt="Leopoldo House — detalhes da festa" width={800} class="amb-img-up" /></div>
+      <div class="gallery-item"><Img src="galeria-deb-5.png" alt="Leopoldo House — celebração" width={800} /></div>
+      <div class="gallery-item"><Img src="galeria-deb-6.png" alt="Leopoldo House — espaço decorado" width={800} /></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ CONTATO ════════════ -->
+<section class="contact" id="contato">
+  <div class="wrap">
+    <div class="section-head light reveal">
+      <span class="eyebrow center light">Contato</span>
+      <h2 class="h2">Pronta para fazer dos seus 15 anos a festa mais comentada do ano?</h2>
+      <p class="lede">Preencha o formulário para receber nosso contato.</p>
+    </div>
+
+    <div class="form reveal">
+      <LeadForm
+        formId="debutantes-form"
+        project={config.project_slug}
+        submitUrl={config.forms['debutantes-form'].webhooks[0]}
+        redirectUrl={config.forms['debutantes-form'].redirect_on_success}
+        submitText="Enviar solicitação →"
+        honeypot
+        successTitle="Solicitação enviada!"
+        successText="Obrigado. Em breve entraremos em contato para planejar a festa."
+        fields={[
+          { name: 'nome',         type: 'text',     placeholder: 'Seu nome completo',       required: true,  full: true, autocomplete: 'name' },
+          { type: 'row', fields: [
+            { name: 'telefone',   type: 'tel',      placeholder: '(11) 90000-0000',         required: true,  mask: 'phone', autocomplete: 'tel' },
+            { name: 'email',      type: 'email',    placeholder: 'seu@email.com',           required: true,  autocomplete: 'email' },
+          ]},
+          { type: 'row', fields: [
+            { name: 'data',       type: 'date',     placeholder: 'Data da festa',           required: false },
+            { name: 'pessoas',    type: 'number',   placeholder: 'Nº de convidados',        required: false, min: '1' },
+          ]},
+          { name: 'tipo', type: 'select', full: true, required: false, options: [
+            { value: '',                         label: 'Tipo de evento',          disabled: true, selected: true },
+            { value: 'Aniversário',              label: 'Aniversário' },
+            { value: 'Aniversário debutante',    label: 'Aniversário debutante' },
+            { value: 'Confraternização social',  label: 'Confraternização social' },
+            { value: 'Outros',                   label: 'Outros' },
+          ]},
+          { name: 'detalhes', type: 'textarea', placeholder: 'Conte um pouco sobre como você imagina a festa.', required: false, full: true, rows: 4 },
+        ]}
+      />
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ RODAPÉ ════════════ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-logo"><Img src="logo-leopoldo.png" alt="Leopoldo House" width={200} /></div>
+      <div class="foot-links">
+        <div class="foot-col">
+          <a href="#sobre">O Espaço</a>
+          <a href="#eventos">Formatos</a>
+          <a href="#estrutura">Estrutura</a>
+        </div>
+        <div class="foot-col">
+          <a href="#gastronomia">Gastronomia</a>
+          <a href="#contato">Solicitar orçamento</a>
+          <a href="https://www.instagram.com/villagustocidadejardim/" target="_blank" rel="noopener">Instagram</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>Copyright © 2026 Leopoldo House - Todos os direitos reservados</span>
+      <span class="foot-dev">Desenvolvido por <a href="https://dmove.com.br" target="_blank" rel="noopener"><Img src="logo-dmove.avif" alt="Dmove" width={72} /></a></span>
+    </div>
+  </div>
+</footer>
+
+</Base>
+<script>
+  import '../scripts/debutantes.js';
+</script>

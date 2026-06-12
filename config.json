@@ -22,6 +22,21 @@
         "Data do evento",
         "Convidados"
       ]
+    },
+    "debutantes-form": {
+      "id": "debutantes-form",
+      "redirect_on_success": "",
+      "webhooks": [
+        "https://server3n8n.dmove.com.br/webhook/leopoldo-house-debutantes"
+      ],
+      "fields_required": [
+        "Nome",
+        "WhatsApp",
+        "E-mail",
+        "Formato da festa",
+        "Data da festa",
+        "Convidados"
+      ]
     }
   },
   "whatsapp_popup": {
