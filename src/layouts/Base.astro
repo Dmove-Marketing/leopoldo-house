@@ -71,13 +71,10 @@ const defaultJsonLd = {
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    <!-- Fonts — Inter (ajustar por projeto) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+    <!-- Fonts — Gotham (auto-hospedada) -->
+    <link rel="preload" href="/fonts/Gotham-Book.otf"  as="font" type="font/otf" crossorigin />
+    <link rel="preload" href="/fonts/Gotham-Black.otf" as="font" type="font/otf" crossorigin />
+    <link rel="preload" href="/fonts/Gotham-Ultra.otf" as="font" type="font/otf" crossorigin />
 
     <!-- GTM Head -->
     {trackingEnabled && gtmId && <GTMHead gtmId={gtmId} />}
