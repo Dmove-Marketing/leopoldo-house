@@ -209,7 +209,7 @@ const {
     // Flatpickr on popup's date input (separate attribute to avoid double-init with LeadForm)
     const dateEl = form.querySelector<HTMLInputElement>('[data-wa-datepicker]');
     if (dateEl) {
-      flatpickr(dateEl, { dateFormat: 'd/m/Y', minDate: 'today', disableMobile: false });
+      flatpickr(dateEl, { dateFormat: 'd/m/Y', minDate: 'today', disableMobile: true });
     }
 
     // Toggle
