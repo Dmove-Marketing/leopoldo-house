@@ -4,7 +4,6 @@ import config from '../../config.json';
 import LeadForm from '../components/forms/LeadForm.astro';
 import WhatsAppPopup from '../components/WhatsAppPopup.astro';
 import Img from '../components/ui/Img.astro';
-import Video from '../components/ui/Video.astro';
 import '../styles/debutantes.css';
 ---
 
@@ -19,10 +18,10 @@ import '../styles/debutantes.css';
   <div class="hero-overlay"></div>
   <div class="hero-inner wrap">
     <Img src="logo-leopoldo.png" alt="Leopoldo House" class="hero-logo" width={280} priority />
-    <h1 class="display">Você sonhou com essa festa.<br>Agora é hora de viver<br>cada momento dela.</h1>
+    <h1 class="display"><span class="hero-light">Você sonhou com essa festa.<br>Agora é hora de viver<br></span>cada momento dela.</h1>
     <p class="lede">Espaço de eventos para 15 anos | Itaim Bibi, São Paulo</p>
     <div class="actions">
-      <a href="#contato" class="btn btn-primary">Solicite um orçamento <span class="arr">→</span></a>
+      <a href="#contato" class="btn btn-primary">Solicite um orçamento</a>
     </div>
   </div>
 </section>
@@ -32,19 +31,12 @@ import '../styles/debutantes.css';
   <div class="wrap">
     <div class="about-split reveal">
       <div class="about-split__text">
-        <span class="eyebrow">O Espaço</span>
-        <h2 class="h2">Para debutantes que sabem o que querem.</h2>
+        <span class="eyebrow">O ESPAÇO</span>
+        <h2 class="h2"><span class="hero-light">Para debutantes<br></span>que sabem o que querem.</h2>
         <p class="lede">Localizado em um dos endereços mais privilegiados de São Paulo, o Leopoldo House foi criado para receber festas de 15 anos inesquecíveis. Com ambientes sofisticados e serviços exclusivos, proporcionamos uma experiência completa para que cada detalhe aconteça exatamente como foi imaginado.</p>
       </div>
       <div class="about-split__video">
-        <Video
-          src="/videos/sobre-debutantes.mp4"
-          poster=""
-          title="Festa de debutante no Leopoldo House — Entre flashes, risadas e expectativas"
-          description="Cada detalhe do sonho dela ganhou vida no Leopoldo House."
-          uploadDate="2026-06-12"
-          class="about-video-player"
-        />
+        <Img src="sobre-debutantes-principal.jpg" alt="Festa de debutante no Leopoldo House" width={800} style="width:100%;height:100%;object-fit:cover;border-radius:4px" />
       </div>
     </div>
   </div>
@@ -55,8 +47,8 @@ import '../styles/debutantes.css';
 <section class="structure" id="estrutura">
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="eyebrow center">Estrutura</span>
-      <h2 class="h2">Sofisticação que acompanha cada momento da sua festa de 15 anos.</h2>
+      <span class="eyebrow center">ESTRUTURA</span>
+      <h2 class="h2"><span class="hero-light">Sofisticação que acompanha<br></span>cada momento da sua festa de 15 anos.</h2>
       <p class="lede">Conheça nossos ambientes.</p>
     </div>
 
@@ -70,7 +62,7 @@ import '../styles/debutantes.css';
     </div>
 
     <div class="amb reveal">
-      <div class="amb-media"><Img src="mezanino-debutantes.jpg" alt="Mezanino do Leopoldo House" width={900} class="amb-img-up" style="width:100%;height:100%;object-fit:cover;border-radius:inherit" /></div>
+      <div class="amb-media"><Img src="mezanino.jpg" alt="Mezanino do Leopoldo House" width={900} style="width:100%;height:100%;object-fit:cover;border-radius:inherit" /></div>
       <div class="amb-text">
         <span class="amb-num">02</span>
         <h3 class="h3">Mezanino</h3>
@@ -95,8 +87,8 @@ import '../styles/debutantes.css';
   <div class="gastro-veil"></div>
   <div class="wrap">
     <div class="gastro-inner reveal">
-      <span class="eyebrow center light">Gastronomia</span>
-      <h2 class="h2">Mais do que um buffet. Uma experiência gastronômica.</h2>
+      <span class="eyebrow center light">GASTRONOMIA</span>
+      <h2 class="h2"><span class="hero-light">Mais do que um buffet.<br></span>Uma experiência gastronômica.</h2>
       <p class="lede">Os seus convidados serão surpreendidos com um cardápio desenvolvido especialmente para sua festa, com diversidade de sabores e apresentações que valorizam a celebração.</p>
     </div>
   </div>
@@ -106,17 +98,26 @@ import '../styles/debutantes.css';
 <section class="gallery" id="galeria">
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="eyebrow center">Galeria</span>
-      <h2 class="h2">Detalhes pensados para valorizar a sua noite.</h2>
+      <span class="eyebrow center">GALERIA</span>
+      <h2 class="h2"><span class="hero-light">Detalhes pensados<br></span>para valorizar a sua noite.</h2>
       <p class="lede">Conheça o Leopoldo House.</p>
     </div>
-    <div class="gallery-grid reveal">
-      <div class="gallery-item"><Img src="galeria-deb-1.jpg" alt="Leopoldo House — festa de debutante" width={800} /></div>
-      <div class="gallery-item"><Img src="galeria-deb-2.jpg" alt="Leopoldo House — decoração debutante" width={800} /></div>
-      <div class="gallery-item"><Img src="galeria-deb-3.jpg" alt="Leopoldo House — ambiente debutante" width={800} class="amb-img-up" /></div>
-      <div class="gallery-item"><Img src="galeria-deb-4.jpg" alt="Leopoldo House — detalhes da festa" width={800} class="amb-img-up" /></div>
-      <div class="gallery-item"><Img src="galeria-deb-5.png" alt="Leopoldo House — celebração" width={800} /></div>
-      <div class="gallery-item"><Img src="galeria-deb-6.png" alt="Leopoldo House — espaço decorado" width={800} /></div>
+    <div class="gallery-carousel reveal">
+      <div class="gallery-track">
+        <div class="gallery-inner">
+          <div class="gallery-slide"><Img src="galeria-deb-1.jpg" alt="Leopoldo House — festa de debutante" width={900} /></div>
+          <div class="gallery-slide"><Img src="galeria-deb-2.jpg" alt="Leopoldo House — decoração debutante" width={900} /></div>
+          <div class="gallery-slide"><Img src="galeria-deb-nova.png" alt="Leopoldo House — detalhes da festa" width={900} /></div>
+          <div class="gallery-slide"><Img src="galeria-deb-5.png" alt="Leopoldo House — celebração" width={900} /></div>
+          <div class="gallery-slide"><Img src="galeria-deb-6.png" alt="Leopoldo House — espaço decorado" width={900} /></div>
+          <!-- duplicado para loop contínuo -->
+          <div class="gallery-slide" aria-hidden="true"><Img src="galeria-deb-1.jpg" alt="" width={900} /></div>
+          <div class="gallery-slide" aria-hidden="true"><Img src="galeria-deb-2.jpg" alt="" width={900} /></div>
+          <div class="gallery-slide" aria-hidden="true"><Img src="galeria-deb-nova.png" alt="" width={900} /></div>
+          <div class="gallery-slide" aria-hidden="true"><Img src="galeria-deb-5.png" alt="" width={900} /></div>
+          <div class="gallery-slide" aria-hidden="true"><Img src="galeria-deb-6.png" alt="" width={900} /></div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -125,8 +126,8 @@ import '../styles/debutantes.css';
 <section class="contact" id="contato">
   <div class="wrap">
     <div class="section-head light reveal">
-      <span class="eyebrow center light">Contato</span>
-      <h2 class="h2">Pronta para fazer dos seus 15 anos a festa mais comentada do ano?</h2>
+      <span class="eyebrow center light">CONTATO</span>
+      <h2 class="h2"><span class="hero-light">Pronta para fazer dos seus 15 anos<br></span>a festa mais comentada do ano?</h2>
       <p class="lede">Preencha o formulário para receber nosso contato.</p>
     </div>
 
