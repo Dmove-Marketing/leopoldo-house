@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import config from '../../config.json';
 import LeadForm from '../components/forms/LeadForm.astro';
+import WhatsAppPopup from '../components/WhatsAppPopup.astro';
 import Img from '../components/ui/Img.astro';
 import Video from '../components/ui/Video.astro';
 import '../styles/debutantes.css';
@@ -185,6 +186,22 @@ import '../styles/debutantes.css';
     </div>
   </div>
 </footer>
+
+<WhatsAppPopup
+  formId="whats-popup-debutantes"
+  project={config.project_slug}
+  submitUrl={config.forms['debutantes-form'].webhooks[0]}
+  redirectUrl={config.forms['debutantes-form'].redirect_on_success}
+  greeting="Olá! Está planejando a festa de 15 anos perfeita? Preencha abaixo e nossa equipe entrará em contato para criar uma experiência inesquecível."
+  dataPlaceholder="Data da festa"
+  tipoOptions={[
+    { value: '',                        label: 'Tipo de evento',          disabled: true, selected: true },
+    { value: 'Aniversário',             label: 'Aniversário' },
+    { value: 'Aniversário debutante',   label: 'Aniversário debutante' },
+    { value: 'Confraternização social', label: 'Confraternização social' },
+    { value: 'Outros',                  label: 'Outros' },
+  ]}
+/>
 
 </Base>
 <script>

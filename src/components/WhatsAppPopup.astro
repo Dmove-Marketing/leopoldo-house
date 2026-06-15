@@ -1,0 +1,703 @@
+---
+import 'flatpickr/dist/flatpickr.min.css';
+
+interface TipoOption {
+  value: string;
+  label: string;
+  disabled?: boolean;
+  selected?: boolean;
+}
+
+interface Props {
+  formId?: string;
+  project: string;
+  submitUrl: string;
+  redirectUrl?: string;
+  tipoOptions: TipoOption[];
+  dataPlaceholder?: string;
+  greeting?: string;
+}
+
+const {
+  formId = 'whats-popup',
+  project,
+  submitUrl,
+  redirectUrl = '',
+  tipoOptions,
+  dataPlaceholder = 'Data do evento',
+  greeting = 'Olá! Gostaria de conhecer o Leopoldo House para o seu próximo evento? Preencha abaixo e nossa equipe entrará em contato pelo WhatsApp.',
+} = Astro.props;
+---
+
+<div
+  class="wa-widget"
+  data-form-id={formId}
+  data-project={project}
+  data-submit-url={submitUrl}
+  data-redirect={redirectUrl}
+>
+  <!-- FAB -->
+  <button class="wa-fab" aria-label="Falar pelo WhatsApp">
+    <svg class="wa-fab-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+    <span class="wa-fab-pulse" aria-hidden="true"></span>
+  </button>
+
+  <!-- Overlay -->
+  <div class="wa-overlay" aria-hidden="true"></div>
+
+  <!-- Popup -->
+  <div
+    class="wa-popup"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Formulário de contato"
+    aria-hidden="true"
+  >
+    <!-- Header -->
+    <div class="wa-header">
+      <div class="wa-avatar" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="white" width="26" height="26">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+      </div>
+      <div class="wa-header-info">
+        <strong class="wa-contact-name">Leopoldo House</strong>
+        <span class="wa-contact-status">
+          <span class="wa-status-dot" aria-hidden="true"></span>Online agora
+        </span>
+      </div>
+      <button class="wa-close-btn" aria-label="Fechar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Chat bubble -->
+    <div class="wa-chat-body">
+      <div class="wa-message">
+        <p set:html={greeting}></p>
+        <span class="wa-msg-time" aria-hidden="true">agora</span>
+      </div>
+    </div>
+
+    <!-- Form + success -->
+    <div class="wa-form-wrap">
+      <form class="wa-form" novalidate>
+        <!-- Honeypot -->
+        <div class="wa-hp" aria-hidden="true">
+          <input type="text" name="website" tabindex="-1" autocomplete="off" />
+        </div>
+
+        <!-- Step 1 -->
+        <div class="wa-step is-active" data-step="1">
+          <div class="wa-progress"><div class="wa-bar" style="width:50%"></div></div>
+          <p class="wa-step-lbl">Etapa 1 de 2 — Seus dados</p>
+
+          <div class="wa-field">
+            <input class="wa-input" type="text" name="nome" placeholder="Seu nome completo" required autocomplete="name" />
+          </div>
+          <div class="wa-field">
+            <input class="wa-input" type="tel" name="telefone" placeholder="(11) 90000-0000" required autocomplete="tel" data-mask="phone" />
+          </div>
+          <div class="wa-field">
+            <input class="wa-input" type="email" name="email" placeholder="seu@email.com" required autocomplete="email" />
+          </div>
+
+          <p class="wa-err" role="alert" aria-live="polite"></p>
+
+          <button type="button" class="wa-btn wa-btn-green wa-next-btn">
+            Próximo
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="15" height="15" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="wa-step" data-step="2">
+          <div class="wa-progress"><div class="wa-bar" style="width:100%"></div></div>
+          <p class="wa-step-lbl">Etapa 2 de 2 — Seu evento</p>
+
+          <div class="wa-field">
+            <select class="wa-select" name="tipo">
+              {tipoOptions.map(opt => (
+                <option value={opt.value} disabled={opt.disabled} selected={opt.selected}>{opt.label}</option>
+              ))}
+            </select>
+          </div>
+
+          <div class="wa-row">
+            <div class="wa-field">
+              <input class="wa-input" type="text" name="data" placeholder={dataPlaceholder} readonly data-wa-datepicker autocomplete="off" />
+            </div>
+            <div class="wa-field">
+              <input class="wa-input" type="number" name="pessoas" placeholder="Convidados" min="1" />
+            </div>
+          </div>
+
+          <p class="wa-err" role="alert" aria-live="polite"></p>
+
+          <div class="wa-s2-actions">
+            <button type="button" class="wa-btn wa-btn-ghost wa-back-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="15" height="15" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+              Voltar
+            </button>
+            <button type="submit" class="wa-btn wa-btn-green wa-submit-btn">
+              <span class="wa-btn-text">Enviar</span>
+              <span class="wa-btn-spin" aria-hidden="true">
+                <svg class="wa-spinner" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15">
+                  <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+                </svg>
+                Enviando...
+              </span>
+            </button>
+          </div>
+
+          <p class="wa-privacy">Ao enviar, você concorda com nossa política de privacidade.</p>
+        </div>
+      </form>
+
+      <!-- Success -->
+      <div class="wa-success" hidden>
+        <div class="wa-success-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" width="32" height="32">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+        </div>
+        <h3 class="wa-success-title">Mensagem enviada!</h3>
+        <p class="wa-success-text">Obrigado. Em breve nossa equipe entrará em contato pelo WhatsApp ou e-mail.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  import flatpickr from 'flatpickr';
+  import { Portuguese } from 'flatpickr/dist/l10n/pt.js';
+
+  flatpickr.localize(Portuguese);
+
+  document.querySelectorAll<HTMLElement>('.wa-widget').forEach(widget => {
+    const submitUrl = widget.dataset.submitUrl ?? '';
+    const project   = widget.dataset.project   ?? '';
+    const formId    = widget.dataset.formId    ?? 'whats-popup';
+    const redirect  = widget.dataset.redirect  ?? '';
+
+    const fab       = widget.querySelector<HTMLButtonElement>('.wa-fab')!;
+    const overlay   = widget.querySelector<HTMLElement>('.wa-overlay')!;
+    const popup     = widget.querySelector<HTMLElement>('.wa-popup')!;
+    const closeBtn  = widget.querySelector<HTMLButtonElement>('.wa-close-btn')!;
+    const form      = widget.querySelector<HTMLFormElement>('.wa-form')!;
+    const steps     = Array.from(widget.querySelectorAll<HTMLElement>('.wa-step'));
+    const nextBtn   = widget.querySelector<HTMLButtonElement>('.wa-next-btn')!;
+    const backBtn   = widget.querySelector<HTMLButtonElement>('.wa-back-btn')!;
+    const submitBtn = widget.querySelector<HTMLButtonElement>('.wa-submit-btn')!;
+    const successEl = widget.querySelector<HTMLElement>('.wa-success')!;
+
+    // Phone mask
+    const telInput = form.querySelector<HTMLInputElement>('[name="telefone"]')!;
+    telInput.addEventListener('input', () => {
+      let v = telInput.value.replace(/\D/g, '').slice(0, 11);
+      if (v.length > 10)     v = v.replace(/^(\d{2})(\d{5})(\d{4}).*/, '($1) $2-$3');
+      else if (v.length > 6) v = v.replace(/^(\d{2})(\d{4})(\d*)/, '($1) $2-$3');
+      else if (v.length > 2) v = v.replace(/^(\d{2})(\d*)/, '($1) $2');
+      else if (v.length > 0) v = '(' + v;
+      telInput.value = v;
+    });
+
+    // Flatpickr on popup's date input (separate attribute to avoid double-init with LeadForm)
+    const dateEl = form.querySelector<HTMLInputElement>('[data-wa-datepicker]');
+    if (dateEl) {
+      flatpickr(dateEl, { dateFormat: 'd/m/Y', minDate: 'today', disableMobile: false });
+    }
+
+    // Toggle
+    function isOpen() { return popup.getAttribute('aria-hidden') === 'false'; }
+
+    function open() {
+      popup.setAttribute('aria-hidden', 'false');
+      overlay.classList.add('is-visible');
+      fab.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+      setTimeout(() => steps[0].querySelector<HTMLInputElement>('input')?.focus(), 250);
+    }
+
+    function close() {
+      popup.setAttribute('aria-hidden', 'true');
+      overlay.classList.remove('is-visible');
+      fab.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
+
+    fab.addEventListener('click', (e) => { e.stopPropagation(); isOpen() ? close() : open(); });
+    closeBtn.addEventListener('click', close);
+    overlay.addEventListener('click', close);
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && isOpen()) close(); });
+
+    // Steps
+    function goTo(n: number) {
+      steps.forEach((s, i) => s.classList.toggle('is-active', i + 1 === n));
+    }
+
+    function errEl(stepIdx: number) {
+      return steps[stepIdx].querySelector<HTMLElement>('.wa-err')!;
+    }
+
+    function showErr(stepIdx: number, msg: string) {
+      const el = errEl(stepIdx);
+      el.textContent = msg;
+      el.classList.add('is-visible');
+    }
+
+    function clearErr(stepIdx: number) {
+      const el = errEl(stepIdx);
+      el.textContent = '';
+      el.classList.remove('is-visible');
+    }
+
+    function validateStep1(): string | null {
+      const nome  = form.querySelector<HTMLInputElement>('[name="nome"]')!.value.trim();
+      const tel   = form.querySelector<HTMLInputElement>('[name="telefone"]')!.value.replace(/\D/g, '');
+      const email = form.querySelector<HTMLInputElement>('[name="email"]')!.value.trim();
+      if (!nome) return 'Por favor, informe seu nome.';
+      if (tel.length < 10) return 'Informe um WhatsApp válido com DDD.';
+      if (!email.includes('@') || !email.split('@')[1]?.includes('.')) return 'Informe um e-mail válido.';
+      return null;
+    }
+
+    nextBtn.addEventListener('click', () => {
+      const err = validateStep1();
+      if (err) { showErr(0, err); return; }
+      clearErr(0);
+      goTo(2);
+    });
+
+    backBtn.addEventListener('click', () => { clearErr(1); goTo(1); });
+
+    // Submit
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const hp = form.querySelector<HTMLInputElement>('[name="website"]');
+      if (hp?.value) return;
+
+      const btnText    = submitBtn.querySelector<HTMLElement>('.wa-btn-text')!;
+      const btnSpin    = submitBtn.querySelector<HTMLElement>('.wa-btn-spin')!;
+
+      submitBtn.disabled = true;
+      btnText.style.display = 'none';
+      btnSpin.style.display = 'inline-flex';
+      clearErr(1);
+
+      const payload: Record<string, unknown> = {
+        nome:     form.querySelector<HTMLInputElement>('[name="nome"]')!.value.trim(),
+        telefone: form.querySelector<HTMLInputElement>('[name="telefone"]')!.value.trim(),
+        email:    form.querySelector<HTMLInputElement>('[name="email"]')!.value.trim(),
+        tipo:     form.querySelector<HTMLSelectElement>('[name="tipo"]')!.value,
+        data:     form.querySelector<HTMLInputElement>('[name="data"]')!.value,
+        pessoas:  form.querySelector<HTMLInputElement>('[name="pessoas"]')!.value,
+        detalhes: form.querySelector<HTMLTextAreaElement>('[name="detalhes"]')!.value.trim(),
+        project,
+        form_id:  formId,
+        page_url: window.location.href,
+      };
+
+      try { payload.tracking = JSON.parse(sessionStorage.getItem('dmove_tracking') || '{}'); } catch {}
+
+      try {
+        const res = await fetch(submitUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        if (!res.ok) throw new Error();
+
+        form.hidden = true;
+        successEl.hidden = false;
+        if (redirect) setTimeout(() => { window.location.href = redirect; }, 3000);
+      } catch {
+        showErr(1, 'Erro ao enviar. Tente novamente.');
+        submitBtn.disabled = false;
+        btnText.style.display = '';
+        btnSpin.style.display = 'none';
+      }
+    });
+  });
+</script>
+
+<style>
+  /* ── Overlay ── */
+  .wa-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9996;
+    background: rgba(0, 0, 0, 0);
+    pointer-events: none;
+    transition: background .3s ease;
+  }
+  .wa-overlay.is-visible {
+    background: rgba(0, 0, 0, .55);
+    pointer-events: all;
+  }
+
+  /* ── FAB ── */
+  .wa-fab {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 9998;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #25D366;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(37,211,102,.45);
+    transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+  }
+  .wa-fab:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(37,211,102,.55); }
+  .wa-fab.is-open { background: #128C7E; box-shadow: 0 4px 20px rgba(18,140,126,.4); }
+  .wa-fab-icon { width: 32px; height: 32px; flex-shrink: 0; }
+
+  .wa-fab-pulse {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: rgba(37,211,102,.35);
+    animation: wa-pulse 2.2s ease-out infinite;
+    pointer-events: none;
+  }
+  .wa-fab.is-open .wa-fab-pulse { display: none; }
+
+  @keyframes wa-pulse {
+    0%   { transform: scale(1);   opacity: .8; }
+    70%  { transform: scale(1.6); opacity: 0;  }
+    100% { transform: scale(1.6); opacity: 0;  }
+  }
+
+  /* ── Popup ── */
+  .wa-popup {
+    position: fixed;
+    bottom: 100px;
+    right: 24px;
+    z-index: 9997;
+    width: 370px;
+    max-height: calc(100dvh - 140px);
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    box-shadow: 0 16px 56px rgba(0,0,0,.22), 0 2px 8px rgba(0,0,0,.08);
+    transform-origin: bottom right;
+    /* closed state */
+    opacity: 0;
+    transform: scale(.88) translateY(10px);
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity .25s ease, transform .25s ease, visibility 0s .25s;
+  }
+  .wa-popup[aria-hidden="false"] {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    visibility: visible;
+    pointer-events: all;
+    transition: opacity .25s ease, transform .25s ease, visibility 0s 0s;
+  }
+
+  /* ── Header ── */
+  .wa-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 14px 14px 16px;
+    background: #075E54;
+    flex-shrink: 0;
+  }
+  .wa-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #128C7E;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .wa-header-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+  }
+  .wa-contact-name {
+    font-family: var(--font-display, sans-serif);
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .wa-contact-status {
+    font-size: 12px;
+    color: rgba(255,255,255,.78);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .wa-status-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #25D366;
+    flex-shrink: 0;
+  }
+  .wa-close-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: rgba(255,255,255,.75);
+    padding: 6px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background .15s, color .15s;
+    flex-shrink: 0;
+  }
+  .wa-close-btn:hover { background: rgba(255,255,255,.12); color: #fff; }
+
+  /* ── Chat bubble ── */
+  .wa-chat-body {
+    padding: 16px 14px 14px;
+    background: #ECE5DD;
+    flex-shrink: 0;
+  }
+  .wa-message {
+    position: relative;
+    background: #fff;
+    border-radius: 0 10px 10px 10px;
+    padding: 10px 12px 20px;
+    max-width: 92%;
+    box-shadow: 0 1px 3px rgba(0,0,0,.1);
+  }
+  .wa-message::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -8px;
+    border-style: solid;
+    border-width: 0 8px 8px 0;
+    border-color: transparent #fff transparent transparent;
+  }
+  .wa-message p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--brown, #54362C);
+  }
+  .wa-msg-time {
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    font-size: 10px;
+    color: rgba(84,54,44,.45);
+  }
+
+  /* ── Form wrap ── */
+  .wa-form-wrap {
+    padding: 16px;
+    overflow-y: auto;
+    flex: 1;
+    min-height: 0;
+    background: var(--ivory, #FBF6EA);
+  }
+  .wa-form-wrap::-webkit-scrollbar { width: 4px; }
+  .wa-form-wrap::-webkit-scrollbar-thumb { background: var(--line, rgba(84,54,44,.2)); border-radius: 4px; }
+
+  /* ── Steps ── */
+  .wa-step { display: none; }
+  .wa-step.is-active { display: block; }
+
+  /* ── Progress ── */
+  .wa-progress {
+    height: 3px;
+    background: rgba(84,54,44,.12);
+    border-radius: 3px;
+    margin-bottom: 10px;
+    overflow: hidden;
+  }
+  .wa-bar {
+    height: 100%;
+    background: #25D366;
+    border-radius: 3px;
+    transition: width .35s ease;
+  }
+  .wa-step-lbl {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--brown-soft, #6E4A3C);
+    opacity: .65;
+    margin-bottom: 14px;
+  }
+
+  /* ── Fields ── */
+  .wa-hp { position: absolute; left: -9999px; opacity: 0; pointer-events: none; }
+
+  .wa-field { margin-bottom: 10px; }
+  .wa-row {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .wa-row .wa-field { margin-bottom: 0; }
+
+  .wa-input,
+  .wa-select,
+  .wa-textarea {
+    width: 100%;
+    font-family: var(--font-body, sans-serif);
+    font-size: 14px;
+    color: var(--brown, #54362C);
+    background: #fff;
+    border: 1px solid var(--line, rgba(84,54,44,.18));
+    border-radius: 8px;
+    padding: 11px 14px;
+    transition: border-color .2s, box-shadow .2s;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+  .wa-select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2354362C' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 36px;
+    cursor: pointer;
+  }
+  .wa-textarea { resize: vertical; min-height: 76px; }
+
+  .wa-input::placeholder,
+  .wa-textarea::placeholder { color: var(--brown-soft, #6E4A3C); opacity: .5; }
+
+  .wa-input:focus,
+  .wa-select:focus,
+  .wa-textarea:focus {
+    outline: none;
+    border-color: #25D366;
+    box-shadow: 0 0 0 3px rgba(37,211,102,.15);
+  }
+
+  /* ── Error ── */
+  .wa-err {
+    font-size: 12px;
+    color: #c0392b;
+    margin: 0 0 8px;
+    display: none;
+  }
+  .wa-err.is-visible { display: block; }
+
+  /* ── Buttons ── */
+  .wa-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-family: var(--font-body, sans-serif);
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 8px;
+    padding: 11px 20px;
+    cursor: pointer;
+    border: none;
+    transition: background .18s, transform .1s, opacity .18s;
+    line-height: 1;
+  }
+  .wa-btn:active { transform: scale(.97); }
+
+  .wa-btn-green {
+    background: #25D366;
+    color: #fff;
+    width: 100%;
+    margin-top: 4px;
+  }
+  .wa-btn-green:hover { background: #20B858; }
+  .wa-btn-green:disabled { opacity: .65; cursor: not-allowed; transform: none !important; }
+
+  .wa-btn-ghost {
+    background: transparent;
+    color: var(--brown-soft, #6E4A3C);
+    border: 1px solid var(--line, rgba(84,54,44,.18));
+    padding: 10px 14px;
+    white-space: nowrap;
+  }
+  .wa-btn-ghost:hover { background: rgba(84,54,44,.06); }
+
+  .wa-s2-actions {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .wa-s2-actions .wa-btn-green { margin-top: 0; }
+
+  .wa-btn-spin {
+    display: none;
+    align-items: center;
+    gap: 6px;
+  }
+  .wa-spinner { animation: wa-spin 1s linear infinite; }
+  @keyframes wa-spin { to { transform: rotate(360deg); } }
+
+  /* ── Privacy ── */
+  .wa-privacy {
+    font-size: 11px;
+    color: var(--brown-soft, #6E4A3C);
+    opacity: .6;
+    text-align: center;
+    margin-top: 10px;
+    line-height: 1.4;
+  }
+
+  /* ── Success ── */
+  .wa-success { text-align: center; padding: 20px 8px; }
+  .wa-success-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #25D366;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 14px;
+  }
+  .wa-success-title {
+    font-family: var(--font-display, sans-serif);
+    font-size: 18px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -.01em;
+    color: var(--brown, #54362C);
+    margin-bottom: 8px;
+  }
+  .wa-success-text {
+    font-size: 14px;
+    color: var(--brown-soft, #6E4A3C);
+    line-height: 1.5;
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 440px) {
+    .wa-popup { right: 12px; left: 12px; width: auto; bottom: 88px; }
+    .wa-fab   { right: 16px; bottom: 16px; }
+  }
+</style>

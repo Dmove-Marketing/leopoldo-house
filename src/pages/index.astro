@@ -3,6 +3,7 @@
 import Base from '../layouts/Base.astro';
 import config from '../../config.json';
 import LeadForm from '../components/forms/LeadForm.astro';
+import WhatsAppPopup from '../components/WhatsAppPopup.astro';
 import Img from '../components/ui/Img.astro';
 import '../styles/index.css';
 ---
@@ -64,17 +65,17 @@ import '../styles/index.css';
     <div class="section-head light reveal">
       <span class="eyebrow center light">Versatilidade</span>
       <h2 class="h2">Diversas possibilidades. O mesmo padrão de excelência.</h2>
-      <p class="lede">Com pé-direito de 7 metros e 450m² de área total, o Leopoldo House se destaca pela versatilidade do seu layout, que se adapta a diferentes formatos de eventos. O espaço acomoda até 230 convidados em coquetel, 250 em jantar e 130 em plenária.</p>
+      <p class="lede">Com pé-direito de 7 metros e 450m² de área total, o Leopoldo House se destaca pela versatilidade do seu layout, que se adapta a diferentes formatos de eventos. O espaço acomoda até 400 convidados em coquetel, 250 em jantar e 130 em plenária.</p>
     </div>
 
     <div class="type-list reveal">
-      <div class="type-row"><span class="idx">01</span><span class="nm">Coquetéis</span><span class="ar">→</span></div>
-      <div class="type-row"><span class="idx">02</span><span class="nm">Plenárias</span><span class="ar">→</span></div>
-      <div class="type-row"><span class="idx">03</span><span class="nm">Workshops</span><span class="ar">→</span></div>
-      <div class="type-row"><span class="idx">04</span><span class="nm">Convenções</span><span class="ar">→</span></div>
-      <div class="type-row"><span class="idx">05</span><span class="nm">Treinamentos</span><span class="ar">→</span></div>
-      <div class="type-row"><span class="idx">06</span><span class="nm">Jantares</span><span class="ar">→</span></div>
-      <div class="type-row"><span class="idx">07</span><span class="nm">Confraternizações</span><span class="ar">→</span></div>
+      <a href="#contato" class="type-row"><span class="idx">01</span><span class="nm">Coquetéis</span><span class="ar">→</span></a>
+      <a href="#contato" class="type-row"><span class="idx">02</span><span class="nm">Plenárias</span><span class="ar">→</span></a>
+      <a href="#contato" class="type-row"><span class="idx">03</span><span class="nm">Workshops</span><span class="ar">→</span></a>
+      <a href="#contato" class="type-row"><span class="idx">04</span><span class="nm">Convenções</span><span class="ar">→</span></a>
+      <a href="#contato" class="type-row"><span class="idx">05</span><span class="nm">Treinamentos</span><span class="ar">→</span></a>
+      <a href="#contato" class="type-row"><span class="idx">06</span><span class="nm">Jantares</span><span class="ar">→</span></a>
+      <a href="#contato" class="type-row"><span class="idx">07</span><span class="nm">Confraternizações</span><span class="ar">→</span></a>
     </div>
   </div>
 </section>
@@ -119,13 +120,30 @@ import '../styles/index.css';
 
 <!-- ════════════ GASTRONOMIA ════════════ -->
 <section class="gastro" id="gastronomia">
-  <Img src="gastronomia.png" alt="Mesa de gastronomia do Leopoldo House — buffet premium" width={1920} style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;opacity:.55" />
-  <div class="gastro-veil"></div>
   <div class="wrap">
     <div class="gastro-inner reveal">
       <span class="eyebrow center light">Gastronomia</span>
-      <h2 class="h2">Mais do que um buffet. Uma experiência gastronômica.</h2>
-      <p class="lede">Um cardápio desenvolvido para acompanhar o propósito do seu evento corporativo, com execução precisa e apresentação refinada.</p>
+      <h2 class="h2">Mais do que um buffet. Uma experiência gastronômica personalizada.</h2>
+      <p class="lede">Cardápios desenvolvidos para acompanhar o formato e o propósito do seu evento corporativo, com execução precisa e apresentação impecável.</p>
+    </div>
+
+    <div class="gastro-cards reveal">
+      <div class="gastro-card">
+        <Img src="gastro-coffee-break.webp" alt="Coffee Break — Leopoldo House" width={600} style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" />
+        <span class="gastro-card-name">Coffee Break</span>
+      </div>
+      <div class="gastro-card">
+        <Img src="gastro-almoco-jantar.jpg" alt="Almoço e Jantar Executivo — Leopoldo House" width={600} style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" />
+        <span class="gastro-card-name">Almoço e Jantar Executivo</span>
+      </div>
+      <div class="gastro-card">
+        <Img src="gastro-ilhas.png" alt="Ilhas Gastronômicas — Leopoldo House" width={600} style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" />
+        <span class="gastro-card-name">Ilhas Gastronômicas</span>
+      </div>
+      <div class="gastro-card">
+        <Img src="gastro-coquetel-volante.jpg" alt="Coquetel Volante — Leopoldo House" width={600} style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" />
+        <span class="gastro-card-name">Coquetel Volante</span>
+      </div>
     </div>
   </div>
 </section>
@@ -138,16 +156,22 @@ import '../styles/index.css';
       <h2 class="h2">Empresas que confiaram em nosso espaço de eventos.</h2>
       <p class="lede">Conheça o Leopoldo House e viva uma experiência de sucesso.</p>
     </div>
-    <div class="logos reveal">
-      <div class="logobox">Logo 01</div>
-      <div class="logobox">Logo 02</div>
-      <div class="logobox">Logo 03</div>
-      <div class="logobox">Logo 04</div>
-      <div class="logobox">Logo 05</div>
-      <div class="logobox">Logo 06</div>
-      <div class="logobox">Logo 07</div>
-      <div class="logobox">Logo 08</div>
-      <div class="logobox">Logo 09</div>
+    <div class="logos-track-wrap" aria-label="Empresas parceiras" role="region">
+      <div class="logos-track">
+        <div class="logos-inner">
+          <div class="logo-item"><Img src="empresa-1.png" alt="Empresa parceira 1" width={180} /></div>
+          <div class="logo-item"><Img src="empresa-2.png" alt="Empresa parceira 2" width={180} /></div>
+          <div class="logo-item"><Img src="empresa-3.png" alt="Empresa parceira 3" width={180} /></div>
+          <div class="logo-item"><Img src="empresa-4.png" alt="Empresa parceira 4" width={180} /></div>
+          <div class="logo-item"><Img src="empresa-5.png" alt="Empresa parceira 5" width={180} /></div>
+          <!-- duplicado para loop contínuo -->
+          <div class="logo-item" aria-hidden="true"><Img src="empresa-1.png" alt="" width={180} /></div>
+          <div class="logo-item" aria-hidden="true"><Img src="empresa-2.png" alt="" width={180} /></div>
+          <div class="logo-item" aria-hidden="true"><Img src="empresa-3.png" alt="" width={180} /></div>
+          <div class="logo-item" aria-hidden="true"><Img src="empresa-4.png" alt="" width={180} /></div>
+          <div class="logo-item" aria-hidden="true"><Img src="empresa-5.png" alt="" width={180} /></div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -223,6 +247,26 @@ import '../styles/index.css';
   </div>
 </footer>
 
+
+<WhatsAppPopup
+  formId="whats-popup-events"
+  project={config.project_slug}
+  submitUrl={config.forms['lead-form'].webhooks[0]}
+  redirectUrl={config.forms['lead-form'].redirect_on_success}
+  greeting="Olá! Gostaria de conhecer o Leopoldo House para o seu próximo evento corporativo? Preencha abaixo e nossa equipe entrará em contato pelo WhatsApp."
+  dataPlaceholder="Data do evento"
+  tipoOptions={[
+    { value: '',                  label: 'Tipo de evento',    disabled: true, selected: true },
+    { value: 'Coquetel',          label: 'Coquetel' },
+    { value: 'Jantar',            label: 'Jantar' },
+    { value: 'Plenária',          label: 'Plenária' },
+    { value: 'Workshop',          label: 'Workshop' },
+    { value: 'Convenção',         label: 'Convenção' },
+    { value: 'Treinamento',       label: 'Treinamento' },
+    { value: 'Confraternização',  label: 'Confraternização' },
+    { value: 'Outro',             label: 'Outro' },
+  ]}
+/>
 
 </Base>
 <script>

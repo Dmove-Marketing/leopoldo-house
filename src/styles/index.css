@@ -247,7 +247,8 @@ header.scrolled .menu-btn span{background:var(--brown)}
   position:relative;display:flex;align-items:center;
   gap:clamp(18px,3vw,46px);
   padding:clamp(22px,2.7vw,36px) clamp(14px,2.4vw,38px);
-  border-bottom:1px solid rgba(255,244,224,.16);overflow:hidden;cursor:default;
+  border-bottom:1px solid rgba(255,244,224,.16);overflow:hidden;cursor:pointer;
+  text-decoration:none;color:inherit;
 }
 .type-row::before{content:"";position:absolute;inset:0;background:var(--clay);transform:translateX(-101%);transition:transform .6s var(--ease);z-index:0}
 .type-row>*{position:relative;z-index:1;transition:color .45s var(--ease),transform .5s var(--ease)}
@@ -273,28 +274,85 @@ header.scrolled .menu-btn span{background:var(--brown)}
 @media(max-width:840px){.amb{grid-template-columns:1fr;gap:24px}.amb:nth-child(even) .amb-media{order:0}}
 
 /* ───────────────── GASTRONOMIA ───────────────── */
-.gastro{position:relative;background:var(--espresso);color:var(--cream);overflow:hidden;text-align:center}
-.gastro .ph{position:absolute;inset:0;height:100%;border:none;border-radius:0;opacity:.55}
-.gastro .ph::after{display:none}
-.gastro-veil{position:absolute;inset:0;z-index:2;background:radial-gradient(110% 90% at 50% 50%,rgba(47,31,25,.55) 0%,rgba(47,31,25,.75) 70%,rgba(47,31,25,.88) 100%)}
-.gastro-inner{position:relative;z-index:3;padding:clamp(100px,15vw,200px) 0;max-width:780px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:20px}
+.gastro{background:var(--brown);color:var(--cream);text-align:center}
+.gastro-inner{padding:clamp(100px,15vw,200px) 0 clamp(48px,6vw,80px);max-width:780px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:20px}
 .gastro h2{color:var(--cream)}
 .gastro .lede{color:rgba(255,244,224,.88);max-width:56ch}
+
+.gastro-cards{
+  position:relative;z-index:3;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(10px,1.4vw,18px);
+  padding-bottom:clamp(64px,10vw,120px);
+}
+.gastro-card{
+  position:relative;aspect-ratio:1/1;border-radius:12px;overflow:hidden;
+  background:var(--brown);
+}
+.gastro-card img{
+  transition:transform .6s var(--ease);
+}
+.gastro-card:hover img{transform:scale(1.06)}
+.gastro-card::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(47,31,25,.88) 0%,rgba(47,31,25,.2) 55%,transparent 100%);
+  z-index:1;
+}
+.gastro-card-name{
+  position:absolute;bottom:0;left:0;right:0;
+  padding:clamp(12px,1.4vw,18px);z-index:2;
+  font-family:var(--font-display);font-weight:800;text-transform:uppercase;
+  font-size:clamp(11px,1vw,14px);letter-spacing:.06em;line-height:1.25;
+  color:var(--cream);
+}
+@media(max-width:768px){
+  .gastro-cards{grid-template-columns:repeat(2,1fr)}
+}
 
 /* ───────────────── PROVA SOCIAL ───────────────── */
 .proof{padding:clamp(80px,11vw,160px) 0;background:var(--cream)}
 .proof h2{color:var(--brown)}
-.logos{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
-.logobox{
-  aspect-ratio:5/3;border:1px solid var(--line);border-radius:4px;
-  display:flex;align-items:center;justify-content:center;
-  font-family:var(--font-display);font-weight:700;text-transform:uppercase;
-  font-size:11px;letter-spacing:.12em;color:var(--brown-soft);opacity:.55;
-  background:var(--ivory);transition:.35s var(--ease);
+
+/* carrossel infinito de logos */
+.logos-track-wrap{
+  --item-w: 220px;
+  --gap: 40px;
+  --items: 5;
+  position:relative;
+  overflow:hidden;
+  margin-top:clamp(40px,6vw,72px);
 }
-.logobox:hover{opacity:1;border-color:var(--clay);color:var(--clay-deep)}
-@media(max-width:900px){.logos{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:520px){.logos{grid-template-columns:repeat(2,1fr)}}
+/* fade nas bordas */
+.logos-track-wrap::before,
+.logos-track-wrap::after{
+  content:'';position:absolute;top:0;bottom:0;z-index:2;width:clamp(60px,8vw,120px);
+  pointer-events:none;
+}
+.logos-track-wrap::before{left:0;background:linear-gradient(to right,var(--cream),transparent)}
+.logos-track-wrap::after {right:0;background:linear-gradient(to left, var(--cream),transparent)}
+
+.logos-track{overflow:hidden}
+.logos-inner{
+  display:flex;gap:var(--gap);
+  width:calc((var(--item-w) + var(--gap)) * var(--items) * 2);
+  animation:logos-scroll 22s linear infinite;
+}
+.logo-item{
+  flex:0 0 var(--item-w);
+  display:flex;align-items:center;justify-content:center;
+}
+.logo-item img{
+  width:100%;height:auto;
+  object-fit:contain;
+}
+
+@keyframes logos-scroll{
+  0%  {transform:translateX(0)}
+  100%{transform:translateX(calc(-1 * (var(--item-w) + var(--gap)) * var(--items)))}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .logos-inner{animation:none}
+}
 
 /* ───────────────── CONTATO ───────────────── */
 .contact{padding:clamp(80px,11vw,160px) 0;background:var(--brown);color:var(--cream)}
