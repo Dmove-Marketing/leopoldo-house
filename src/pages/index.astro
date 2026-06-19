@@ -42,8 +42,6 @@ import '../styles/index.css';
           <div class="about-slide"><Img src="sobre-01.png" alt="Leopoldo House — vista do salão decorado" width={800} /></div>
           <div class="about-slide"><Img src="sobre-02.jpg" alt="Leopoldo House — ambiente em evento" width={800} /></div>
           <div class="about-slide"><Img src="sobre-03.jpg" alt="Leopoldo House — detalhe do espaço" width={800} /></div>
-          <div class="about-slide"><Img src="sobre-04.jpg" alt="Leopoldo House — iluminação do evento" width={800} /></div>
-          <div class="about-slide"><Img src="sobre-05.jpg" alt="Leopoldo House — mesas decoradas" width={800} /></div>
           <div class="about-slide"><Img src="sobre-06.jpg" alt="Leopoldo House — lounge" width={800} /></div>
           <div class="about-slide"><Img src="sobre-07.jpg" alt="Leopoldo House — área de convivência" width={800} /></div>
           <div class="about-slide"><Img src="sobre-08.jpg" alt="Leopoldo House — espaço configurado" width={800} /></div>
@@ -51,7 +49,6 @@ import '../styles/index.css';
           <div class="about-slide"><Img src="sobre-abertura-1.jpg" alt="Leopoldo House — abertura do espaço" width={800} /></div>
           <div class="about-slide"><Img src="sobre-abertura-6.jpg" alt="Leopoldo House — abertura do espaço" width={800} /></div>
           <div class="about-slide"><Img src="sobre-abertura-9.jpg" alt="Leopoldo House — abertura do espaço" width={800} /></div>
-          <div class="about-slide"><Img src="sobre-abertura-11.jpg" alt="Leopoldo House — abertura do espaço" width={800} /></div>
         </div>
       </div>
 
@@ -68,7 +65,7 @@ import '../styles/index.css';
   <div class="wrap">
     <div class="section-head light reveal">
       <span class="eyebrow center light">Versatilidade</span>
-      <h2 class="h2">Diversas possibilidades. O mesmo padrão de excelência.</h2>
+      <h2 class="h2">Diversas possibilidades.<br>O mesmo padrão de excelência.</h2>
       <p class="lede">Com pé-direito de 7 metros e 450m² de área total, o Leopoldo House se destaca pela versatilidade do seu layout, que se adapta a diferentes formatos de eventos. O espaço acomoda até 400 convidados em coquetel, 250 em jantar e 130 em plenária.</p>
     </div>
 
@@ -84,12 +81,21 @@ import '../styles/index.css';
   </div>
 </section>
 
+<!-- ════════════ GALERIA 3 FOTOS ════════════ -->
+<section class="gallery3">
+  <div class="gallery3-grid">
+    <div class="gallery3-item"><Img src="sobre-05.jpg" alt="Leopoldo House — mesas decoradas" width={900} style="width:100%;height:100%;object-fit:cover;display:block" /></div>
+    <div class="gallery3-item"><Img src="sobre-abertura-11.jpg" alt="Leopoldo House — abertura do espaço" width={900} style="width:100%;height:100%;object-fit:cover;display:block" /></div>
+    <div class="gallery3-item"><Img src="sobre-04.jpg" alt="Leopoldo House — iluminação do evento" width={900} style="width:100%;height:100%;object-fit:cover;display:block" /></div>
+  </div>
+</section>
+
 <!-- ════════════ ESTRUTURA ════════════ -->
 <section class="structure" id="estrutura">
   <div class="wrap">
     <div class="section-head reveal">
       <span class="eyebrow center">Estrutura</span>
-      <h2 class="h2">Uma estrutura que impressiona já no primeiro contato.</h2>
+      <h2 class="h2">Uma estrutura que impressiona<br>já no primeiro contato.</h2>
       <p class="lede">Conheça nossos ambientes.</p>
     </div>
 
@@ -231,25 +237,12 @@ import '../styles/index.css';
 <!-- ════════════ RODAPÉ ════════════ -->
 <footer>
   <div class="wrap">
-    <div class="foot-top">
+    <div class="foot-bottom">
+      <span>Copyright © 2026 Leopoldo House - Todos os direitos reservados</span>
       <div class="foot-logo">
         <Img src="logo-leopoldo.png" alt="Leopoldo House" width={200} />
         <Img src="logo-tvenues.webp" alt="T.Venues" width={400} quality={100} />
       </div>
-      <div class="foot-links">
-        <div class="foot-col">
-          <a href="#sobre">O Espaço</a>
-          <a href="#eventos">Eventos</a>
-          <a href="#estrutura">Estrutura</a>
-        </div>
-        <div class="foot-col">
-          <a href="#gastronomia">Gastronomia</a>
-          <a href="#contato">Solicitar orçamento</a>
-        </div>
-      </div>
-    </div>
-    <div class="foot-bottom">
-      <span>Copyright © 2026 Leopoldo House - Todos os direitos reservados</span>
       <span class="foot-dev">Desenvolvido por <a href="https://dmove.com.br" target="_blank" rel="noopener"><Img src="logo-dmove.avif" alt="Dmove" width={72} /></a></span>
     </div>
   </div>
