@@ -37,6 +37,22 @@ export function initForms() {
       const hp = form.querySelector<HTMLInputElement>('[name="website"]');
       if (hp && hp.value) return;
 
+      // Validação de campos obrigatórios
+      const requiredEls = Array.from(
+        form.querySelectorAll<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>('[required]')
+      );
+      const emptyEls = requiredEls.filter(el => !el.value.trim());
+      if (emptyEls.length) {
+        emptyEls.forEach(el => {
+          el.classList.add('field-invalid');
+          const remove = () => { el.classList.remove('field-invalid'); el.removeEventListener('input', remove); el.removeEventListener('change', remove); };
+          el.addEventListener('input', remove);
+          el.addEventListener('change', remove);
+        });
+        emptyEls[0].focus();
+        return;
+      }
+
       const submitBtn  = form.querySelector<HTMLButtonElement>('.form-submit, [type="submit"]');
       const btnText    = submitBtn?.querySelector<HTMLElement>('.btn-text');
       const btnLoading = submitBtn?.querySelector<HTMLElement>('.btn-loading');

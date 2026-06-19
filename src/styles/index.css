@@ -179,7 +179,7 @@ header.scrolled .menu-btn span{background:var(--brown)}
   background:radial-gradient(120% 90% at 50% 40%,rgba(47,31,25,.55) 0%,rgba(47,31,25,.75) 55%,rgba(47,31,25,.88) 100%);
 }
 .hero-inner{position:relative;z-index:3;width:100%;max-width:1120px;display:flex;flex-direction:column;align-items:center;padding-top:40px}
-.hero-logo{width:clamp(180px,22vw,280px);height:auto;margin-bottom:32px}
+.hero-logo{width:clamp(180px,22vw,280px);height:auto;margin-bottom:32px;background:rgba(47,31,25,.65);padding:5px 8px;border-radius:6px}
 .hero h1{color:var(--cream);max-width:none}
 .hero .eyebrow{margin-bottom:6px}
 .hero p.lede{color:rgba(255,244,224,.9);margin-top:26px;max-width:46ch}
@@ -242,23 +242,21 @@ header.scrolled .menu-btn span{background:var(--brown)}
 .events{padding:clamp(80px,11vw,160px) 0;background:var(--brown);color:var(--cream);position:relative;overflow:hidden}
 .events::before{content:"";position:absolute;top:-30%;left:50%;transform:translateX(-50%);width:120%;height:60%;background:radial-gradient(60% 100% at 50% 0%,rgba(207,132,107,.16),transparent 70%);pointer-events:none}
 .events h2{color:var(--cream)}
-.type-list{position:relative;border-top:1px solid rgba(255,244,224,.16)}
-.type-row{
-  position:relative;display:flex;align-items:center;
-  gap:clamp(18px,3vw,46px);
-  padding:clamp(22px,2.7vw,36px) clamp(14px,2.4vw,38px);
-  border-bottom:1px solid rgba(255,244,224,.16);overflow:hidden;cursor:pointer;
-  text-decoration:none;color:inherit;
+.type-cards{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:48px}
+.type-card{
+  display:flex;align-items:center;justify-content:center;
+  width:calc(25% - 9px);
+  padding:20px 16px;
+  border:1px solid rgba(255,244,224,.2);border-radius:8px;
+  font-family:var(--font-display);font-weight:700;text-transform:uppercase;
+  font-size:clamp(13px,1.1vw,15px);letter-spacing:.04em;
+  color:var(--cream);text-decoration:none;text-align:center;
+  background:rgba(255,244,224,.05);
+  transition:background .3s var(--ease),border-color .3s var(--ease),color .3s var(--ease);
 }
-.type-row::before{content:"";position:absolute;inset:0;background:var(--clay);transform:translateX(-101%);transition:transform .6s var(--ease);z-index:0}
-.type-row>*{position:relative;z-index:1;transition:color .45s var(--ease),transform .5s var(--ease)}
-.type-row .idx{font-family:var(--font-serif);font-style:italic;font-size:clamp(15px,1.4vw,19px);color:var(--clay);min-width:42px}
-.type-row .nm{font-family:var(--font-display);font-weight:800;text-transform:uppercase;font-size:clamp(16px,1.8vw,26px);letter-spacing:-.015em;line-height:1}
-.type-row .ar{margin-left:auto;font-size:clamp(20px,2vw,26px);color:var(--clay);opacity:0;transform:translateX(-14px)}
-.type-row:hover::before{transform:translateX(0)}
-.type-row:hover .idx{color:var(--espresso)}
-.type-row:hover .nm{color:var(--espresso);transform:translateX(clamp(8px,1vw,16px))}
-.type-row:hover .ar{color:var(--espresso);opacity:1;transform:translateX(0)}
+.type-card:hover{background:var(--clay);border-color:var(--clay);color:var(--espresso)}
+@media(max-width:768px){.type-card{width:calc(50% - 6px)}}
+@media(max-width:400px){.type-card{width:100%}}
 
 /* ───────────────── ESTRUTURA / AMBIENTES ───────────────── */
 .structure{padding:clamp(80px,11vw,160px) 0;background:var(--ivory)}
@@ -286,7 +284,7 @@ header.scrolled .menu-btn span{background:var(--brown)}
 }
 .gastro-card{
   position:relative;aspect-ratio:1/1;border-radius:12px;overflow:hidden;
-  background:var(--brown);
+  background:var(--brown);text-decoration:none;display:block;cursor:pointer;
 }
 .gastro-card img{
   transition:transform .6s var(--ease);
@@ -384,7 +382,9 @@ header.scrolled .menu-btn span{background:var(--brown)}
 /* ───────────────── RODAPÉ ───────────────── */
 footer{background:var(--espresso);color:rgba(255,244,224,.7);padding:clamp(56px,7vw,80px) 0 36px}
 .foot-top{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;flex-wrap:wrap;border-bottom:1px solid rgba(255,244,224,.14);padding-bottom:40px}
-.foot-logo img{width:clamp(200px,22vw,300px);height:auto}
+.foot-logo{display:flex;flex-direction:column;gap:20px;align-items:center}
+.foot-logo img:first-child{width:clamp(160px,18vw,220px);height:auto}
+.foot-logo img:last-child{width:clamp(140px,16vw,200px);height:auto}
 .foot-logo .dot{color:var(--clay)}
 .foot-links{display:flex;gap:48px;flex-wrap:wrap}
 .foot-col h4{font-family:var(--font-display);text-transform:uppercase;font-size:12px;letter-spacing:.1em;color:var(--clay);margin-bottom:16px;font-weight:700}

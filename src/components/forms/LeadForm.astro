@@ -52,6 +52,7 @@ interface Props {
   honeypot?: boolean;
   successTitle?: string;
   successText?: string;
+  showPrivacyNote?: boolean;
 }
 
 const EVENT_TYPE_OPTIONS: FieldOption[] = [
@@ -98,6 +99,7 @@ const {
   honeypot = false,
   successTitle = 'Solicitação recebida',
   successText  = 'Recebemos seu pedido.<br>Em breve entraremos em contato pelo WhatsApp ou e-mail.',
+  showPrivacyNote = true,
 } = Astro.props;
 
 const formElemId  = `form-${formId}`;
@@ -252,7 +254,7 @@ function renderField(f: Field, cxInputClass: string, cxSelectClass: string, cxAr
     </div>
 
     <div class={cxMsg} id={theMsgId}></div>
-    <p class={cxFooter}>Ao enviar, você concorda com nossa política de privacidade.</p>
+    {showPrivacyNote && <p class={cxFooter}>Ao enviar, você concorda com nossa política de privacidade.</p>}
   </div>
 
   <div class={cxSuccess} id={theSuccessId}>
@@ -389,6 +391,13 @@ function renderField(f: Field, cxInputClass: string, cxSelectClass: string, cxAr
 
   .field-error { font-size: 12px; color: #c0392b; display: none; margin-top: 4px; }
   .field-error.visible { display: block; }
+
+  .form-input.field-invalid,
+  .form-select.field-invalid,
+  .form-textarea.field-invalid {
+    border-color: #c0392b !important;
+    box-shadow: 0 0 0 3px rgba(192,57,43,.12) !important;
+  }
 
   .form-submit {
     width: 100%;

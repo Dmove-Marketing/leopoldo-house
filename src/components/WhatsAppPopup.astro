@@ -120,7 +120,7 @@ const {
           <p class="wa-step-lbl">Etapa 2 de 2 — Seu evento</p>
 
           <div class="wa-field">
-            <select class="wa-select" name="tipo">
+            <select class="wa-select" name="tipo" required>
               {tipoOptions.map(opt => (
                 <option value={opt.value} disabled={opt.disabled} selected={opt.selected}>{opt.label}</option>
               ))}
@@ -129,10 +129,10 @@ const {
 
           <div class="wa-row">
             <div class="wa-field">
-              <input class="wa-input" type="text" name="data" placeholder={dataPlaceholder} readonly data-wa-datepicker autocomplete="off" />
+              <input class="wa-input" type="text" name="data" placeholder={dataPlaceholder} readonly data-wa-datepicker autocomplete="off" required />
             </div>
             <div class="wa-field">
-              <input class="wa-input" type="number" name="pessoas" placeholder="Convidados" min="1" />
+              <input class="wa-input" type="number" name="pessoas" placeholder="Convidados" min="1" required />
             </div>
           </div>
 
@@ -275,12 +275,25 @@ const {
 
     backBtn.addEventListener('click', () => { clearErr(1); goTo(1); });
 
+    function validateStep2(): string | null {
+      const tipo    = form.querySelector<HTMLSelectElement>('[name="tipo"]')!.value;
+      const data    = form.querySelector<HTMLInputElement>('[name="data"]')!.value.trim();
+      const pessoas = form.querySelector<HTMLInputElement>('[name="pessoas"]')!.value.trim();
+      if (!tipo)    return 'Selecione o tipo de evento.';
+      if (!data)    return 'Informe a data do evento.';
+      if (!pessoas) return 'Informe o número de convidados.';
+      return null;
+    }
+
     // Submit
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
 
       const hp = form.querySelector<HTMLInputElement>('[name="website"]');
       if (hp?.value) return;
+
+      const err2 = validateStep2();
+      if (err2) { showErr(1, err2); return; }
 
       const btnText    = submitBtn.querySelector<HTMLElement>('.wa-btn-text')!;
       const btnSpin    = submitBtn.querySelector<HTMLElement>('.wa-btn-spin')!;
