@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
 /* ========================================
    DESIGN SYSTEM BASE — Dmove Sites
    Template para todos os projetos
@@ -104,8 +106,8 @@ button {
   --space-4xl: 96px;
 
   /* Typography */
-  --font-display: 'Inter', sans-serif;
-  --font-body: 'Inter', sans-serif;
+  --font-display: 'Raleway', sans-serif;
+  --font-body: 'Raleway', sans-serif;
 
   /* Container */
   --container-max: 1200px;
@@ -231,6 +233,24 @@ p {
 
 .form-input::placeholder {
   color: var(--text-muted);
+}
+
+.form-privacy-link {
+  margin-top: 18px;
+  font-size: 13px;
+  color: var(--text-muted);
+  text-align: center;
+  opacity: 0.8;
+  width: 100%;
+}
+.form-privacy-link a {
+  color: var(--color-primary);
+  text-decoration: underline;
+  font-weight: 600;
+  transition: opacity 0.2s ease;
+}
+.form-privacy-link a:hover {
+  opacity: 0.7;
 }
 
 /* === Reveal Animations (progressive enhancement) === */

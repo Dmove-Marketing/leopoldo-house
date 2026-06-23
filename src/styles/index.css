@@ -1,4 +1,5 @@
 /* Estilos extraídos de index.html */
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
 /* ── Gotham (auto-hospedada) ── */
 @font-face {
@@ -36,9 +37,9 @@
   --white:      #FFFFFF;
   --line:       rgba(84,54,44,.16);
 
-  --font-display: 'Gotham', sans-serif;
-  --font-serif:   'Gotham', sans-serif;
-  --font-body:    'Gotham', sans-serif;
+  --font-display: 'Raleway', sans-serif;
+  --font-serif:   'Raleway', sans-serif;
+  --font-body:    'Raleway', sans-serif;
 
   --maxw: 1280px;
   --pad: clamp(20px, 5vw, 88px);
@@ -77,6 +78,7 @@ body::before{
 .eyebrow.center::before{display:none}
 
 h1,h2,h3{font-family:var(--font-display);font-weight:800;line-height:1.02;letter-spacing:-.015em;text-transform:uppercase}
+.font-book{font-weight:400}
 .display{font-size:clamp(26px,3.2vw,46px)}
 .h2{font-size:clamp(26px,3.6vw,48px)}
 .h3{font-size:clamp(20px,2.1vw,26px)}
@@ -195,7 +197,9 @@ header.scrolled .menu-btn span{background:var(--brown)}
 @media(max-width:760px){.strip-grid{grid-template-columns:repeat(2,1fr)}}
 
 /* ───────────────── SOBRE ───────────────── */
-.about{padding:clamp(80px,11vw,160px) 0;background:var(--cream)}
+.about{padding:clamp(48px,6.6vw,96px) 0;background:var(--cream)}
+.about .section-head{max-width:900px}
+.about .lede{max-width:62ch}
 /* carrossel O Espaço */
 .about-carousel{position:relative}
 /* padding-bottom abre espaço para o stagger do slide do meio dentro do overflow:hidden */
@@ -239,15 +243,16 @@ header.scrolled .menu-btn span{background:var(--brown)}
 }
 
 /* ───────────────── TIPOS DE EVENTO ───────────────── */
-.events{padding:clamp(80px,11vw,160px) 0;background:var(--brown);color:var(--cream);position:relative;overflow:hidden}
+.events{padding:clamp(48px,6.6vw,96px) 0;background:var(--brown);color:var(--cream);position:relative;overflow:hidden}
 .events::before{content:"";position:absolute;top:-30%;left:50%;transform:translateX(-50%);width:120%;height:60%;background:radial-gradient(60% 100% at 50% 0%,rgba(207,132,107,.16),transparent 70%);pointer-events:none}
 .events h2{color:var(--cream);white-space:nowrap}
 @media(max-width:700px){.events h2{white-space:normal}}
 .type-cards{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:48px}
 .type-card{
-  display:flex;align-items:center;justify-content:center;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:12px;
   width:calc(25% - 9px);
-  padding:20px 16px;
+  padding:24px 16px;
   border:1px solid rgba(255,244,224,.2);border-radius:8px;
   font-family:var(--font-display);font-weight:700;text-transform:uppercase;
   font-size:clamp(13px,1.1vw,15px);letter-spacing:.04em;
@@ -256,6 +261,8 @@ header.scrolled .menu-btn span{background:var(--brown)}
   transition:background .3s var(--ease),border-color .3s var(--ease),color .3s var(--ease);
 }
 .type-card:hover{background:var(--clay);border-color:var(--clay);color:var(--espresso)}
+.type-card .card-icon{width:32px;height:32px;color:var(--clay);transition:color .3s var(--ease)}
+.type-card:hover .card-icon{color:var(--espresso)}
 @media(max-width:768px){.type-card{width:calc(50% - 6px)}}
 @media(max-width:400px){.type-card{width:100%}}
 
@@ -268,10 +275,11 @@ header.scrolled .menu-btn span{background:var(--brown)}
 @media(max-width:700px){.gallery3-grid{grid-template-columns:1fr;height:auto}.gallery3-item{height:260px}}
 
 /* ───────────────── ESTRUTURA / AMBIENTES ───────────────── */
-.structure{padding:clamp(80px,11vw,160px) 0;background:var(--ivory)}
+.structure{padding:clamp(48px,6.6vw,96px) 0;background:var(--ivory)}
 .structure h2{color:var(--brown);white-space:nowrap}
 @media(max-width:700px){.structure h2{white-space:normal}}
-.amb{display:grid;grid-template-columns:1fr 1fr;gap:clamp(34px,6vw,90px);align-items:center;margin-bottom:clamp(56px,8vw,120px)}
+.amb{display:grid;grid-template-columns:1.2fr 0.8fr;gap:clamp(34px,6vw,90px);align-items:center;margin-bottom:clamp(56px,8vw,120px)}
+.amb:nth-child(even){grid-template-columns:0.8fr 1.2fr}
 .amb:last-child{margin-bottom:0}
 .amb:nth-child(even) .amb-media{order:2}
 .amb-media{aspect-ratio:4/3;overflow:hidden;border-radius:4px}
@@ -279,11 +287,11 @@ header.scrolled .menu-btn span{background:var(--brown)}
 .amb-num{font-family:var(--font-serif);font-style:italic;font-size:clamp(44px,5.5vw,76px);color:var(--clay);opacity:.45;line-height:.9;display:block}
 .amb-text h3{margin:8px 0 18px;color:var(--brown)}
 .amb-text p{font-size:16.5px;color:var(--brown-soft);max-width:48ch}
-@media(max-width:840px){.amb{grid-template-columns:1fr;gap:24px}.amb:nth-child(even) .amb-media{order:0}}
+@media(max-width:840px){.amb,.amb:nth-child(even){grid-template-columns:1fr;gap:24px}.amb:nth-child(even) .amb-media{order:0}}
 
 /* ───────────────── GASTRONOMIA ───────────────── */
 .gastro{background:var(--brown);color:var(--cream);text-align:center}
-.gastro-inner{padding:clamp(100px,15vw,200px) 0 clamp(48px,6vw,80px);max-width:780px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:20px}
+.gastro-inner{padding:clamp(60px,9vw,120px) 0 clamp(29px,3.6vw,48px);max-width:780px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:20px}
 .gastro h2{color:var(--cream)}
 .gastro .lede{color:rgba(255,244,224,.88);max-width:56ch}
 
@@ -317,12 +325,12 @@ header.scrolled .menu-btn span{background:var(--brown)}
 }
 
 /* ───────────────── PROVA SOCIAL ───────────────── */
-.proof{padding:clamp(80px,11vw,160px) 0;background:var(--cream)}
+.proof{padding:clamp(48px,6.6vw,96px) 0;background:var(--cream)}
 .proof h2{color:var(--brown)}
 
 /* carrossel infinito de logos */
 .logos-track-wrap{
-  --item-w: 220px;
+  --item-w: 187px;
   --gap: 40px;
   --items: 5;
   position:relative;
@@ -363,7 +371,7 @@ header.scrolled .menu-btn span{background:var(--brown)}
 }
 
 /* ───────────────── CONTATO ───────────────── */
-.contact{padding:clamp(80px,11vw,160px) 0;background:var(--brown);color:var(--cream)}
+.contact{padding:clamp(48px,6.6vw,96px) 0;background:var(--brown);color:var(--cream)}
 .contact h2{color:var(--cream)}
 .form{background:var(--cream);border-radius:12px;padding:clamp(28px,4vw,52px);color:var(--brown);max-width:760px;margin:0 auto;box-shadow:0 30px 80px -40px rgba(0,0,0,.5)}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:18px}

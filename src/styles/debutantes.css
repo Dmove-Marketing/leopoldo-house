@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
 /* ── Gotham (auto-hospedada) ── */
 @font-face {
   font-family: 'Gotham';
@@ -33,9 +35,9 @@
   --white:      #FFFFFF;
   --line:       rgba(84,54,44,.16);
 
-  --font-display: 'Gotham', sans-serif;
-  --font-serif:   'Gotham', sans-serif;
-  --font-body:    'Gotham', sans-serif;
+  --font-display: 'Raleway', sans-serif;
+  --font-serif:   'Raleway', sans-serif;
+  --font-body:    'Raleway', sans-serif;
 
   --maxw: 1280px;
   --pad: clamp(20px, 5vw, 88px);
@@ -147,7 +149,7 @@ header.scrolled .menu-btn span{background:var(--brown)}
 .hero .hero-bg{object-position:center 20%!important}
 .hero-overlay{
   position:absolute;inset:0;z-index:2;
-  background:radial-gradient(120% 90% at 50% 40%,rgba(47,31,25,.55) 0%,rgba(47,31,25,.75) 55%,rgba(47,31,25,.88) 100%);
+  background:radial-gradient(120% 90% at 50% 40%,rgba(0,0,0,.55) 0%,rgba(0,0,0,.75) 55%,rgba(0,0,0,.88) 100%);
 }
 .hero-inner{position:relative;z-index:3;width:100%;max-width:1120px;display:flex;flex-direction:column;align-items:center;padding-top:40px}
 .hero-logo{width:clamp(180px,22vw,280px);height:auto;margin-bottom:32px;background:rgba(47,31,25,.65);padding:5px 8px;border-radius:6px}
@@ -161,7 +163,7 @@ header.scrolled .menu-btn span{background:var(--brown)}
 @media(max-width:600px){.hero h1{font-size:clamp(16px,5.2vw,26px)}}
 
 /* ───────────────── SOBRE ───────────────── */
-.about{padding:clamp(80px,11vw,160px) 0;background:var(--cream)}
+.about{padding:clamp(48px,6.6vw,96px) 0;background:var(--cream)}
 
 .about-split{
   display:grid;
@@ -226,7 +228,7 @@ header.scrolled .menu-btn span{background:var(--brown)}
 }
 
 /* ───────────────── TIPOS DE EVENTO ───────────────── */
-.events{padding:clamp(80px,11vw,160px) 0;background:var(--brown);color:var(--cream);position:relative;overflow:hidden}
+.events{padding:clamp(48px,6.6vw,96px) 0;background:var(--brown);color:var(--cream);position:relative;overflow:hidden}
 .events::before{content:"";position:absolute;top:-30%;left:50%;transform:translateX(-50%);width:120%;height:60%;background:radial-gradient(60% 100% at 50% 0%,rgba(207,132,107,.16),transparent 70%);pointer-events:none}
 .events h2{color:var(--cream)}
 .type-list{position:relative;border-top:1px solid rgba(255,244,224,.16)}
@@ -247,7 +249,7 @@ header.scrolled .menu-btn span{background:var(--brown)}
 .type-row:hover .ar{color:var(--espresso);opacity:1;transform:translateX(0)}
 
 /* ───────────────── ESTRUTURA / AMBIENTES ───────────────── */
-.structure{padding:clamp(80px,11vw,160px) 0;background:var(--ivory)}
+.structure{padding:clamp(48px,6.6vw,96px) 0;background:var(--ivory)}
 .structure h2{color:var(--brown)}
 .amb{display:grid;grid-template-columns:1fr 1fr;gap:clamp(34px,6vw,90px);align-items:center;margin-bottom:clamp(56px,8vw,120px)}
 .amb:last-child{margin-bottom:0}
@@ -260,15 +262,55 @@ header.scrolled .menu-btn span{background:var(--brown)}
 .amb-text p{font-size:16.5px;color:var(--brown-soft);max-width:48ch}
 @media(max-width:840px){.amb{grid-template-columns:1fr;gap:24px}.amb:nth-child(even) .amb-media{order:0}}
 
-/* ───────────────── GASTRONOMIA ───────────────── */
-.gastro{position:relative;background:var(--espresso);color:var(--cream);overflow:hidden;text-align:center}
-.gastro-veil{position:absolute;inset:0;z-index:2;background:radial-gradient(110% 90% at 50% 50%,rgba(47,31,25,.55) 0%,rgba(47,31,25,.75) 70%,rgba(47,31,25,.88) 100%)}
-.gastro-inner{position:relative;z-index:3;padding:clamp(100px,15vw,200px) 0;max-width:960px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:20px}
+.gastro{
+  position:relative;
+  width:100%;
+  min-height:60vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--espresso);
+  color:var(--cream);
+  overflow:hidden;
+  text-align:center;
+}
+.gastro-bg-slideshow{
+  position:absolute;inset:0;z-index:1;
+}
+.gastro-slide{
+  position:absolute;inset:0;
+  opacity:0;
+  transition:opacity 1.2s ease-in-out;
+}
+.gastro-slide.is-active{
+  opacity:0.45;
+}
+.gastro-slide img{
+  width:100%;height:100%;object-fit:cover;
+}
+.gastro-veil{
+  position:absolute;inset:0;z-index:2;
+  background:radial-gradient(110% 90% at 50% 50%,rgba(0,0,0,.5) 0%,rgba(0,0,0,.75) 70%,rgba(0,0,0,.9) 100%);
+}
+.gastro-inner{
+  position:relative;z-index:3;
+  padding:60px 24px;
+  max-width:960px;
+  margin:0 auto;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:20px;
+}
 .gastro h2{color:var(--cream)}
 .gastro .lede{color:rgba(255,244,224,.88);max-width:56ch}
 
+@media(max-width:768px){
+  .gastro{min-height:50vh}
+}
+
 /* ───────────────── PROVA SOCIAL ───────────────── */
-.proof{padding:clamp(80px,11vw,160px) 0;background:var(--cream)}
+.proof{padding:clamp(48px,6.6vw,96px) 0;background:var(--cream)}
 .proof h2{color:var(--brown)}
 .logos{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
 .logobox{
@@ -283,7 +325,7 @@ header.scrolled .menu-btn span{background:var(--brown)}
 @media(max-width:520px){.logos{grid-template-columns:repeat(2,1fr)}}
 
 /* ───────────────── GALERIA ───────────────── */
-.gallery{padding:clamp(80px,11vw,160px) 0;background:var(--ivory)}
+.gallery{padding:clamp(48px,6.6vw,96px) 0;background:var(--ivory)}
 .gallery h2{color:var(--brown)}
 
 .gallery-carousel{--slide-w:420px;--gap:12px;--slides:5;overflow:hidden}
@@ -309,7 +351,7 @@ header.scrolled .menu-btn span{background:var(--brown)}
 @media(prefers-reduced-motion:reduce){.gallery-inner{animation:none}}
 
 /* ───────────────── CONTATO ───────────────── */
-.contact{padding:clamp(80px,11vw,160px) 0;background:var(--brown);color:var(--cream)}
+.contact{padding:clamp(48px,6.6vw,96px) 0;background:var(--brown);color:var(--cream)}
 .contact h2{color:var(--cream)}
 .contact .section-head{max-width:960px}
 .form{background:var(--cream);border-radius:12px;padding:clamp(28px,4vw,52px);color:var(--brown);max-width:760px;margin:0 auto;box-shadow:0 30px 80px -40px rgba(0,0,0,.5)}
@@ -338,8 +380,10 @@ header.scrolled .menu-btn span{background:var(--brown)}
 
 /* ───────────────── RODAPÉ ───────────────── */
 footer{background:var(--espresso);color:rgba(255,244,224,.7);padding:clamp(56px,7vw,80px) 0 36px}
-.foot-top{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;flex-wrap:wrap;border-bottom:1px solid rgba(255,244,224,.14);padding-bottom:40px}
-.foot-logo img{width:clamp(200px,22vw,300px);height:auto}
+.foot-top{display:flex;justify-content:space-between;align-items:center;gap:40px;flex-wrap:wrap;border-bottom:1px solid rgba(255,244,224,.14);padding-bottom:40px}
+.foot-logo{display:flex;flex-direction:row;gap:32px;align-items:center}
+.foot-logo img:first-child{width:clamp(160px,18vw,220px);height:auto}
+.foot-logo img:last-child{width:clamp(140px,16vw,200px);height:auto}
 .foot-logo .dot{color:var(--clay)}
 .foot-links{display:flex;gap:48px;flex-wrap:wrap}
 .foot-col h4{font-family:var(--font-display);text-transform:uppercase;font-size:12px;letter-spacing:.1em;color:var(--clay);margin-bottom:16px;font-weight:700}
