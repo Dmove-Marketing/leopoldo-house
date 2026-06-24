@@ -195,7 +195,7 @@ header.scrolled .menu-btn span{background:var(--brown)}
 }
 .about-split__photos{
   display:flex;flex-direction:column;gap:10px;
-  width:clamp(130px,14vw,210px);
+  width:clamp(163px,17.5vw,263px);
 }
 .about-photo{flex:1;overflow:hidden;border-radius:4px;}
 .about-photo img{width:100%;height:100%;object-fit:cover;display:block;}
@@ -274,6 +274,7 @@ header.scrolled .menu-btn span{background:var(--brown)}
 
 /* ───────────────── ESTRUTURA / AMBIENTES ───────────────── */
 .structure{padding:clamp(48px,6.6vw,96px) 0;background:var(--ivory)}
+.structure .wrap{max-width:1480px;padding-left:clamp(16px,3vw,56px);padding-right:clamp(16px,3vw,56px)}
 .structure h2{color:var(--gold)}
 .amb{display:grid;grid-template-columns:1fr 1fr;gap:clamp(34px,6vw,90px);align-items:center;margin-bottom:clamp(56px,8vw,120px)}
 .amb:last-child{margin-bottom:0}
