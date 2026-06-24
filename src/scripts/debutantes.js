@@ -86,3 +86,36 @@ document.querySelectorAll('[data-carousel]').forEach(carousel => {
   buildDots();
   startTimer();
 });
+
+/* gastro carousel — auto-advance no mobile */
+(function () {
+  const grid = document.querySelector('.gastro-grid');
+  if (!grid) return;
+
+  const items = grid.querySelectorAll('.gastro-grid-item');
+  const total = items.length;
+  let current = 0;
+  let timer;
+
+  function isMobile() { return window.innerWidth <= 760; }
+
+  function advance() {
+    if (!isMobile()) return;
+    current = (current + 1) % total;
+    grid.scrollTo({ left: current * grid.offsetWidth, behavior: 'smooth' });
+  }
+
+  function start() {
+    clearInterval(timer);
+    if (isMobile()) timer = setInterval(advance, 3000);
+  }
+
+  grid.addEventListener('touchstart', () => clearInterval(timer), { passive: true });
+  grid.addEventListener('touchend', () => {
+    current = Math.round(grid.scrollLeft / grid.offsetWidth);
+    start();
+  }, { passive: true });
+
+  window.addEventListener('resize', start);
+  start();
+})();

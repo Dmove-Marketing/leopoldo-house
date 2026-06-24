@@ -14,13 +14,12 @@ import '../styles/debutantes.css';
 >
 <!-- ════════════ HERO ════════════ -->
 <section class="hero" id="top">
-  <Img src="hero-atual-debutante.png" alt="Salão do Leopoldo House decorado para festa de debutante" priority width={1920} class="hero-bg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1" />
+  <Img src="hero.atualizada-deubutantes.png" alt="Salão do Leopoldo House decorado para festa de debutante" priority width={1920} class="hero-bg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1" />
   <div class="hero-overlay"></div>
   <div class="hero-inner wrap">
     <Img src="logo-leopoldo.png" alt="Leopoldo House" class="hero-logo" width={280} priority />
-    <h1 class="display"><span class="hero-light">A festa que você vai lembrar para<br>sempre começa aqui.<br>No Leopoldo House, cada detalhe é<br>pensado para transformar</span><br>sua celebração em uma noite única.</h1>
-    <p class="lede">O novo endereço das festas de debutante em São Paulo.<br>
-Itaim Bibi • Gastronomia premium • Produção completa</p>
+    <h1 class="display"><span class="hero-light">A festa que você vai lembrar para<br></span>sempre começa aqui.</h1>
+    <p class="hero-subtitle">No Leopoldo House, cada detalhe é pensado para transformar sua celebração em uma noite única.</p>
     <div class="actions">
       <a href="#contato" class="btn btn-primary">Solicite um orçamento</a>
     </div>
@@ -32,12 +31,19 @@ Itaim Bibi • Gastronomia premium • Produção completa</p>
   <div class="wrap">
     <div class="about-split reveal">
       <div class="about-split__text">
-        <span class="eyebrow">O ESPAÇO</span>
+        <span class="eyebrow light">O ESPAÇO</span>
         <h2 class="h2"><span class="hero-light">Para debutantes<br></span>que sabem o que querem.</h2>
         <p class="lede">Localizado em um dos endereços mais privilegiados de São Paulo, o Leopoldo House foi criado para receber festas de 15 anos inesquecíveis. Com ambientes sofisticados e serviços exclusivos, proporcionamos uma experiência completa para que cada detalhe aconteça exatamente como foi imaginado.</p>
+        <p class="about-tagline">O novo endereço das festas de debutante em São Paulo.<br>Itaim Bibi • Gastronomia premium • Produção completa</p>
       </div>
-      <div class="about-split__video">
-        <Img src="sobre-debutantes-principal.jpg" alt="Festa de debutante no Leopoldo House" width={800} style="width:100%;height:100%;object-fit:cover;border-radius:4px" />
+      <div class="about-split__media">
+        <div class="about-split__video">
+          <video src="/videos/sobre-debutantes.mp4" autoplay muted loop playsinline></video>
+        </div>
+        <div class="about-split__photos">
+          <div class="about-photo"><Img src="sobre-debutantes-principal.jpg" alt="Debutante no Leopoldo House" width={400} /></div>
+          <div class="about-photo"><Img src="sobre-debutantes-principal02.png" alt="Debutante no Leopoldo House" width={400} /></div>
+        </div>
       </div>
     </div>
   </div>
@@ -57,7 +63,7 @@ Itaim Bibi • Gastronomia premium • Produção completa</p>
       <div class="amb-media"><Img src="salao-debutantes.jpg" alt="Salão principal do Leopoldo House com pé-direito de 7 metros" width={900} style="width:100%;height:100%;object-fit:cover;border-radius:inherit" /></div>
       <div class="amb-text">
         <span class="amb-num">01</span>
-        <h3 class="h3">Salão amplo com 7m de pé-direito</h3>
+        <h3 class="h3">Salão amplo com 7m²<br> de pé-direito</h3>
         <p>Um espaço versátil para realizar a valsa, aproveitar a pista de dança e celebrar ao lado de amigos e familiares.</p>
       </div>
     </div>
@@ -84,19 +90,18 @@ Itaim Bibi • Gastronomia premium • Produção completa</p>
 
 <!-- ════════════ GASTRONOMIA ════════════ -->
 <section class="gastro" id="gastronomia">
-  <div class="gastro-bg-slideshow">
-    <div class="gastro-slide is-active"><Img src="gastro-coffee-break.webp" alt="Gastronomia - Coffee Break" width={1200} /></div>
-    <div class="gastro-slide"><Img src="gastro-almoco-jantar.jpg" alt="Gastronomia - Almoço e Jantar" width={1200} /></div>
-    <div class="gastro-slide"><Img src="gastro-ilhas.png" alt="Gastronomia - Ilhas Gastronômicas" width={1200} /></div>
-    <div class="gastro-slide"><Img src="gastro-coquetel-volante.jpg" alt="Gastronomia - Coquetel" width={1200} /></div>
-  </div>
-  <div class="gastro-veil"></div>
   <div class="wrap">
     <div class="gastro-inner reveal">
       <span class="eyebrow center light">GASTRONOMIA</span>
       <h2 class="h2"><span class="hero-light">Gastronomia à altura <br></span>da sua celebração.</h2>
       <p class="lede">Uma experiência criada para surpreender convidados e tornar cada momento ainda mais memorável.</p>
     </div>
+  </div>
+  <div class="gastro-grid">
+    <div class="gastro-grid-item"><Img src="gastro-coffee-break.webp" alt="Gastronomia - Coffee Break" width={700} /></div>
+    <div class="gastro-grid-item"><Img src="gastro-almoco-jantar.jpg" alt="Gastronomia - Almoço e Jantar" width={700} /></div>
+    <div class="gastro-grid-item"><Img src="gastro-ilhas.png" alt="Gastronomia - Ilhas Gastronômicas" width={700} /></div>
+    <div class="gastro-grid-item"><Img src="gastro-coquetel-volante.jpg" alt="Gastronomia - Coquetel" width={700} /></div>
   </div>
 </section>
 
@@ -130,6 +135,8 @@ Itaim Bibi • Gastronomia premium • Produção completa</p>
 
 <!-- ════════════ CONTATO ════════════ -->
 <section class="contact" id="contato">
+  <Img src="galeria-deb-1.jpg" alt="" class="contact-bg" width={1920} />
+  <div class="contact-overlay"></div>
   <div class="wrap">
     <div class="section-head light reveal">
       <span class="eyebrow center light">CONTATO</span>
@@ -169,7 +176,7 @@ Itaim Bibi • Gastronomia premium • Produção completa</p>
         ]}
       />
       <p class="form-privacy-link">
-        Ao enviar, você concorda com nossa <a href="https://www.gov.br/governodigital/pt-br/privacidade-e-seguranca/ppsi/modelo_ppdp.pdf" target="_blank" rel="noopener noreferrer">política de privacidade (LGPD)</a>.
+        Ao enviar, você concorda com nossa política de privacidade.
       </p>
     </div>
   </div>
@@ -181,17 +188,7 @@ Itaim Bibi • Gastronomia premium • Produção completa</p>
     <div class="foot-top">
       <div class="foot-logo">
         <Img src="logo-leopoldo.png" alt="Leopoldo House" width={200} />
-        <Img src="logo-t.venues.webp" alt="T.Venues" width={400} quality={100} />
-      </div>
-      <div class="foot-links">
-        <div class="foot-col">
-          <a href="#sobre">O Espaço</a>
-          <a href="#estrutura">Estrutura</a>
-        </div>
-        <div class="foot-col">
-          <a href="#gastronomia">Gastronomia</a>
-          <a href="#contato">Solicitar orçamento</a>
-        </div>
+        <Img src="logo-tvenues-atualizada.png" alt="T.Venues" width={400} quality={100} />
       </div>
     </div>
     <div class="foot-bottom">
