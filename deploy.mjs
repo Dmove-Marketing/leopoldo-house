@@ -14,3 +14,7 @@ if (!server) {
 const dest = `${user}@${server}:${remote_path}`;
 console.log(`Enviando dist/ → ${dest}`);
 execSync(`scp -r dist/* ${dest}`, { stdio: "inherit" });
+
+console.log("Corrigindo permissões...");
+execSync(`ssh ${user}@${server} "chmod -R 755 ${remote_path}"`, { stdio: "inherit" });
+console.log("Deploy concluído com sucesso!");

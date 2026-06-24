@@ -82,6 +82,7 @@ h1,h2,h3{font-family:var(--font-display);font-weight:800;line-height:1.02;letter
 .h3{font-size:clamp(20px,2.1vw,26px)}
 
 .lede{font-size:clamp(17px,1.45vw,20px);line-height:1.2;max-width:54ch;color:var(--brown-soft)}
+.mob-br { display: none; }
 
 .section-head{max-width:780px;margin:0 auto clamp(50px,6vw,84px);text-align:center;display:flex;flex-direction:column;align-items:center;gap:20px}
 .section-head .lede{max-width:60ch}
@@ -188,6 +189,9 @@ header.scrolled .menu-btn span{background:var(--brown)}
 @media(max-width:860px){
   .about-split{grid-template-columns:1fr;gap:clamp(32px,5vw,56px)}
   .about-split__video{width:100%;max-width:320px;margin:0 auto}
+  .about-split__text{align-items:center;text-align:center}
+  .about-split__text .eyebrow{justify-content:center}
+  .about-split__text .eyebrow::before{display:none}
 }
 .about-carousel{position:relative}
 .about-track-wrap{overflow:hidden;border-radius:6px;padding-bottom:clamp(22px,4.2vw,56px)}
@@ -261,6 +265,10 @@ header.scrolled .menu-btn span{background:var(--brown)}
 .amb-text h3{margin:8px 0 18px;color:var(--brown)}
 .amb-text p{font-size:16.5px;color:var(--brown-soft);max-width:48ch}
 @media(max-width:840px){.amb{grid-template-columns:1fr;gap:24px}.amb:nth-child(even) .amb-media{order:0}}
+@media(max-width:600px){
+  .mob-br { display: initial; }
+  .structure .section-head .lede { max-width: none; }
+}
 
 .gastro{
   position:relative;
@@ -396,4 +404,32 @@ footer{background:var(--espresso);color:rgba(255,244,224,.7);padding:clamp(56px,
 @media(max-width:820px){
   nav.links,.nav-cta{display:none}
   .menu-btn{display:flex}
+}
+
+@media(max-width:768px){
+  .foot-top {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 32px;
+  }
+  .foot-logo {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px 32px;
+  }
+  .foot-links {
+    justify-content: center;
+    width: 100%;
+  }
+  .foot-col {
+    text-align: center;
+    flex: 1 1 120px;
+  }
+  .foot-bottom {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 16px;
+  }
 }
