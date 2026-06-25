@@ -1,0 +1,133 @@
+---
+import Base from '../layouts/Base.astro';
+import config from '../../config.json';
+import LeadForm from '../components/forms/LeadForm.astro';
+import WhatsAppPopup from '../components/WhatsAppPopup.astro';
+import Img from '../components/ui/Img.astro';
+import '../styles/bio.css';
+
+const bioForm = config.forms['bio-form'];
+---
+
+<Base
+  title="Leopoldo House — Espaço para Eventos em São Paulo"
+  description="Solicite uma proposta e transforme seu próximo evento em uma experiência inesquecível no Leopoldo House."
+  ogImage="/images/og-index.jpg"
+  noIndex={true}
+>
+
+<!-- ════════════ FOTO ════════════ -->
+<section class="bio-photo">
+  <img
+    src="https://media.dmove.com.br/clients/leopoldohouse/photos/Salao.webp"
+    alt="Leopoldo House — espaço para eventos"
+    class="bio-photo-img"
+    loading="eager"
+    fetchpriority="high"
+  />
+  <div class="bio-photo-overlay"></div>
+  <div class="bio-photo-inner">
+    <Img src="logo-leopoldo.png" alt="Leopoldo House" class="bio-hero-logo" width={280} priority />
+  </div>
+</section>
+
+<!-- ════════════ FORMULÁRIO ════════════ -->
+<section class="bio-form-section" id="contato">
+  <div class="bio-wrap">
+    <div class="bio-head">
+      <Img src="logo-leopoldo.png" alt="Leopoldo House" class="bio-logo" width={200} />
+      <h1 class="bio-title">Um espaço que valoriza a importância de cada encontro.</h1>
+      <p class="bio-subtitle">Conheça o Leopoldo House.</p>
+    </div>
+
+    <div class="bio-form-box">
+    <LeadForm
+      formId="bio-form"
+      project={config.project_slug}
+      submitUrl={bioForm.webhooks[0]}
+      redirectUrl={bioForm.redirect_on_success}
+      submitText="Solicitar proposta"
+      prefix="bio"
+      honeypot={true}
+      showPrivacyNote={false}
+      fields={[
+        { name: 'nome',     type: 'text',  placeholder: 'Seu nome completo', required: true,  full: true, autocomplete: 'name' },
+        { type: 'row', fields: [
+          { name: 'telefone', type: 'tel',   placeholder: '(11) 90000-0000',   required: true,  mask: 'phone', autocomplete: 'tel' },
+          { name: 'email',    type: 'email', placeholder: 'seu@email.com',     required: true,  autocomplete: 'email' },
+        ]},
+        { name: 'tipo', type: 'select', full: true, required: true, options: [
+          { value: '',                                     label: 'Tipo de evento',                      disabled: true, selected: true },
+          { value: 'Aniversário',                          label: 'Aniversário' },
+          { value: 'Aniversário debutante',                label: 'Aniversário debutante' },
+          { value: 'Bodas',                                label: 'Bodas' },
+          { value: 'Casamento',                            label: 'Casamento' },
+          { value: 'Confraternização corporativa',         label: 'Confraternização corporativa' },
+          { value: 'Confraternização social',              label: 'Confraternização social' },
+          { value: 'Corporativo',                          label: 'Corporativo' },
+          { value: 'Feiras e Exposições',                  label: 'Feiras e Exposições' },
+          { value: 'Formatura',                            label: 'Formatura' },
+          { value: 'Happy Hours',                          label: 'Happy Hours' },
+          { value: 'Masterclass e Palestras',              label: 'Masterclass e Palestras' },
+          { value: 'Mentorias e Treinamentos',             label: 'Mentorias e Treinamentos' },
+          { value: 'Offsite corporativo',                  label: 'Offsite corporativo' },
+          { value: 'Reuniões de Networking',               label: 'Reuniões de Networking' },
+          { value: 'Shows e Festivais',                    label: 'Shows e Festivais' },
+          { value: 'Workshops, Conferências e Seminários', label: 'Workshops, Conferências e Seminários' },
+          { value: 'Outros',                               label: 'Outros' },
+        ]},
+        { type: 'row', fields: [
+          { name: 'data',    type: 'date',   placeholder: 'Data do evento',   required: false },
+          { name: 'pessoas', type: 'number', placeholder: 'Nº de convidados', required: false, min: '1' },
+        ]},
+        { name: 'detalhes', type: 'textarea', placeholder: 'Detalhes adicionais (não obrigatório)', required: false, full: true, rows: 4 },
+      ]}
+    />
+    </div>
+  </div>
+</section>
+
+<WhatsAppPopup
+  formId="bio-whats-popup"
+  project={config.project_slug}
+  submitUrl={bioForm.webhooks[0]}
+  redirectUrl={bioForm.redirect_on_success}
+  greeting="Olá! Gostaria de conhecer o Leopoldo House para o seu próximo evento? Preencha abaixo e nossa equipe entrará em contato pelo WhatsApp."
+  dataPlaceholder="Data do evento"
+  tipoOptions={[
+    { value: '',                                     label: 'Tipo de evento',                      disabled: true, selected: true },
+    { value: 'Aniversário',                          label: 'Aniversário' },
+    { value: 'Aniversário debutante',                label: 'Aniversário debutante' },
+    { value: 'Bodas',                                label: 'Bodas' },
+    { value: 'Casamento',                            label: 'Casamento' },
+    { value: 'Confraternização corporativa',         label: 'Confraternização corporativa' },
+    { value: 'Confraternização social',              label: 'Confraternização social' },
+    { value: 'Corporativo',                          label: 'Corporativo' },
+    { value: 'Feiras e Exposições',                  label: 'Feiras e Exposições' },
+    { value: 'Formatura',                            label: 'Formatura' },
+    { value: 'Happy Hours',                          label: 'Happy Hours' },
+    { value: 'Masterclass e Palestras',              label: 'Masterclass e Palestras' },
+    { value: 'Mentorias e Treinamentos',             label: 'Mentorias e Treinamentos' },
+    { value: 'Offsite corporativo',                  label: 'Offsite corporativo' },
+    { value: 'Reuniões de Networking',               label: 'Reuniões de Networking' },
+    { value: 'Shows e Festivais',                    label: 'Shows e Festivais' },
+    { value: 'Workshops, Conferências e Seminários', label: 'Workshops, Conferências e Seminários' },
+    { value: 'Outros',                               label: 'Outros' },
+  ]}
+/>
+
+<!-- ════════════ RODAPÉ ════════════ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-bottom">
+      <span>Copyright © 2026 Leopoldo House - Todos os direitos reservados</span>
+      <div class="foot-logo">
+        <Img src="logo-leopoldo.png" alt="Leopoldo House" width={200} />
+        <Img src="logo-vn-atualizada.png" alt="T.Venues" width={320} quality={100} />
+      </div>
+      <span class="foot-dev">Desenvolvido por <a href="https://dmove.com.br" target="_blank" rel="noopener"><Img src="logo-dmove.avif" alt="Dmove" width={72} /></a></span>
+    </div>
+  </div>
+</footer>
+
+</Base>

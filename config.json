@@ -37,6 +37,18 @@
         "Data da festa",
         "Convidados"
       ]
+    },
+    "bio-form": {
+      "id": "bio-form",
+      "redirect_on_success": "",
+      "webhooks": [
+        "https://server3n8n.dmove.com.br/webhook/leopoldo-house"
+      ],
+      "fields_required": [
+        "Nome",
+        "WhatsApp",
+        "E-mail"
+      ]
     }
   },
   "whatsapp_popup": {
