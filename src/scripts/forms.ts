@@ -10,6 +10,8 @@ function buildFonte(tracking: Record<string, string>): string {
 export function initForms() {
   const forms = document.querySelectorAll<HTMLFormElement>('form[data-form-id]');
   forms.forEach((form) => {
+    if (form.dataset.formInit) return;
+    form.dataset.formInit = '1';
     let started = false;
     const formId    = form.dataset.formId!;
     const project   = form.dataset.project || window.location.hostname;
@@ -84,10 +86,12 @@ export function initForms() {
       const payload: Record<string, string> = {
         ...data,
         'Fonte': buildFonte(tracking),
-        'Data': dateFmt,
-        'Horário': timeFmt,
-        'URL da página': window.location.href,
-        'Agente de usuário': navigator.userAgent,
+        'Date': dateFmt,
+        'Time': timeFmt,
+        'Page URL': window.location.href,
+        'User Agent': navigator.userAgent,
+        'Remote IP': '',
+        'Powered by': 'Dmove',
         'form_id': formId,
         'form_name': formId,
       };
@@ -95,8 +99,8 @@ export function initForms() {
       try {
         const res = await fetch(submitUrl, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload),
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams(payload).toString(),
         });
         if (!res.ok) throw new Error('http_' + res.status);
 

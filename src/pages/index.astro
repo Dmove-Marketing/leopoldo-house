@@ -251,16 +251,16 @@ import '../styles/index.css';
         successTitle="Solicitação enviada!"
         successText="Obrigado. Em breve entraremos em contato."
         fields={[
-          { name: 'nome',     type: 'text',     placeholder: 'Seu nome completo',  required: true,  full: true, autocomplete: 'name' },
+          { name: 'Nome',     type: 'text',     placeholder: 'Seu nome completo',  required: true,  full: true, autocomplete: 'name' },
           { type: 'row', fields: [
-            { name: 'telefone', type: 'tel',    placeholder: '(11) 90000-0000',    required: true,  mask: 'phone', autocomplete: 'tel' },
-            { name: 'email',    type: 'email',  placeholder: 'seu@email.com',      required: true,  autocomplete: 'email' },
+            { name: 'WhatsApp', type: 'tel',    placeholder: '(11) 90000-0000',    required: true,  mask: 'phone', autocomplete: 'tel' },
+            { name: 'E-mail',   type: 'email',  placeholder: 'seu@email.com',      required: true,  autocomplete: 'email' },
           ]},
           { type: 'row', fields: [
-            { name: 'data',     type: 'date',   placeholder: 'Data do evento',     required: true },
-            { name: 'pessoas',  type: 'number', placeholder: 'Nº de convidados',   required: true, min: '1' },
+            { name: 'Data do evento', type: 'date',   placeholder: 'Data do evento', required: true },
+            { name: 'Convidados',     type: 'number', placeholder: 'Nº de convidados', required: true, min: '1' },
           ]},
-          { name: 'tipo', type: 'select', full: true, required: true, options: [
+          { name: 'Tipo de evento', type: 'select', full: true, required: true, options: [
             { value: '', label: 'Tipo de evento', disabled: true, selected: true },
             { value: 'Coquetel',          label: 'Coquetel' },
             { value: 'Jantar',            label: 'Jantar' },
@@ -271,7 +271,7 @@ import '../styles/index.css';
             { value: 'Confraternização',  label: 'Confraternização' },
             { value: 'Outro',             label: 'Outro' },
           ]},
-          { name: 'detalhes', type: 'textarea', placeholder: 'Conte um pouco sobre o que você imagina para o evento.', required: false, full: true, rows: 4 },
+          { name: 'Mensagem', type: 'textarea', placeholder: 'Conte um pouco sobre o que você imagina para o evento.', required: false, full: true, rows: 4 },
         ]}
       />
       <p class="form-privacy-link">
