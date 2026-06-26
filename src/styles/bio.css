@@ -18,58 +18,34 @@ body {
   font-family: var(--font-body);
 }
 
-/* ── Foto ── */
-.bio-photo {
+/* ── Formulário com fundo ── */
+.bio-form-section {
   position: relative;
-  width: 100%;
-  height: 60vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   overflow: hidden;
-  background: var(--espresso);
+  background: var(--brown);
+  padding: 56px 20px 80px;
 }
 
-.bio-photo-img {
+.bio-bg-img {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 35%;
+  object-position: center center;
   display: block;
 }
 
-.bio-photo-overlay {
+.bio-bg-overlay {
   position: absolute;
   inset: 0;
-  z-index: 2;
-  background: radial-gradient(120% 90% at 50% 40%, rgba(47,31,25,.55) 0%, rgba(47,31,25,.75) 55%, rgba(47,31,25,.88) 100%);
-}
-
-.bio-photo-inner {
-  position: relative;
-  z-index: 3;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.bio-hero-logo {
-  width: clamp(180px, 22vw, 280px);
-  height: auto;
-  background: rgba(47,31,25,.65);
-  padding: 5px 8px;
-  border-radius: 6px;
-}
-
-/* ── Formulário ── */
-.bio-form-section {
-  background: var(--brown);
-  padding: 56px 20px 80px;
+  z-index: 1;
+  background: linear-gradient(to bottom, rgba(47,31,25,.95) 0%, rgba(47,31,25,.7) 100%);
 }
 
 .bio-wrap {
+  position: relative;
+  z-index: 2;
   max-width: 560px;
   margin: 0 auto;
 }
@@ -254,8 +230,6 @@ footer { background: var(--espresso); color: rgba(255,244,224,.7); padding: 28px
 
 /* ── Mobile ── */
 @media (max-width: 640px) {
-  .bio-photo { height: 60vh; }
-  .bio-photo-img { width: 100%; height: 100%; object-fit: cover; }
   .bio-form-section { padding: 40px 16px 64px; }
   .foot-bottom { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 20px; }
   .foot-logo { order: -1; justify-content: center; gap: 16px; }

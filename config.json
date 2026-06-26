@@ -2,10 +2,10 @@
   "project_name": "leopoldo-house",
   "project_slug": "leopoldo-house",
   "client": "Leopoldo House",
-  "environment": "development",
+  "environment": "production",
   "tracking": {
-    "gtm_id": "",
-    "enabled": false
+    "gtm_id": "GTM-WZNS4HHR",
+    "enabled": true
   },
   "forms": {
     "lead-form": {
