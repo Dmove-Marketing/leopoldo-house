@@ -399,17 +399,16 @@ header.scrolled .menu-btn span{background:var(--brown)}
 
 /* ───────────────── RODAPÉ ───────────────── */
 footer{background:var(--espresso);color:rgba(255,244,224,.7);padding:clamp(56px,7vw,80px) 0 36px}
-.foot-logo{display:flex;flex-direction:row;gap:32px;align-items:center}
-.foot-logo img:first-child{width:clamp(160px,18vw,220px);height:auto}
-.foot-logo img:last-child{width:clamp(140px,16vw,200px);height:auto}
+.foot-logo{display:flex;flex-direction:row;align-items:center}
+.foot-logo img{width:clamp(160px,18vw,220px);height:auto}
 .foot-logo .dot{color:var(--clay)}
 .foot-links{display:flex;gap:48px;flex-wrap:wrap}
 .foot-col h4{font-family:var(--font-display);text-transform:uppercase;font-size:12px;letter-spacing:.1em;color:var(--clay);margin-bottom:16px;font-weight:700}
 .foot-col a,.foot-col p{display:block;font-size:14px;color:rgba(255,244,224,.7);margin-bottom:10px;transition:.25s}
 .foot-col a:hover{color:var(--cream)}
-.foot-bottom{display:flex;flex-direction:row;justify-content:space-between;align-items:center;gap:24px;font-size:12.5px;letter-spacing:.02em}
-.foot-bottom>span:first-child{flex:1}
-.foot-bottom>span:last-child{flex:1;display:flex;justify-content:flex-end}
+.foot-bottom{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:24px;font-size:12.5px;letter-spacing:.02em}
+.foot-bottom>span:first-child{text-align:right}
+.foot-bottom>span:last-child{display:flex;justify-content:flex-start}
 .foot-dev{display:flex;align-items:center;gap:8px;color:rgba(255,244,224,.7)}
 .foot-dev img{width:72px;height:auto;opacity:.8}
 .foot-bottom .made{font-family:var(--font-serif);font-style:italic}
@@ -432,8 +431,6 @@ footer{background:var(--espresso);color:rgba(255,244,224,.7);padding:clamp(56px,
     justify-content: center;
   }
   .foot-logo {
-    flex-wrap: wrap;
     justify-content: center;
-    gap: 16px 32px;
   }
 }

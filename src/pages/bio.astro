@@ -44,12 +44,12 @@ const bioForm = config.forms['bio-form'];
       honeypot={true}
       showPrivacyNote={false}
       fields={[
-        { name: 'nome',     type: 'text',  placeholder: 'Seu nome completo', required: true,  full: true, autocomplete: 'name' },
+        { name: 'Nome',           type: 'text',  placeholder: 'Seu nome completo', required: true,  full: true, autocomplete: 'name' },
         { type: 'row', fields: [
-          { name: 'telefone', type: 'tel',   placeholder: '(11) 90000-0000',   required: true,  mask: 'phone', autocomplete: 'tel' },
-          { name: 'email',    type: 'email', placeholder: 'seu@email.com',     required: true,  autocomplete: 'email' },
+          { name: 'WhatsApp',     type: 'tel',   placeholder: '(11) 90000-0000',   required: true,  mask: 'phone', autocomplete: 'tel' },
+          { name: 'E-mail',       type: 'email', placeholder: 'seu@email.com',     required: true,  autocomplete: 'email' },
         ]},
-        { name: 'tipo', type: 'select', full: true, required: true, options: [
+        { name: 'Tipo de evento', type: 'select', full: true, required: true, options: [
           { value: '',                                     label: 'Tipo de evento',                      disabled: true, selected: true },
           { value: 'Aniversário',                          label: 'Aniversário' },
           { value: 'Aniversário debutante',                label: 'Aniversário debutante' },
@@ -70,10 +70,10 @@ const bioForm = config.forms['bio-form'];
           { value: 'Outros',                               label: 'Outros' },
         ]},
         { type: 'row', fields: [
-          { name: 'data',    type: 'date',   placeholder: 'Data do evento',   required: false },
-          { name: 'pessoas', type: 'number', placeholder: 'Nº de convidados', required: false, min: '1' },
+          { name: 'Data do evento', type: 'date',   placeholder: 'Data do evento',   required: false },
+          { name: 'Convidados',     type: 'number', placeholder: 'Nº de convidados', required: false, min: '1' },
         ]},
-        { name: 'detalhes', type: 'textarea', placeholder: 'Detalhes adicionais (não obrigatório)', required: false, full: true, rows: 4 },
+        { name: 'Mensagem',       type: 'textarea', placeholder: 'Detalhes adicionais (não obrigatório)', required: false, full: true, rows: 4 },
       ]}
     />
     </div>
@@ -116,7 +116,6 @@ const bioForm = config.forms['bio-form'];
       <span>Copyright © 2026 Leopoldo House - Todos os direitos reservados</span>
       <div class="foot-logo">
         <Img src="logo-leopoldo.png" alt="Leopoldo House" width={200} />
-        <Img src="logo-vn-atualizada.png" alt="T.Venues" width={320} quality={100} />
       </div>
       <span class="foot-dev">Desenvolvido por <a href="https://dmove.com.br" target="_blank" rel="noopener"><Img src="logo-dmove.avif" alt="Dmove" width={72} /></a></span>
     </div>

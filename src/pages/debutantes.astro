@@ -156,23 +156,23 @@ import '../styles/debutantes.css';
         successTitle="Solicitação enviada!"
         successText="Obrigado. Em breve entraremos em contato para planejar a festa."
         fields={[
-          { name: 'nome',         type: 'text',     placeholder: 'Seu nome completo',       required: true,  full: true, autocomplete: 'name' },
+          { name: 'Nome',           type: 'text',     placeholder: 'Seu nome completo',       required: true,  full: true, autocomplete: 'name' },
           { type: 'row', fields: [
-            { name: 'telefone',   type: 'tel',      placeholder: '(11) 90000-0000',         required: true,  mask: 'phone', autocomplete: 'tel' },
-            { name: 'email',      type: 'email',    placeholder: 'seu@email.com',           required: true,  autocomplete: 'email' },
+            { name: 'WhatsApp',     type: 'tel',      placeholder: '(11) 90000-0000',         required: true,  mask: 'phone', autocomplete: 'tel' },
+            { name: 'E-mail',       type: 'email',    placeholder: 'seu@email.com',           required: true,  autocomplete: 'email' },
           ]},
           { type: 'row', fields: [
-            { name: 'data',       type: 'date',     placeholder: 'Data da festa',           required: false },
-            { name: 'pessoas',    type: 'number',   placeholder: 'Nº de convidados',        required: false, min: '1' },
+            { name: 'Data do evento', type: 'date',     placeholder: 'Data da festa',           required: false },
+            { name: 'Convidados',     type: 'number',   placeholder: 'Nº de convidados',        required: false, min: '1' },
           ]},
-          { name: 'tipo', type: 'select', full: true, required: false, options: [
+          { name: 'Tipo de evento', type: 'select', full: true, required: false, options: [
             { value: '',                         label: 'Tipo de evento',          disabled: true, selected: true },
             { value: 'Aniversário',              label: 'Aniversário' },
             { value: 'Aniversário debutante',    label: 'Aniversário debutante' },
             { value: 'Confraternização social',  label: 'Confraternização social' },
             { value: 'Outros',                   label: 'Outros' },
           ]},
-          { name: 'detalhes', type: 'textarea', placeholder: 'Conte um pouco sobre como você imagina a festa.', required: false, full: true, rows: 4 },
+          { name: 'Mensagem',       type: 'textarea', placeholder: 'Conte um pouco sobre como você imagina a festa.', required: false, full: true, rows: 4 },
         ]}
       />
       <p class="form-privacy-link">
@@ -188,7 +188,6 @@ import '../styles/debutantes.css';
     <div class="foot-top">
       <div class="foot-logo">
         <Img src="logo-leopoldo.png" alt="Leopoldo House" width={200} />
-        <Img src="logo-vn-atualizada.png" alt="T.Venues" width={400} quality={100} />
       </div>
     </div>
     <div class="foot-bottom">

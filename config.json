@@ -27,7 +27,7 @@
       "id": "debutantes-form",
       "redirect_on_success": "",
       "webhooks": [
-        "https://server3n8n.dmove.com.br/webhook/leopoldo-house-debutantes"
+        "https://server3n8n.dmove.com.br/webhook/leopoldo-house"
       ],
       "fields_required": [
         "Nome",

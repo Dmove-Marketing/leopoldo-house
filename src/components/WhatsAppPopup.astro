@@ -303,26 +303,43 @@ const {
       btnSpin.style.display = 'inline-flex';
       clearErr(1);
 
-      const payload: Record<string, unknown> = {
-        nome:     form.querySelector<HTMLInputElement>('[name="nome"]')!.value.trim(),
-        telefone: form.querySelector<HTMLInputElement>('[name="telefone"]')!.value.trim(),
-        email:    form.querySelector<HTMLInputElement>('[name="email"]')!.value.trim(),
-        tipo:     form.querySelector<HTMLSelectElement>('[name="tipo"]')!.value,
-        data:     form.querySelector<HTMLInputElement>('[name="data"]')!.value,
-        pessoas:  form.querySelector<HTMLInputElement>('[name="pessoas"]')!.value,
-        detalhes: form.querySelector<HTMLTextAreaElement>('[name="detalhes"]')!.value.trim(),
-        project,
-        form_id:  formId,
-        page_url: window.location.href,
-      };
-
-      try { payload.tracking = JSON.parse(sessionStorage.getItem('dmove_tracking') || '{}'); } catch {}
-
       try {
+        const trackingRaw = sessionStorage.getItem('dmove_tracking');
+        const tracking    = trackingRaw ? JSON.parse(trackingRaw) : {};
+
+        let fonte = tracking.landing_page || window.location.pathname;
+        if (tracking.utm_source) {
+          fonte = tracking.utm_source;
+          if (tracking.utm_medium) fonte += ` / ${tracking.utm_medium}`;
+        }
+
+        const now = new Date();
+        const dateFmt = now.toLocaleDateString('pt-BR');
+        const timeFmt = now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit', hour12: false });
+
+        const payload: Record<string, string> = {
+          'Nome':           form.querySelector<HTMLInputElement>('[name="nome"]')?.value.trim() || '',
+          'WhatsApp':       form.querySelector<HTMLInputElement>('[name="telefone"]')?.value.trim() || '',
+          'E-mail':         form.querySelector<HTMLInputElement>('[name="email"]')?.value.trim() || '',
+          'Tipo de evento': form.querySelector<HTMLSelectElement>('[name="tipo"]')?.value || '',
+          'Data do evento': form.querySelector<HTMLInputElement>('[name="data"]')?.value || '',
+          'Convidados':     form.querySelector<HTMLInputElement>('[name="pessoas"]')?.value || '',
+          'Mensagem':       form.querySelector<HTMLTextAreaElement>('[name="detalhes"]')?.value.trim() || '',
+          'Fonte':          fonte,
+          'Date':           dateFmt,
+          'Time':           timeFmt,
+          'Page URL':       window.location.href,
+          'User Agent':     navigator.userAgent,
+          'Remote IP':      '',
+          'Powered by':     'Dmove',
+          'form_id':        formId,
+          'form_name':      formId,
+        };
+
         const res = await fetch(submitUrl, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload),
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams(payload).toString(),
         });
         if (!res.ok) throw new Error();
 
