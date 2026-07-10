@@ -323,8 +323,13 @@ const cleanPhone = phone.replace(/\D/g, '');
     });
 
     // Form submit
+    let submitting = false;
+    let submitted  = false;
+
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
+
+      if (submitted || submitting) return;
 
       const hp = form.querySelector<HTMLInputElement>('[name="website"]');
       if (hp && hp.value) return;
@@ -346,6 +351,7 @@ const cleanPhone = phone.replace(/\D/g, '');
       const submitBtn = form.querySelector<HTMLButtonElement>('[type="submit"]');
       const btnText   = submitBtn?.querySelector<HTMLElement>('.wap-btn-text');
       const btnLoad   = submitBtn?.querySelector<HTMLElement>('.wap-btn-loading');
+      submitting = true;
       if (submitBtn) submitBtn.disabled = true;
       if (btnText && btnLoad) { btnText.style.display = 'none'; btnLoad.style.display = 'block'; }
 
@@ -387,6 +393,7 @@ const cleanPhone = phone.replace(/\D/g, '');
         }).catch(() => {});
       }
 
+      submitted = true;
       (window as any).dataLayer?.push({ event: 'form_submit', form_id: formId, ...payload });
 
       // Show success, then open WhatsApp

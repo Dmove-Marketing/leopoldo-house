@@ -12,7 +12,9 @@ export function initForms() {
   forms.forEach((form) => {
     if (form.dataset.formInit) return;
     form.dataset.formInit = '1';
-    let started = false;
+    let started    = false;
+    let submitting = false;
+    let submitted  = false;
     const formId    = form.dataset.formId!;
     const project   = form.dataset.project || window.location.hostname;
     const apiUrl    = form.dataset.apiUrl ?? '';
@@ -26,7 +28,9 @@ export function initForms() {
       return;
     }
 
-    form.addEventListener('focusin', () => {
+    form.addEventListener('focusin', (e) => {
+      const target = e.target as HTMLElement;
+      if (target.matches('button, [type="submit"]')) return;
       if (!started) {
         started = true;
         (window as any).dataLayer?.push({ event: 'form_start', form_id: formId, project });
@@ -35,6 +39,8 @@ export function initForms() {
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
+
+      if (submitted || submitting) return;
 
       const hp = form.querySelector<HTMLInputElement>('[name="website"]');
       if (hp && hp.value) return;
@@ -62,6 +68,7 @@ export function initForms() {
         ? document.getElementById(gridId)?.querySelector('[id$="FormMsg"]') as HTMLElement | null
         : form.querySelector('.form-error') as HTMLElement | null;
 
+      submitting = true;
       if (submitBtn) submitBtn.disabled = true;
       if (btnText && btnLoading) {
         btnText.style.display = 'none';
@@ -107,6 +114,7 @@ export function initForms() {
         let json: any = {};
         try { json = await res.json(); } catch {}
 
+        submitted = true;
         (window as any).dataLayer?.push({ event: 'form_submit', form_id: formId, project, ...data });
 
         const redir = redirectUrl || json.redirect;
@@ -121,6 +129,7 @@ export function initForms() {
           form.innerHTML = `<div style="text-align:center;padding:2rem"><div style="width:56px;height:56px;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;background:#2563eb;border-radius:50%;color:white;font-size:1.5rem">✓</div><h3 style="font-size:1.15rem;font-weight:600;margin-bottom:4px">Enviado com sucesso!</h3><p style="color:#666;font-size:0.9rem">Em breve entraremos em contato.</p></div>`;
         }
       } catch (err: any) {
+        submitting = false;
         (window as any).dataLayer?.push({ event: 'form_error', form_id: formId, error: err.message });
         if (msgEl) {
           msgEl.innerHTML = 'Erro ao enviar. Tente novamente mais tarde.';

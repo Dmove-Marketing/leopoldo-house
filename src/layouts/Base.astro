@@ -16,6 +16,8 @@ interface Props {
   jsonLd?: Record<string, any>;
   /** Sobrescreve o form_name enviado ao n8n pelo popup de WhatsApp desta página */
   whatsappFormId?: string;
+  /** Passa true quando a página já inclui seu próprio WhatsAppPopup para evitar duplicação */
+  noWhatsappPopup?: boolean;
 }
 
 const {
@@ -27,6 +29,7 @@ const {
   theme = 'dark',
   jsonLd,
   whatsappFormId,
+  noWhatsappPopup = false,
 } = Astro.props;
 
 import config from '../../config.json';
@@ -95,7 +98,8 @@ const defaultJsonLd = {
     <slot />
 
     <!-- WhatsApp Popup (padrão em todas as páginas — configure phone em config.json) -->
-    {wapPhone && (
+    <!-- Suprimido quando a página já inclui seu próprio WhatsAppPopup (noWhatsappPopup=true) -->
+    {wapPhone && !noWhatsappPopup && (
       <WhatsAppPopup
         phone={wapPhone}
         formId={wapFormId}
