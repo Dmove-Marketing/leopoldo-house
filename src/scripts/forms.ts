@@ -4,7 +4,7 @@ function buildFonte(tracking: Record<string, string>): string {
     if (tracking.utm_medium) f += ` / ${tracking.utm_medium}`;
     return f;
   }
-  return tracking.landing_page || window.location.pathname;
+  return 'Landing page' + window.location.pathname;
 }
 
 export function initForms() {
