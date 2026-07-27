@@ -1,5 +1,10 @@
+function pageSlug(): string {
+  const p = window.location.pathname;
+  return p === '/' ? '/eventos-corporativos' : p;
+}
+
 function buildFonte(tracking: Record<string, string>): string {
-  const page = 'Landing page' + window.location.pathname;
+  const page = 'Landing page' + pageSlug();
   const trackingKeys = [
     'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term',
     'gclid', 'gbraid', 'wbraid', 'fbclid',

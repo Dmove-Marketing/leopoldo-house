@@ -311,7 +311,8 @@ const {
         const trackingRaw = sessionStorage.getItem('dmove_tracking');
         const tracking    = trackingRaw ? JSON.parse(trackingRaw) : {};
 
-        const _page = 'Landing page' + window.location.pathname;
+        const _slug = window.location.pathname === '/' ? '/eventos-corporativos' : window.location.pathname;
+        const _page = 'Landing page' + _slug;
         const _trackingKeys = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid','gbraid','wbraid','fbclid'];
         const _params = new URLSearchParams();
         _trackingKeys.forEach(k => { if (tracking[k]) _params.set(k, tracking[k]); });
