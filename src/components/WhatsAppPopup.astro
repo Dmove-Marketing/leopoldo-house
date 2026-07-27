@@ -311,11 +311,12 @@ const {
         const trackingRaw = sessionStorage.getItem('dmove_tracking');
         const tracking    = trackingRaw ? JSON.parse(trackingRaw) : {};
 
-        let fonte = tracking.landing_page || window.location.pathname;
-        if (tracking.utm_source) {
-          fonte = tracking.utm_source;
-          if (tracking.utm_medium) fonte += ` / ${tracking.utm_medium}`;
-        }
+        const _page = 'Landing page' + window.location.pathname;
+        const _trackingKeys = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid','gbraid','wbraid','fbclid'];
+        const _params = new URLSearchParams();
+        _trackingKeys.forEach(k => { if (tracking[k]) _params.set(k, tracking[k]); });
+        const _qs = _params.toString();
+        const fonte = _qs ? `${_page}?${_qs}` : _page;
 
         const now = new Date();
         const dateFmt = now.toLocaleDateString('pt-BR');
