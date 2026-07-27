@@ -242,7 +242,7 @@ function renderField(f: Field, cxInputClass: string, cxSelectClass: string, cxAr
     })}
 
     <div class={groupCls(true)}>
-      <button type="submit" class={cxSubmit} id={theSubmitId}>
+      <button type="button" class={cxSubmit} id={theSubmitId}>
         <span class="btn-text">{submitText}</span>
         <span class="btn-loading" style="display:none;">
           <svg class="spinner" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -267,7 +267,7 @@ function renderField(f: Field, cxInputClass: string, cxSelectClass: string, cxAr
 </form>
 
 <script>
-  import { initForms } from '../../scripts/forms.ts';
+  import '../../scripts/forms.ts';
   import flatpickr from 'flatpickr';
   import { Portuguese } from 'flatpickr/dist/l10n/pt.js';
 
@@ -310,9 +310,8 @@ function renderField(f: Field, cxInputClass: string, cxSelectClass: string, cxAr
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => { initForms(); initExtras(); });
+    document.addEventListener('DOMContentLoaded', initExtras);
   } else {
-    initForms();
     initExtras();
   }
 </script>

@@ -1,10 +1,13 @@
 function buildFonte(tracking: Record<string, string>): string {
-  if (tracking.utm_source) {
-    let f = tracking.utm_source;
-    if (tracking.utm_medium) f += ` / ${tracking.utm_medium}`;
-    return f;
-  }
-  return 'Landing page' + window.location.pathname;
+  const page = 'Landing page' + window.location.pathname;
+  const trackingKeys = [
+    'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term',
+    'gclid', 'gbraid', 'wbraid', 'fbclid',
+  ];
+  const params = new URLSearchParams();
+  trackingKeys.forEach(k => { if (tracking[k]) params.set(k, tracking[k]); });
+  const qs = params.toString();
+  return qs ? `${page}?${qs}` : page;
 }
 
 export function initForms() {
@@ -30,38 +33,35 @@ export function initForms() {
 
     form.addEventListener('focusin', (e) => {
       const target = e.target as HTMLElement;
-      if (target.matches('button, [type="submit"]')) return;
+      if (target.matches('button')) return;
       if (!started) {
         started = true;
         (window as any).dataLayer?.push({ event: 'form_start', form_id: formId, project });
       }
     });
 
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-
+    async function handleSubmit() {
       if (submitted || submitting) return;
 
       const hp = form.querySelector<HTMLInputElement>('[name="website"]');
       if (hp && hp.value) return;
 
-      // Validação de campos obrigatórios
-      const requiredEls = Array.from(
-        form.querySelectorAll<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>('[required]')
-      );
-      const emptyEls = requiredEls.filter(el => !el.value.trim());
-      if (emptyEls.length) {
-        emptyEls.forEach(el => {
-          el.classList.add('field-invalid');
-          const remove = () => { el.classList.remove('field-invalid'); el.removeEventListener('input', remove); el.removeEventListener('change', remove); };
-          el.addEventListener('input', remove);
-          el.addEventListener('change', remove);
-        });
-        emptyEls[0].focus();
+      // Datepickers com readonly precisam de tratamento especial (flatpickr exclui readonly da validação nativa)
+      const datepickers = form.querySelectorAll<HTMLInputElement>('[data-datepicker]');
+      datepickers.forEach(dp => {
+        dp.removeAttribute('readonly');
+        dp.setCustomValidity(dp.required && !dp.value ? 'Selecione uma data para o evento' : '');
+      });
+
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        datepickers.forEach(dp => { dp.setAttribute('readonly', ''); dp.setCustomValidity(''); });
         return;
       }
 
-      const submitBtn  = form.querySelector<HTMLButtonElement>('.form-submit, [type="submit"]');
+      datepickers.forEach(dp => { dp.setAttribute('readonly', ''); dp.setCustomValidity(''); });
+
+      const submitBtn  = form.querySelector<HTMLButtonElement>('.form-submit');
       const btnText    = submitBtn?.querySelector<HTMLElement>('.btn-text');
       const btnLoading = submitBtn?.querySelector<HTMLElement>('.btn-loading');
       const msgEl = gridId
@@ -147,6 +147,16 @@ export function initForms() {
           }
         }
       }
+    }
+
+    form.querySelector<HTMLButtonElement>('.form-submit')?.addEventListener('click', handleSubmit);
+
+    form.addEventListener('keydown', (e) => {
+      if (e.key !== 'Enter') return;
+      const target = e.target as HTMLElement;
+      if (target.matches('textarea, button')) return;
+      e.preventDefault();
+      handleSubmit();
     });
   });
 }

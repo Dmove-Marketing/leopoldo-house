@@ -41,10 +41,10 @@ import '../styles/debutantes.css';
             { name: 'E-mail',       type: 'email',    placeholder: 'seu@email.com',           required: true,  autocomplete: 'email' },
           ]},
           { type: 'row', fields: [
-            { name: 'Data do evento', type: 'date',     placeholder: 'Data da festa',           required: false },
-            { name: 'Convidados',     type: 'number',   placeholder: 'Nº de convidados',        required: false, min: '1' },
+            { name: 'Data do evento', type: 'date',     placeholder: 'Data da festa',           required: true },
+            { name: 'Convidados',     type: 'number',   placeholder: 'Nº de convidados',        required: true, min: '1' },
           ]},
-          { name: 'Tipo de evento', type: 'select', full: true, required: false, options: [
+          { name: 'Tipo de evento', type: 'select', full: true, required: true, options: [
             { value: '',                         label: 'Tipo de evento',          disabled: true, selected: true },
             { value: 'Aniversário',              label: 'Aniversário' },
             { value: 'Aniversário debutante',    label: 'Aniversário debutante' },
@@ -194,10 +194,10 @@ import '../styles/debutantes.css';
             { name: 'E-mail',       type: 'email',    placeholder: 'seu@email.com',           required: true,  autocomplete: 'email' },
           ]},
           { type: 'row', fields: [
-            { name: 'Data do evento', type: 'date',     placeholder: 'Data da festa',           required: false },
-            { name: 'Convidados',     type: 'number',   placeholder: 'Nº de convidados',        required: false, min: '1' },
+            { name: 'Data do evento', type: 'date',     placeholder: 'Data da festa',           required: true },
+            { name: 'Convidados',     type: 'number',   placeholder: 'Nº de convidados',        required: true, min: '1' },
           ]},
-          { name: 'Tipo de evento', type: 'select', full: true, required: false, options: [
+          { name: 'Tipo de evento', type: 'select', full: true, required: true, options: [
             { value: '',                         label: 'Tipo de evento',          disabled: true, selected: true },
             { value: 'Aniversário',              label: 'Aniversário' },
             { value: 'Aniversário debutante',    label: 'Aniversário debutante' },

@@ -143,7 +143,7 @@ const {
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="15" height="15" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
               Voltar
             </button>
-            <button type="submit" class="wa-btn wa-btn-green wa-submit-btn">
+            <button type="button" class="wa-btn wa-btn-green wa-submit-btn">
               <span class="wa-btn-text">Enviar</span>
               <span class="wa-btn-spin" aria-hidden="true">
                 <svg class="wa-spinner" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15">
@@ -289,9 +289,10 @@ const {
     let submitting = false;
     let submitted  = false;
 
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
+    const btnText = submitBtn.querySelector<HTMLElement>('.wa-btn-text')!;
+    const btnSpin = submitBtn.querySelector<HTMLElement>('.wa-btn-spin')!;
 
+    async function handleWaSubmit() {
       if (submitted || submitting) return;
 
       const hp = form.querySelector<HTMLInputElement>('[name="website"]');
@@ -299,9 +300,6 @@ const {
 
       const err2 = validateStep2();
       if (err2) { showErr(1, err2); return; }
-
-      const btnText    = submitBtn.querySelector<HTMLElement>('.wa-btn-text')!;
-      const btnSpin    = submitBtn.querySelector<HTMLElement>('.wa-btn-spin')!;
 
       submitting = true;
       submitBtn.disabled = true;
@@ -361,6 +359,19 @@ const {
         submitBtn.disabled = false;
         btnText.style.display = '';
         btnSpin.style.display = 'none';
+      }
+    }
+
+    submitBtn.addEventListener('click', handleWaSubmit);
+
+    form.addEventListener('keydown', (e) => {
+      if (e.key !== 'Enter') return;
+      const target = e.target as HTMLElement;
+      if (target.matches('textarea, button')) return;
+      const activeStep = steps.find(s => s.classList.contains('is-active'));
+      if (activeStep?.dataset.step === '2') {
+        e.preventDefault();
+        handleWaSubmit();
       }
     });
   });
