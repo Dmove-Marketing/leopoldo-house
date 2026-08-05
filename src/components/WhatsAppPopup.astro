@@ -261,6 +261,7 @@ const {
       const tel   = form.querySelector<HTMLInputElement>('[name="telefone"]')!.value.replace(/\D/g, '');
       const email = form.querySelector<HTMLInputElement>('[name="email"]')!.value.trim();
       if (!nome) return 'Por favor, informe seu nome.';
+      if (tel.startsWith('55') && tel.length > 2) return 'Não inclua o código do país (+55). Digite apenas DDD + número.';
       if (tel.length < 10) return 'Informe um WhatsApp válido com DDD.';
       if (!email.includes('@') || !email.split('@')[1]?.includes('.')) return 'Informe um e-mail válido.';
       return null;
