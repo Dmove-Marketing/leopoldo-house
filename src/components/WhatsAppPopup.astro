@@ -1,5 +1,6 @@
 ---
 import 'flatpickr/dist/flatpickr.min.css';
+import config from '../../config.json';
 
 interface TipoOption {
   value: string;
@@ -27,6 +28,11 @@ const {
   dataPlaceholder = 'Data do evento',
   greeting = 'Olá! Gostaria de conhecer o Leopoldo House para o seu próximo evento? Preencha abaixo e nossa equipe entrará em contato pelo WhatsApp.',
 } = Astro.props;
+
+const wapPhone = (config as any).whatsapp_popup?.phone?.replace(/\D/g, '') || '';
+const wapMsg = (config as any).whatsapp_popup?.message || '';
+const defaultWaRedirect = wapPhone ? `https://wa.me/${wapPhone}${wapMsg ? `?text=${encodeURIComponent(wapMsg)}` : ''}` : '';
+const finalRedirect = redirectUrl || defaultWaRedirect;
 ---
 
 <div
@@ -34,7 +40,7 @@ const {
   data-form-id={formId}
   data-project={project}
   data-submit-url={submitUrl}
-  data-redirect={redirectUrl}
+  data-redirect={finalRedirect}
 >
   <!-- FAB -->
   <button class="wa-fab" aria-label="Falar pelo WhatsApp">
@@ -355,7 +361,11 @@ const {
 
         form.hidden = true;
         successEl.hidden = false;
-        if (redirect) setTimeout(() => { window.location.href = redirect; }, 3000);
+        if (redirect) {
+          const successText = successEl.querySelector<HTMLElement>('.wa-success-text');
+          if (successText) successText.textContent = 'Obrigado! Redirecionando para o WhatsApp...';
+          setTimeout(() => { window.location.href = redirect; }, 1500);
+        }
       } catch {
         submitting = false;
         showErr(1, 'Erro ao enviar. Tente novamente.');
