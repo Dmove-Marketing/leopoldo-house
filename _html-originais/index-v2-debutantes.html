@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leopoldo House — Festa de 15 Anos no Itaim Bibi</title>
+<meta name="description" content="Realize a festa de debutante dos seus sonhos no Itaim Bibi, São Paulo. Sofisticação, estrutura e alta gastronomia para uma noite inesquecível.">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Leopoldo House — Festa de 15 Anos no Itaim Bibi">
+<meta property="og:description" content="Realize a festa de debutante dos seus sonhos no Itaim Bibi, São Paulo. Sofisticação, estrutura e alta gastronomia para uma noite inesquecível.">
+<meta property="og:image" content="imagens/og-debutantes.jpg">
+<link rel="icon" type="image/png" href="imagens/favicon.png">
+
+<!-- Fontes: Gotham (Book/Bold) é a fonte oficial da marca nos criativos.
+     Gotham é uma fonte licenciada (não está no Google Fonts) — o time de design já
+     possui a licença/arquivos usados nas peças. Basta adicionar os arquivos
+     "Gotham-Book.woff2" e "Gotham-Bold.woff2" na pasta /fontes e o @font-face abaixo
+     já assume a fonte automaticamente. Enquanto os arquivos não chegam, o fallback
+     abaixo (Poppins, via Google Fonts) mantém a leitura do layout muito próxima. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  @font-face {
+    font-family: "Gotham";
+    src: url("fontes/Gotham-Book.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Gotham";
+    src: url("fontes/Gotham-Bold.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  :root {
+    /* Paleta oficial da campanha de debutantes */
+    --cor-marrom: #3c2a24;   /* marrom principal — texto, fundos escuros, detalhes */
+    --cor-branco: #f6f2ed;   /* branco quente — fundos claros, texto sobre marrom */
+    --cor-marrom-suave: #6b5248; /* variação para textos secundários sobre branco */
+    --cor-linha: rgba(60, 42, 36, 0.18);
+
+    /* Tipografia — Gotham Book (400) para textos, Gotham Bold (700) para títulos */
+    --fonte-titulo: "Gotham", "Poppins", sans-serif;
+    --fonte-texto: "Gotham", "Poppins", sans-serif;
+
+    --espaco-secao: clamp(64px, 9vw, 140px);
+    --largura-max: 1240px;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--cor-branco);
+    color: var(--cor-marrom);
+    font-family: var(--fonte-texto);
+    font-weight: 400;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
+    object-fit: cover;
+  }
+
+  .wrap {
+    max-width: var(--largura-max);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  h1, h2, h3 {
+    font-family: var(--fonte-titulo);
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+
+  p { margin: 0; }
+
+  .rotulo {
+    font-size: 13px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .peso-book { font-weight: 400; }
+
+  .linha-fina {
+    width: 64px;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.5;
+    margin: 28px 0;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--fonte-titulo);
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 16px 30px;
+    border: 1px solid currentColor;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+    transition: background 0.25s ease, color 0.25s ease;
+  }
+  .btn-marrom { color: var(--cor-branco); background: var(--cor-marrom); border-color: var(--cor-marrom); }
+  .btn-marrom:hover { background: transparent; color: var(--cor-marrom); }
+  .btn-claro { color: var(--cor-branco); border-color: var(--cor-branco); }
+  .btn-claro:hover { background: var(--cor-branco); color: var(--cor-marrom); }
+
+  /* ===== HEADER ===== */
+  header.site-header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 50;
+    padding: 26px 0;
+    display: flex;
+    justify-content: center;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.35), transparent);
+    transition: background 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease;
+  }
+  header.site-header.header--rolado {
+    background: var(--cor-branco);
+    padding: 18px 0;
+    box-shadow: 0 1px 0 var(--cor-linha);
+  }
+  header.site-header .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .logo {
+    font-family: var(--fonte-titulo);
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--cor-branco);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  header.site-header.header--rolado .logo { color: var(--cor-marrom); }
+
+  /* ===== HERO ===== */
+  #topo {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    color: var(--cor-branco);
+    overflow: hidden;
+    padding-top: 120px;
+  }
+  #topo .midia-fundo {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-color: var(--cor-marrom);
+  }
+  #topo .midia-fundo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% top; /* ancorado no topo — a cabeça nunca é cortada, em nenhuma tela */
+    opacity: 0.6;
+  }
+  #topo .midia-fundo::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(20,13,11,0.7) 0%, rgba(20,13,11,0.42) 55%, rgba(20,13,11,0.3) 100%);
+  }
+  #topo .hero-conteudo {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr minmax(320px, 420px);
+    gap: 48px;
+    align-items: center;
+    padding-top: 44px;
+    padding-bottom: 44px;
+  }
+  #topo .hero-texto { max-width: 46ch; }
+  #topo .hero-texto,
+  #topo form.form-contato label {
+    text-shadow: 0 1px 10px rgba(0,0,0,0.55);
+  }
+  #topo form.form-contato input,
+  #topo form.form-contato select,
+  #topo form.form-contato textarea {
+    border-bottom-color: rgba(246,242,237,0.55);
+  }
+  #topo .hero-eyebrow {
+    margin-bottom: 18px;
+    font-size: 12.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    opacity: 0.85;
+  }
+  #topo h1 {
+    font-size: clamp(26px, 3.2vw, 44px);
+    line-height: 1.14;
+    white-space: nowrap;
+    font-weight: 400; /* Gotham Book é o peso padrão do título */
+  }
+  #topo h1 .peso-forte {
+    font-weight: 700; /* Gotham Bold só na última linha */
+  }
+  #topo .subtitulo {
+    margin-top: 18px;
+    max-width: 46ch;
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--cor-branco);
+    opacity: 0.92;
+  }
+  #topo form.form-contato {
+    row-gap: 16px;
+    column-gap: 16px;
+    background: rgba(35,24,20,0.93);
+    padding: 28px 28px 24px;
+  }
+  #topo form.form-contato label { font-size: 11px; }
+  #topo form.form-contato input,
+  #topo form.form-contato select,
+  #topo form.form-contato textarea { font-size: 14px; padding: 8px 2px; }
+  #topo form.form-contato textarea { min-height: 48px; }
+  #topo form.form-contato select,
+  #topo form.form-contato input[type="date"] { height: 33px; }
+  #topo .form-rodape { margin-top: 6px; }
+  #topo .aviso-privacidade { font-size: 11.5px; max-width: none; }
+
+  /* ===== SOBRE ===== */
+  #sobre { padding: var(--espaco-secao) 0; }
+  #sobre .grid-sobre {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 64px;
+    align-items: center;
+  }
+  #sobre .rotulo { color: var(--cor-marrom-suave); }
+  #sobre h2 {
+    font-size: clamp(28px, 3.4vw, 42px);
+    margin-top: 18px;
+    line-height: 1.18;
+  }
+  #sobre .texto-sobre { margin-top: 26px; max-width: 46ch; }
+  #sobre .texto-sobre p + p { margin-top: 14px; }
+  #sobre .texto-sobre { color: var(--cor-marrom-suave); font-size: 16px; }
+  #sobre .texto-sobre-resumo { display: none; }
+  #sobre .imagens-sobre {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 18px;
+    align-items: stretch;
+  }
+  #sobre .imagens-sobre .video-sobre {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 3 / 5.4;
+    object-fit: cover;
+  }
+  #sobre .fotos-sobre {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 18px;
+  }
+  #sobre .fotos-sobre img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 4 / 3.4;
+    object-fit: cover;
+  }
+  #sobre .fotos-sobre img:last-child {
+    object-position: 50% 15%; /* foto do vestido roxo — mantém o rosto visível */
+  }
+
+  /* ===== ESTRUTURA ===== */
+  #estrutura {
+    padding: var(--espaco-secao) 0;
+    background: var(--cor-marrom);
+    color: var(--cor-branco);
+  }
+  #estrutura .cabecalho-secao {
+    max-width: 86ch;
+    margin: 0 auto 64px;
+    text-align: center;
+  }
+  #estrutura .rotulo { color: rgba(246,242,237,0.7); }
+  #estrutura h2 {
+    font-size: clamp(26px, 3.2vw, 40px);
+    margin-top: 18px;
+    line-height: 1.2;
+  }
+  #estrutura .subtexto {
+    margin: 20px auto 0;
+    color: rgba(246,242,237,0.75);
+    max-width: 68ch;
+    font-size: 16px;
+  }
+  #estrutura .grid-estrutura {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(246,242,237,0.18);
+  }
+  #estrutura .card {
+    background: var(--cor-marrom);
+    padding: 0 0 34px;
+  }
+  #estrutura .card img { aspect-ratio: 4 / 5; margin-bottom: 28px; }
+  #estrutura .card img.img-mezanino { object-position: 64% 50%; }
+  #estrutura .card-conteudo { padding: 0 30px; }
+  #estrutura .card .numero {
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    color: rgba(246,242,237,0.55);
+  }
+  #estrutura .card h3 {
+    font-size: 20px;
+    margin-top: 14px;
+    line-height: 1.2;
+  }
+  #estrutura .card p {
+    margin-top: 14px;
+    font-size: 14.5px;
+    color: rgba(246,242,237,0.72);
+    line-height: 1.6;
+  }
+  #estrutura .titulo-mobile { display: none; }
+  #estrutura .subtexto-mobile { display: none; }
+  #estrutura .carrossel-estrutura {
+    display: none;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+  }
+  #estrutura .moldura-estrutura {
+    position: relative;
+    width: 100%;
+    height: 62vh;
+    max-height: 500px;
+    overflow: hidden;
+  }
+  #estrutura .moldura-estrutura img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  #estrutura .moldura-estrutura::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0 0;
+    height: 42%;
+    background: linear-gradient(to top, rgba(60,42,36,0.88) 0%, rgba(60,42,36,0.45) 55%, rgba(60,42,36,0) 100%);
+    pointer-events: none;
+  }
+  #estrutura .titulo-carrossel-estrutura {
+    position: absolute;
+    right: 24px;
+    bottom: 18px;
+    z-index: 1;
+    max-width: 62%;
+    text-align: right;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--cor-branco);
+  }
+  #estrutura .btn-estrutura {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    border-radius: 50%;
+    border: 1px solid rgba(246,242,237,0.5);
+    background: rgba(35,24,20,0.55);
+    color: var(--cor-branco);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 2;
+    transition: background 0.2s ease;
+  }
+  #estrutura .btn-estrutura svg { display: block; }
+  #estrutura .btn-estrutura:hover { background: rgba(35,24,20,0.8); }
+  #estrutura .btn-estrutura-anterior { left: 14px; }
+  #estrutura .btn-estrutura-proximo { right: 14px; }
+
+  /* ===== GASTRONOMIA ===== */
+  #gastronomia { padding: var(--espaco-secao) 0; }
+  #gastronomia .cabecalho-secao {
+    max-width: 58ch;
+    margin: 0 auto 56px;
+    text-align: center;
+  }
+  #gastronomia .rotulo { color: var(--cor-marrom-suave); justify-content: center; display: flex; }
+  #gastronomia h2 {
+    font-size: clamp(26px, 3.2vw, 40px);
+    margin-top: 18px;
+    line-height: 1.2;
+  }
+  #gastronomia .subtexto {
+    margin-top: 18px;
+    color: var(--cor-marrom-suave);
+    font-size: 16px;
+  }
+  #gastronomia .subtexto-mobile { display: none; }
+  #gastronomia .titulo-mobile { display: none; }
+  #gastronomia .grid-gastro {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+  }
+  #gastronomia .item-gastro img {
+    aspect-ratio: 3 / 4;
+    margin-bottom: 0;
+  }
+  #gastronomia .item-gastro img.img-coffee { object-position: 50% 100%; }
+  #gastronomia .item-gastro img.img-almoco { object-position: 58% 55%; }
+  #gastronomia .carrossel-gastro {
+    display: none;
+    padding: 0 24px;
+  }
+  #gastronomia .moldura-gastro {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 14px 30px rgba(60,42,36,0.22);
+  }
+  #gastronomia .moldura-gastro img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  #gastronomia .pontos-gastro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 14px;
+  }
+  #gastronomia .ponto-gastro {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(60,42,36,0.22);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: background 0.2s ease, width 0.2s ease;
+  }
+  #gastronomia .ponto-gastro.ativo {
+    width: 18px;
+    border-radius: 3px;
+    background: var(--cor-marrom);
+  }
+
+  /* ===== GALERIA ===== */
+  #galeria {
+    padding: clamp(32px, 4vw, 64px) 0 var(--espaco-secao);
+    background: var(--cor-branco);
+  }
+  #galeria .grid-galeria-nova {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 64px;
+    align-items: center;
+  }
+  #galeria .rotulo { color: var(--cor-marrom-suave); }
+  #galeria h2 {
+    font-size: clamp(26px, 3.2vw, 40px);
+    margin-top: 18px;
+    line-height: 1.2;
+  }
+  #galeria .legenda-galeria {
+    margin-top: 22px;
+    font-size: 16px;
+    color: var(--cor-marrom-suave);
+    max-width: 34ch;
+  }
+  #galeria .moldura-galeria {
+    position: relative;
+    width: 100%;
+    height: clamp(420px, 56vw, 640px);
+    max-height: 70vh;
+    overflow: hidden;
+  }
+  #galeria .moldura-galeria img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  #galeria .controles-galeria {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+  }
+  #galeria .btn-galeria {
+    width: 52px;
+    height: 52px;
+    padding: 0;
+    border-radius: 50%;
+    border: 1px solid rgba(246,242,237,0.7);
+    background: rgba(35,24,20,0.55);
+    color: var(--cor-branco);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  #galeria .btn-galeria svg { display: block; }
+  #galeria .btn-galeria:hover { background: rgba(35,24,20,0.8); }
+  #galeria .carrossel-galeria-mobile {
+    display: none;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+  }
+  #galeria .moldura-galeria-mobile {
+    position: relative;
+    width: 100%;
+    height: 62vh;
+    max-height: 520px;
+    overflow: hidden;
+  }
+  #galeria .moldura-galeria-mobile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  #galeria .btn-galeria-mobile {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    border-radius: 50%;
+    border: 1px solid rgba(246,242,237,0.7);
+    background: rgba(35,24,20,0.55);
+    color: var(--cor-branco);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 2;
+    transition: background 0.2s ease;
+  }
+  #galeria .btn-galeria-mobile svg { display: block; }
+  #galeria .btn-galeria-mobile:hover { background: rgba(35,24,20,0.8); }
+  #galeria .btn-anterior-mobile { left: 14px; }
+  #galeria .btn-proximo-mobile { right: 14px; }
+  #galeria .progresso-galeria {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    right: 14px;
+    z-index: 2;
+    display: flex;
+    gap: 5px;
+  }
+  #galeria .progresso-galeria span {
+    flex: 1;
+    height: 3px;
+    border-radius: 2px;
+    background: rgba(246,242,237,0.35);
+  }
+  #galeria .progresso-galeria span.ativo { background: var(--cor-branco); }
+
+  /* ===== CONTATO ===== */
+  #contato {
+    padding: var(--espaco-secao) 0;
+    background: var(--cor-marrom);
+    color: var(--cor-branco);
+  }
+  #contato .grid-contato {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 72px;
+    align-items: center;
+  }
+  #contato .rotulo { color: rgba(246,242,237,0.7); }
+  #contato h2 {
+    font-size: clamp(28px, 3.4vw, 44px);
+    margin-top: 18px;
+    line-height: 1.16;
+  }
+  #contato .subtexto-contato {
+    margin-top: 22px;
+    color: rgba(246,242,237,0.75);
+    font-size: 16px;
+  }
+  @media (min-width: 641px) {
+    #contato .subtexto-contato { white-space: nowrap; }
+  }
+  #contato form.form-contato {
+    background: rgba(20,13,11,0.5);
+    padding: 32px 32px 28px;
+  }
+  #contato form.form-contato label { color: rgba(246,242,237,0.85); }
+  #contato form.form-contato input,
+  #contato form.form-contato select,
+  #contato form.form-contato textarea {
+    font-size: 16px;
+    border-bottom-color: rgba(246,242,237,0.5);
+  }
+  #contato form.form-contato input::placeholder,
+  #contato form.form-contato textarea::placeholder { color: rgba(246,242,237,0.45); }
+
+  form.form-contato {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  form.form-contato .campo-full { grid-column: 1 / -1; }
+  form.form-contato label {
+    display: block;
+    font-size: 12.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    color: rgba(246,242,237,0.75);
+  }
+  form.form-contato input,
+  form.form-contato select,
+  form.form-contato textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(246,242,237,0.35);
+    color: var(--cor-branco);
+    font-family: var(--fonte-texto);
+    font-size: 15px;
+    padding: 10px 2px;
+    outline: none;
+    transition: border-color 0.2s ease;
+  }
+  form.form-contato select,
+  form.form-contato input[type="date"] {
+    -webkit-appearance: none;
+    appearance: none;
+    line-height: 1.3;
+    height: 36px;
+  }
+  form.form-contato select option { color: var(--cor-marrom); }
+  form.form-contato input::placeholder,
+  form.form-contato textarea::placeholder { color: rgba(246,242,237,0.35); }
+  form.form-contato input:focus,
+  form.form-contato select:focus,
+  form.form-contato textarea:focus { border-bottom-color: var(--cor-branco); }
+  form.form-contato textarea { resize: vertical; min-height: 64px; }
+  form.form-contato input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    opacity: 0.8;
+    cursor: pointer;
+  }
+  form.form-contato input[type="date"]::-webkit-datetime-edit-fields-wrapper,
+  form.form-contato input[type="date"]::-webkit-datetime-edit-text,
+  form.form-contato input[type="date"]::-webkit-datetime-edit-month-field,
+  form.form-contato input[type="date"]::-webkit-datetime-edit-day-field,
+  form.form-contato input[type="date"]::-webkit-datetime-edit-year-field {
+    color: var(--cor-branco);
+  }
+
+  .form-rodape {
+    grid-column: 1 / -1;
+    margin-top: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .aviso-privacidade {
+    font-size: 12.5px;
+    color: rgba(246,242,237,0.55);
+    max-width: 34ch;
+  }
+
+  /* ===== FOOTER ===== */
+  footer.site-footer {
+    padding: 34px 0;
+    background: var(--cor-branco);
+  }
+  footer.site-footer .wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 13px;
+    color: var(--cor-marrom-suave);
+  }
+  footer.site-footer a { color: var(--cor-marrom-suave); }
+  footer.site-footer .logo-rodape-mobile {
+    display: none;
+    font-family: var(--fonte-titulo);
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--cor-marrom);
+  }
+
+  @media (max-width: 640px) {
+    /* mobile: tag e título continuam sobre a foto, centralizados, perto da base;
+       subtítulo removido. foto totalmente visível — degradê marrom (mesmo tom das
+       outras seções) localizado atrás do texto para garantir leitura. sem formulário. */
+    #topo { align-items: flex-end; }
+    #topo::before {
+      content: "";
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 52%;
+      z-index: 1;
+      background: linear-gradient(to top, rgba(60,42,36,0.92) 0%, rgba(60,42,36,0.62) 45%, rgba(60,42,36,0) 100%);
+      pointer-events: none;
+    }
+    #topo .hero-conteudo { grid-template-columns: 1fr; padding-top: 0; padding-bottom: 52px; }
+    #topo .hero-texto { max-width: none; text-align: center; margin: 0 auto; }
+    #topo .subtitulo { display: none; }
+    #topo .hero-painel { display: none; }
+    #topo .midia-fundo img { object-position: 47% top; opacity: 1; }
+    #topo .midia-fundo::after { content: none; }
+  }
+  @media (max-width: 640px) {
+    #sobre .grid-sobre { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+    #contato .grid-contato { grid-template-columns: 1fr; gap: 40px; }
+    #sobre .imagens-sobre { grid-template-columns: 1fr; }
+    #sobre .imagens-sobre .video-sobre { aspect-ratio: 4 / 6.4; }
+    #sobre .fotos-sobre { display: none; }
+    #sobre .texto-sobre { margin-left: auto; margin-right: auto; }
+    #sobre .texto-sobre-completo { display: none; }
+    #sobre .texto-sobre-resumo { display: block; }
+    #estrutura .titulo-desktop { display: none; }
+    #estrutura .titulo-mobile { display: block; }
+    #estrutura .subtexto-desktop { display: none; }
+    #estrutura .subtexto-mobile { display: block; }
+    #estrutura .grid-estrutura { display: none; }
+    #estrutura .carrossel-estrutura { display: block; }
+    #gastronomia .titulo-desktop { display: none; }
+    #gastronomia .titulo-mobile { display: block; }
+    #gastronomia .subtexto-desktop { display: none; }
+    #gastronomia .subtexto-mobile { display: block; }
+    #gastronomia .grid-gastro { display: none; }
+    #gastronomia .carrossel-gastro { display: block; }
+    #galeria .grid-galeria-nova { grid-template-columns: 1fr; gap: 32px; text-align: center; }
+    #galeria .legenda-galeria { margin-left: auto; margin-right: auto; margin-bottom: 32px; }
+    #galeria .moldura-galeria { display: none; }
+    #galeria .carrossel-galeria-mobile { display: block; }
+    form.form-contato { grid-template-columns: 1fr; }
+    #contato .texto-contato { text-align: center; }
+    #contato .form-rodape { flex-direction: column; align-items: center; text-align: center; }
+    footer.site-footer .wrap { flex-direction: column; text-align: center; }
+    footer.site-footer .logo-rodape-mobile { display: block; }
+  }
+  @media (max-width: 560px) {
+    #topo .hero-conteudo { padding-top: 28px; padding-bottom: 26px; }
+    #topo { padding-top: 96px; }
+  }
+  /* tablet: mantém texto + formulário lado a lado como no desktop, mas os campos do formulário
+     do contato empilham em 1 coluna — a coluna fica estreita demais para 2 campos por linha */
+  @media (min-width: 641px) and (max-width: 1024px) {
+    #contato form.form-contato { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="#topo" class="logo">Leopoldo House</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="topo">
+  <div class="midia-fundo">
+    <img src="imagens/hero-debutantes.jpg" alt="Salão do Leopoldo House preparado para festa de debutante">
+  </div>
+  <div class="wrap hero-conteudo">
+    <div class="hero-texto">
+      <p class="hero-eyebrow">Itaim Bibi&nbsp;&nbsp;•&nbsp;&nbsp;Debutantes</p>
+      <h1>A festa que você vai<br>lembrar para sempre<br><span class="peso-forte">começa aqui.</span></h1>
+      <p class="subtitulo">No Leopoldo House, cada detalhe é&nbsp;pensado para transformar sua celebração em uma noite única.</p>
+    </div>
+
+    <div class="hero-painel">
+      <form class="form-contato">
+        <div class="campo-full">
+          <label for="nome">Nome</label>
+          <input type="text" id="nome" name="nome" placeholder="Seu nome completo" required>
+        </div>
+
+        <div>
+          <label for="telefone">Telefone</label>
+          <input type="tel" id="telefone" name="telefone" placeholder="(11) 90000-0000" required>
+        </div>
+        <div>
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+        </div>
+
+        <div>
+          <label for="tipo_evento">Tipo de evento</label>
+          <select id="tipo_evento" name="tipo_evento" required>
+            <option value="" selected disabled>Selecione</option>
+            <option value="aniversario">Aniversário</option>
+            <option value="aniversario_debutante">Aniversário debutante</option>
+            <option value="confraternizacao_social">Confraternização social</option>
+            <option value="outros">Outros</option>
+          </select>
+        </div>
+        <div>
+          <label for="data_evento">Data do evento</label>
+          <input type="date" id="data_evento" name="data_evento" required>
+        </div>
+
+        <div class="campo-full">
+          <label for="convidados">Número de convidados</label>
+          <input type="number" id="convidados" name="convidados" min="1" placeholder="Ex: 150" required>
+        </div>
+
+        <div class="campo-full">
+          <label for="detalhes_adicionais">Detalhes do evento (não obrigatório)</label>
+          <textarea id="detalhes_adicionais" name="detalhes_adicionais" placeholder="Conte um pouco mais sobre a festa que você imagina"></textarea>
+        </div>
+
+        <div class="form-rodape">
+          <p class="aviso-privacidade">Ao enviar, você concorda com nossa política de privacidade.</p>
+          <button type="submit" class="btn btn-claro">Enviar solicitação →</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE / O ESPAÇO -->
+<section id="sobre">
+  <div class="wrap grid-sobre">
+    <div class="imagens-sobre">
+      <video class="video-sobre" autoplay muted loop playsinline poster="imagens/sobre-debutante-01.jpg" aria-label="Vídeo do espaço do Leopoldo House ambientado para festa de debutante">
+        <source src="videos/sobre-debutantes.mp4" type="video/mp4">
+      </video>
+      <div class="fotos-sobre">
+        <img src="imagens/sobre-debutante-01.jpg" alt="Salão do Leopoldo House decorado para festa de debutante">
+        <img src="imagens/sobre-debutante-02.jpg" alt="Detalhe da decoração e ambientação da festa de 15 anos">
+      </div>
+    </div>
+    <div>
+      <p class="rotulo">O espaço</p>
+      <h2><span class="peso-book">Para debutantes</span><br>que sabem o que querem.</h2>
+      <div class="texto-sobre texto-sobre-completo">
+        <p>Localizado em um dos endereços mais privilegiados de São Paulo, o&nbsp;Leopoldo&nbsp;House foi criado para receber festas de 15 anos inesquecíveis.</p>
+        <p>Com ambientes sofisticados e serviços exclusivos,&nbsp;proporcionamos uma experiência completa para que cada detalhe aconteça exatamente como foi imaginado.</p>
+      </div>
+      <div class="texto-sobre texto-sobre-resumo">
+        <p>Em um dos endereços mais&nbsp;privilegiados&nbsp;de São Paulo, o&nbsp;Leopoldo&nbsp;House recebe festas de 15&nbsp;anos&nbsp;com&nbsp;ambientes&nbsp;sofisticados e&nbsp;serviços exclusivos, garantindo uma experiência inesquecível<br>do&nbsp;início&nbsp;ao fim.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ESTRUTURA -->
+<section id="estrutura">
+  <div class="wrap">
+    <div class="cabecalho-secao">
+      <p class="rotulo">Estrutura</p>
+      <h2 class="titulo-desktop"><span class="peso-book">O cenário perfeito para</span><br>celebrar um dos&nbsp;momentos<br>mais especiais da sua&nbsp;vida.</h2>
+      <h2 class="titulo-mobile"><span class="peso-book">O cenário perfeito</span><br>para celebrar um dos&nbsp;momentos<br>mais especiais<br>da sua&nbsp;vida.</h2>
+      <p class="subtexto subtexto-desktop">Um espaço onde cada abraço, cada dança e cada sorriso<br>se transformam em memórias que atravessam gerações.</p>
+      <p class="subtexto subtexto-mobile">Um espaço onde cada abraço,<br>cada dança e cada sorriso<br>se transformam em memórias<br>que atravessam gerações.</p>
+    </div>
+
+    <div class="grid-estrutura">
+      <article class="card">
+        <img src="imagens/estrutura-salao.jpg" alt="Salão amplo do Leopoldo House com pé-direito alto">
+        <div class="card-conteudo">
+          <p class="numero">01</p>
+          <h3>Salão amplo com 7m²<br>de pé-direito</h3>
+          <p>Um espaço versátil para realizar a valsa, aproveitar a pista de dança e celebrar ao lado de amigos e familiares.</p>
+        </div>
+      </article>
+      <article class="card">
+        <img src="imagens/estrutura-mezanino.jpg" alt="Mezanino do Leopoldo House montado como lounge" class="img-mezanino">
+        <div class="card-conteudo">
+          <p class="numero">02</p>
+          <h3>Mezanino</h3>
+          <p>Um espaço perfeito para um lounge elegante, experiências interativas ou aquele detalhe que fará sua festa ser lembrada por todos.</p>
+        </div>
+      </article>
+      <article class="card">
+        <img src="imagens/estrutura-rooftop.jpg" alt="Rooftop garden do Leopoldo House">
+        <div class="card-conteudo">
+          <p class="numero">03</p>
+          <h3>Rooftop Garden</h3>
+          <p>Espaço que funciona como apoio à celebração, oferecendo um ambiente<br>leve e descontraído para os convidados.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <div class="carrossel-estrutura">
+    <div class="moldura-estrutura">
+      <img src="imagens/estrutura-salao.jpg" alt="Salão amplo do Leopoldo House com pé-direito alto" id="foto-estrutura">
+      <p class="titulo-carrossel-estrutura" id="titulo-estrutura">Salão amplo com 7m² de pé-direito</p>
+      <button type="button" class="btn-estrutura btn-estrutura-anterior" aria-label="Ambiente anterior">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 6 9 12 15 18"></polyline></svg>
+      </button>
+      <button type="button" class="btn-estrutura btn-estrutura-proximo" aria-label="Próximo ambiente">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"></polyline></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- GASTRONOMIA -->
+<section id="gastronomia">
+  <div class="wrap">
+    <div class="cabecalho-secao">
+      <p class="rotulo">Gastronomia</p>
+      <h2 class="titulo-desktop"><span class="peso-book">Gastronomia à altura</span><br>dos seus 15 anos.</h2>
+      <h2 class="titulo-mobile"><span class="peso-book">Gastronomia<br>à altura&nbsp;dos</span><br>seus 15&nbsp;anos.</h2>
+      <p class="subtexto subtexto-desktop">Uma experiência criada para surpreender convidados<br>e tornar cada momento ainda mais memorável.</p>
+      <p class="subtexto subtexto-mobile">Uma experiência criada para surpreender convidados e tornar cada momento ainda mais memorável.</p>
+    </div>
+  </div>
+
+  <div class="grid-gastro">
+    <div class="item-gastro">
+      <img src="imagens/gastronomia-coffee-break.jpg" alt="Coffee break servido no Leopoldo House" class="img-coffee">
+    </div>
+    <div class="item-gastro">
+      <img src="imagens/gastronomia-almoco-jantar.jpg" alt="Almoço e jantar servido no Leopoldo House" class="img-almoco">
+    </div>
+    <div class="item-gastro">
+      <img src="imagens/gastronomia-ilhas.jpg" alt="Ilhas gastronômicas do Leopoldo House">
+    </div>
+    <div class="item-gastro">
+      <img src="imagens/gastronomia-coquetel-volante.jpg" alt="Coquetel volante servido no Leopoldo House">
+    </div>
+  </div>
+
+  <div class="carrossel-gastro">
+    <div class="moldura-gastro">
+      <img src="imagens/gastronomia-coffee-break.jpg" alt="Coffee break servido no Leopoldo House" id="foto-gastro" style="object-position: 50% 65%;">
+    </div>
+    <div class="pontos-gastro" id="pontos-gastro">
+      <button type="button" class="ponto-gastro ativo" aria-label="Ver foto 1" data-indice="0"></button>
+      <button type="button" class="ponto-gastro" aria-label="Ver foto 2" data-indice="1"></button>
+      <button type="button" class="ponto-gastro" aria-label="Ver foto 3" data-indice="2"></button>
+      <button type="button" class="ponto-gastro" aria-label="Ver foto 4" data-indice="3"></button>
+    </div>
+  </div>
+</section>
+
+<!-- GALERIA -->
+<section id="galeria">
+  <div class="wrap grid-galeria-nova">
+    <div>
+      <p class="rotulo">Galeria</p>
+      <h2><span class="peso-book">Detalhes pensados</span><br>para valorizar<br>a sua noite.</h2>
+      <p class="legenda-galeria">Conheça o Leopoldo House.</p>
+    </div>
+
+    <div class="moldura-galeria">
+      <img src="imagens/galeria-01.jpg" alt="Festa de debutante no Leopoldo House — galeria 1" id="foto-galeria" style="object-position: 50% 35%;">
+      <div class="controles-galeria">
+        <button type="button" class="btn-galeria btn-anterior" aria-label="Foto anterior">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 6 9 12 15 18"></polyline></svg>
+        </button>
+        <button type="button" class="btn-galeria btn-proximo" aria-label="Próxima foto">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"></polyline></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="carrossel-galeria-mobile">
+    <div class="moldura-galeria-mobile">
+      <img src="imagens/galeria-01.jpg" alt="Festa de debutante no Leopoldo House — galeria 1" id="foto-galeria-mobile" style="object-position: 50% 35%;">
+      <div class="progresso-galeria" id="progresso-galeria-mobile">
+        <span class="ativo"></span><span></span><span></span><span></span><span></span>
+      </div>
+      <button type="button" class="btn-galeria-mobile btn-anterior-mobile" aria-label="Foto anterior">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 6 9 12 15 18"></polyline></svg>
+      </button>
+      <button type="button" class="btn-galeria-mobile btn-proximo-mobile" aria-label="Próxima foto">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"></polyline></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<script>
+  (function () {
+    var fotos = [
+      { src: "imagens/galeria-01.jpg", legenda: "galeria 1", posicao: "50% 35%" },
+      { src: "imagens/galeria-02.jpg", legenda: "galeria 2", posicao: "50% 15%" },
+      { src: "imagens/galeria-03.jpg", legenda: "galeria 3", posicao: "50% 50%" },
+      { src: "imagens/galeria-04.jpg", legenda: "galeria 4", posicao: "50% 68%" },
+      { src: "imagens/galeria-05.jpg", legenda: "galeria 5", posicao: "50% 50%" }
+    ];
+    var indiceAtual = 0;
+    var imgGaleria = document.getElementById("foto-galeria");
+    var imgGaleriaMobile = document.getElementById("foto-galeria-mobile");
+    var btnAnterior = document.querySelector("#galeria .btn-anterior");
+    var btnProximo = document.querySelector("#galeria .btn-proximo");
+    var btnAnteriorMobile = document.querySelector("#galeria .btn-anterior-mobile");
+    var btnProximoMobile = document.querySelector("#galeria .btn-proximo-mobile");
+    var segmentosProgresso = document.querySelectorAll("#progresso-galeria-mobile span");
+
+    function mostrarFoto(indice) {
+      indiceAtual = (indice + fotos.length) % fotos.length;
+      var foto = fotos[indiceAtual];
+      var alt = "Festa de debutante no Leopoldo House — " + foto.legenda;
+      [imgGaleria, imgGaleriaMobile].forEach(function (img) {
+        if (!img) return;
+        img.src = foto.src;
+        img.alt = alt;
+        img.style.objectPosition = foto.posicao || "50% 50%";
+      });
+      segmentosProgresso.forEach(function (segmento, i) {
+        segmento.classList.toggle("ativo", i === indiceAtual);
+      });
+    }
+
+    if (btnAnterior && btnProximo) {
+      btnAnterior.addEventListener("click", function () { mostrarFoto(indiceAtual - 1); });
+      btnProximo.addEventListener("click", function () { mostrarFoto(indiceAtual + 1); });
+    }
+    if (btnAnteriorMobile && btnProximoMobile) {
+      btnAnteriorMobile.addEventListener("click", function () { mostrarFoto(indiceAtual - 1); });
+      btnProximoMobile.addEventListener("click", function () { mostrarFoto(indiceAtual + 1); });
+    }
+  })();
+</script>
+
+<!-- Carrossel da seção Estrutura (apenas mobile — em telas maiores os 3 ambientes aparecem lado a lado). -->
+<script>
+  (function () {
+    var ambientes = [
+      { src: "imagens/estrutura-salao.jpg", alt: "Salão amplo do Leopoldo House com pé-direito alto", titulo: "Salão amplo com 7m² de pé-direito", posicao: "50% 50%" },
+      { src: "imagens/estrutura-mezanino.jpg", alt: "Mezanino do Leopoldo House montado como lounge", titulo: "Mezanino", posicao: "64% 50%" },
+      { src: "imagens/estrutura-rooftop.jpg", alt: "Rooftop garden do Leopoldo House", titulo: "Rooftop Garden", posicao: "50% 50%" }
+    ];
+    var indiceEstrutura = 0;
+    var imgEstrutura = document.getElementById("foto-estrutura");
+    var tituloEstrutura = document.getElementById("titulo-estrutura");
+    var btnEstruturaAnterior = document.querySelector("#estrutura .btn-estrutura-anterior");
+    var btnEstruturaProximo = document.querySelector("#estrutura .btn-estrutura-proximo");
+
+    function mostrarAmbiente(indice) {
+      indiceEstrutura = (indice + ambientes.length) % ambientes.length;
+      imgEstrutura.src = ambientes[indiceEstrutura].src;
+      imgEstrutura.alt = ambientes[indiceEstrutura].alt;
+      imgEstrutura.style.objectPosition = ambientes[indiceEstrutura].posicao || "50% 50%";
+      tituloEstrutura.textContent = ambientes[indiceEstrutura].titulo;
+    }
+
+    if (btnEstruturaAnterior && btnEstruturaProximo) {
+      btnEstruturaAnterior.addEventListener("click", function () { mostrarAmbiente(indiceEstrutura - 1); });
+      btnEstruturaProximo.addEventListener("click", function () { mostrarAmbiente(indiceEstrutura + 1); });
+    }
+  })();
+</script>
+
+<!-- Carrossel da seção Gastronomia (apenas mobile — em telas maiores as 4 fotos aparecem lado a lado). -->
+<script>
+  (function () {
+    var pratos = [
+      { src: "imagens/gastronomia-coffee-break.jpg", alt: "Coffee break servido no Leopoldo House", titulo: "Coffee break", posicao: "50% 65%" },
+      { src: "imagens/gastronomia-almoco-jantar.jpg", alt: "Almoço e jantar servido no Leopoldo House", titulo: "Almoço & jantar", posicao: "58% 55%" },
+      { src: "imagens/gastronomia-ilhas.jpg", alt: "Ilhas gastronômicas do Leopoldo House", titulo: "Ilhas gastronômicas", posicao: "50% 50%" },
+      { src: "imagens/gastronomia-coquetel-volante.jpg", alt: "Coquetel volante servido no Leopoldo House", titulo: "Coquetel volante", posicao: "50% 50%" }
+    ];
+    var indiceGastro = 0;
+    var imgGastro = document.getElementById("foto-gastro");
+    var pontosGastro = document.querySelectorAll("#gastronomia .ponto-gastro");
+
+    function mostrarPrato(indice) {
+      indiceGastro = (indice + pratos.length) % pratos.length;
+      imgGastro.src = pratos[indiceGastro].src;
+      imgGastro.alt = pratos[indiceGastro].alt;
+      imgGastro.style.objectPosition = pratos[indiceGastro].posicao || "50% 50%";
+      pontosGastro.forEach(function (ponto, i) {
+        ponto.classList.toggle("ativo", i === indiceGastro);
+      });
+    }
+
+    pontosGastro.forEach(function (ponto) {
+      ponto.addEventListener("click", function () {
+        mostrarPrato(parseInt(ponto.getAttribute("data-indice"), 10));
+      });
+    });
+  })();
+</script>
+
+<!-- CONTATO -->
+<section id="contato">
+  <div class="wrap grid-contato">
+    <div class="texto-contato">
+      <p class="rotulo">Contato</p>
+      <h2><span class="peso-book">Pronta para protagonizar a </span>celebração mais inesquecível do ano?</h2>
+      <p class="subtexto-contato">Preencha o formulário e nossa equipe entra em&nbsp;contato.</p>
+    </div>
+
+    <form class="form-contato">
+      <div class="campo-full">
+        <label for="nome-contato">Nome</label>
+        <input type="text" id="nome-contato" name="nome" placeholder="Seu nome completo" required>
+      </div>
+
+      <div>
+        <label for="telefone-contato">Telefone</label>
+        <input type="tel" id="telefone-contato" name="telefone" placeholder="(11) 90000-0000" required>
+      </div>
+      <div>
+        <label for="email-contato">E-mail</label>
+        <input type="email" id="email-contato" name="email" placeholder="seu@email.com" required>
+      </div>
+
+      <div>
+        <label for="tipo_evento-contato">Tipo de evento</label>
+        <select id="tipo_evento-contato" name="tipo_evento" required>
+          <option value="" selected disabled>Selecione</option>
+          <option value="aniversario">Aniversário</option>
+          <option value="aniversario_debutante">Aniversário debutante</option>
+          <option value="confraternizacao_social">Confraternização social</option>
+          <option value="outros">Outros</option>
+        </select>
+      </div>
+      <div>
+        <label for="data_evento-contato">Data do evento</label>
+        <input type="date" id="data_evento-contato" name="data_evento" required>
+      </div>
+
+      <div class="campo-full">
+        <label for="convidados-contato">Número de convidados</label>
+        <input type="number" id="convidados-contato" name="convidados" min="1" placeholder="Ex: 150" required>
+      </div>
+
+      <div class="campo-full">
+        <label for="detalhes_adicionais-contato">Detalhes do evento (não obrigatório)</label>
+        <textarea id="detalhes_adicionais-contato" name="detalhes_adicionais" placeholder="Conte um pouco mais sobre a festa que você imagina"></textarea>
+      </div>
+
+      <div class="form-rodape">
+        <p class="aviso-privacidade">Ao enviar, você concorda com nossa política de privacidade.</p>
+        <button type="submit" class="btn btn-claro">Enviar solicitação →</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>Copyright © 2026 Leopoldo House - Todos os direitos reservados</p>
+    <p class="logo-rodape-mobile">Leopoldo House</p>
+    <p>Desenvolvido por <a href="https://dmove.com.br" target="_blank" rel="noopener">Dmove</a></p>
+  </div>
+</footer>
+
+
+<!-- Apenas efeito visual do header ao rolar a página (nenhum envio/tracking). -->
+<script>
+  (function () {
+    var header = document.querySelector(".site-header");
+    if (!header) return;
+    var aoRolar = function () {
+      header.classList.toggle("header--rolado", window.scrollY > 60);
+    };
+    window.addEventListener("scroll", aoRolar, { passive: true });
+    aoRolar();
+  })();
+</script>
+</body>
+</html>

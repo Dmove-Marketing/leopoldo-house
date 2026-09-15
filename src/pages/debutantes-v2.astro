@@ -1,0 +1,384 @@
+---
+import Base from '../layouts/Base.astro';
+import config from '../../config.json';
+import Img from '../components/ui/Img.astro';
+import WhatsAppWidget from '../components/ui/WhatsAppWidget.astro';
+import InteractionTrigger from '../components/tracking/InteractionTrigger.astro';
+import { getImage } from 'astro:assets';
+import '../styles/debutantes-v2.css';
+
+const webhookUrl = config.forms['debutantes-form'].webhooks[0];
+const projectSlug = config.project_slug;
+const waPhone = (config as any).whatsapp_popup?.phone || '5511974060363';
+
+const galeriaRaw = import.meta.glob<{ default: ImageMetadata }>(
+  '/src/assets/images/galeria-0*.{jpg,jpeg,png}',
+  { eager: true }
+);
+
+const galeriaConfig = [
+  { key: '/src/assets/images/galeria-01.jpg', legenda: 'galeria 1', posicao: '50% 35%' },
+  { key: '/src/assets/images/galeria-02.jpg', legenda: 'galeria 2', posicao: '50% 15%' },
+  { key: '/src/assets/images/galeria-03.jpg', legenda: 'galeria 3', posicao: '50% 50%' },
+  { key: '/src/assets/images/galeria-04.jpg', legenda: 'galeria 4', posicao: '50% 68%' },
+  { key: '/src/assets/images/galeria-05.jpg', legenda: 'galeria 5', posicao: '50% 50%' },
+];
+
+const galeriaFotos = await Promise.all(
+  galeriaConfig.map(async ({ key, legenda, posicao }) => {
+    const mod = galeriaRaw[key];
+    if (!mod) return null;
+    const img = await getImage({ src: mod.default, width: 1200, quality: 80 });
+    return { src: img.src, legenda, posicao };
+  })
+);
+
+const galeriaFotosJson = JSON.stringify(galeriaFotos.filter(Boolean));
+---
+
+<Base
+  title="Leopoldo House — Festa de 15 Anos no Itaim Bibi"
+  description="Realize a festa de debutante dos seus sonhos no Itaim Bibi, São Paulo. Sofisticação, estrutura e alta gastronomia para uma noite inesquecível."
+  ogImage="/images/og-debutantes.jpg"
+  noWhatsappPopup={true}
+>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="wrap">
+    <a href="#topo" class="logo">Leopoldo House</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="topo">
+  <div class="midia-fundo">
+    <Img src="hero-debutantes.jpg" alt="Salão do Leopoldo House preparado para festa de debutante" priority width={1920} style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% top" />
+  </div>
+  <div class="wrap hero-conteudo">
+    <div class="hero-texto">
+      <p class="hero-eyebrow">Itaim Bibi • Debutantes</p>
+      <h1>A festa que você vai<br>lembrar para sempre<br><span class="peso-forte">começa aqui.</span></h1>
+      <p class="subtitulo">No Leopoldo House, cada detalhe é pensado para transformar sua celebração em uma noite única.</p>
+    </div>
+
+    <div class="hero-painel">
+      <form
+        class="form-contato"
+        data-form-id="debutantes-hero-form-v2"
+        data-project={projectSlug}
+        data-submit-url={webhookUrl}
+        data-success-id="form-hero-success"
+      >
+        <!-- Honeypot anti-spam -->
+        <input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off" />
+
+        <div class="campo-full">
+          <label for="form-field-nome-hero">Nome</label>
+          <input type="text" id="form-field-nome-hero" name="nome" placeholder="Seu nome completo" required autocomplete="name">
+        </div>
+
+        <div>
+          <label for="form-field-telefone-hero">Telefone</label>
+          <input type="tel" id="form-field-telefone-hero" name="telefone" placeholder="(11) 90000-0000" required autocomplete="tel">
+        </div>
+        <div>
+          <label for="form-field-email-hero">E-mail</label>
+          <input type="email" id="form-field-email-hero" name="email" placeholder="seu@email.com" required autocomplete="email">
+        </div>
+
+        <div>
+          <label for="form-field-tipo_evento-hero">Tipo de evento</label>
+          <select id="form-field-tipo_evento-hero" name="tipo_evento" required>
+            <option value="" selected disabled>Selecione</option>
+            <option value="Aniversário">Aniversário</option>
+            <option value="Aniversário debutante">Aniversário debutante</option>
+            <option value="Confraternização social">Confraternização social</option>
+            <option value="Outros">Outros</option>
+          </select>
+        </div>
+        <div>
+          <label for="form-field-data_evento-hero">Data do evento</label>
+          <input type="date" id="form-field-data_evento-hero" name="data_evento" required>
+        </div>
+
+        <div class="campo-full">
+          <label for="form-field-convidados-hero">Número de convidados</label>
+          <input type="number" id="form-field-convidados-hero" name="convidados" min="1" placeholder="Ex: 150" required>
+        </div>
+
+        <div class="campo-full">
+          <label for="form-field-detalhes_adicionais-hero">Detalhes do evento (não obrigatório)</label>
+          <textarea id="form-field-detalhes_adicionais-hero" name="detalhes_adicionais" placeholder="Conte um pouco mais sobre a festa que você imagina"></textarea>
+        </div>
+
+        <div class="form-rodape">
+          <p class="aviso-privacidade">Ao enviar, você concorda com nossa política de privacidade.</p>
+          <button type="button" class="btn btn-claro form-submit">Enviar solicitação →</button>
+        </div>
+      </form>
+      <div id="form-hero-success" style="display:none;color:var(--cor-branco);padding:2rem;text-align:center;">
+        <h3 style="font-size:1.2rem;margin-bottom:10px;">Solicitação enviada!</h3>
+        <p>Obrigado. Em breve entraremos em contato para planejar a festa.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE / O ESPAÇO -->
+<section id="sobre">
+  <div class="wrap grid-sobre">
+    <div class="imagens-sobre">
+      <video class="video-sobre" autoplay muted loop playsinline poster="/images/sobre-debutante-01.jpg" aria-label="Vídeo do espaço do Leopoldo House ambientado para festa de debutante">
+        <source src="/videos/sobre-debutantes.mp4" type="video/mp4">
+      </video>
+      <div class="fotos-sobre">
+        <Img src="sobre-debutante-01.jpg" alt="Salão do Leopoldo House decorado para festa de debutante" width={400} style="width:100%;height:100%;aspect-ratio:4/3.4;object-fit:cover" />
+        <Img src="sobre-debutante-02.jpg" alt="Detalhe da decoração e ambientação da festa de 15 anos" width={400} style="width:100%;height:100%;aspect-ratio:4/3.4;object-fit:cover;object-position:50% 15%" />
+      </div>
+    </div>
+    <div>
+      <p class="rotulo">O espaço</p>
+      <h2><span class="peso-book">Para debutantes</span><br>que sabem o que querem.</h2>
+      <div class="texto-sobre texto-sobre-completo">
+        <p>Localizado em um dos endereços mais privilegiados de São Paulo, o Leopoldo House foi criado para receber festas de 15 anos inesquecíveis.</p>
+        <p>Com ambientes sofisticados e serviços exclusivos, proporcionamos uma experiência completa para que cada detalhe aconteça exatamente como foi imaginado.</p>
+      </div>
+      <div class="texto-sobre texto-sobre-resumo">
+        <p>Em um dos endereços mais privilegiados de São Paulo, o Leopoldo House recebe festas de 15 anos com ambientes sofisticados e serviços exclusivos, garantindo uma experiência inesquecível<br>do início ao fim.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ESTRUTURA -->
+<section id="estrutura">
+  <div class="wrap">
+    <div class="cabecalho-secao">
+      <p class="rotulo">Estrutura</p>
+      <h2 class="titulo-desktop"><span class="peso-book">O cenário perfeito para</span><br>celebrar um dos momentos<br>mais especiais da sua vida.</h2>
+      <h2 class="titulo-mobile"><span class="peso-book">O cenário perfeito</span><br>para celebrar um dos momentos<br>mais especiais<br>da sua vida.</h2>
+      <p class="subtexto subtexto-desktop">Um espaço onde cada abraço, cada dança e cada sorriso<br>se transformam em memórias que atravessam gerações.</p>
+      <p class="subtexto subtexto-mobile">Um espaço onde cada abraço,<br>cada dança e cada sorriso<br>se transformam em memórias<br>que atravessam gerações.</p>
+    </div>
+
+    <div class="grid-estrutura">
+      <article class="card">
+        <Img src="estrutura-salao.jpg" alt="Salão amplo do Leopoldo House com pé-direito alto" width={700} style="width:100%;aspect-ratio:4/5;object-fit:cover" />
+        <div class="card-conteudo">
+          <p class="numero">01</p>
+          <h3>Salão amplo com 7m²<br>de pé-direito</h3>
+          <p>Um espaço versátil para realizar a valsa, aproveitar a pista de dança e celebrar ao lado de amigos e familiares.</p>
+        </div>
+      </article>
+      <article class="card">
+        <Img src="estrutura-mezanino.jpg" alt="Mezanino do Leopoldo House montado como lounge" width={700} style="width:100%;aspect-ratio:4/5;object-fit:cover;object-position:64% 50%" />
+        <div class="card-conteudo">
+          <p class="numero">02</p>
+          <h3>Mezanino</h3>
+          <p>Um espaço perfeito para um lounge elegante, experiências interativas ou aquele detalhe que fará sua festa ser lembrada por todos.</p>
+        </div>
+      </article>
+      <article class="card">
+        <Img src="estrutura-rooftop.jpg" alt="Rooftop garden do Leopoldo House" width={700} style="width:100%;aspect-ratio:4/5;object-fit:cover" />
+        <div class="card-conteudo">
+          <p class="numero">03</p>
+          <h3>Rooftop Garden</h3>
+          <p>Espaço que funciona como apoio à celebração, oferecendo um ambiente<br>leve e descontraído para os convidados.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <!-- Carrossel mobile da estrutura -->
+  <div class="carrossel-estrutura">
+    <div class="moldura-estrutura">
+      <Img src="estrutura-salao.jpg" alt="Salão amplo do Leopoldo House com pé-direito alto" id="foto-estrutura" width={900} style="width:100%;height:100%;object-fit:cover" />
+      <p class="titulo-carrossel-estrutura" id="titulo-estrutura">Salão amplo com 7m² de pé-direito</p>
+      <button type="button" class="btn-estrutura btn-estrutura-anterior" aria-label="Ambiente anterior">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 6 9 12 15 18"></polyline></svg>
+      </button>
+      <button type="button" class="btn-estrutura btn-estrutura-proximo" aria-label="Próximo ambiente">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"></polyline></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- GASTRONOMIA -->
+<section id="gastronomia">
+  <div class="wrap">
+    <div class="cabecalho-secao">
+      <p class="rotulo">Gastronomia</p>
+      <h2 class="titulo-desktop"><span class="peso-book">Gastronomia à altura</span><br>dos seus 15 anos.</h2>
+      <h2 class="titulo-mobile"><span class="peso-book">Gastronomia<br>à altura dos</span><br>seus 15 anos.</h2>
+      <p class="subtexto subtexto-desktop">Uma experiência criada para surpreender convidados<br>e tornar cada momento ainda mais memorável.</p>
+      <p class="subtexto subtexto-mobile">Uma experiência criada para surpreender convidados e tornar cada momento ainda mais memorável.</p>
+    </div>
+  </div>
+
+  <div class="grid-gastro">
+    <div class="item-gastro">
+      <Img src="gastronomia-coffee-break.jpg" alt="Coffee break servido no Leopoldo House" width={600} class="img-coffee" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:50% 100%" />
+    </div>
+    <div class="item-gastro">
+      <Img src="gastronomia-almoco-jantar.jpg" alt="Almoço e jantar servido no Leopoldo House" width={600} class="img-almoco" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:58% 55%" />
+    </div>
+    <div class="item-gastro">
+      <Img src="gastronomia-ilhas.jpg" alt="Ilhas gastronômicas do Leopoldo House" width={600} style="width:100%;aspect-ratio:3/4;object-fit:cover" />
+    </div>
+    <div class="item-gastro">
+      <Img src="gastronomia-coquetel-volante.jpg" alt="Coquetel volante servido no Leopoldo House" width={600} style="width:100%;aspect-ratio:3/4;object-fit:cover" />
+    </div>
+  </div>
+
+  <!-- Carrossel mobile da gastronomia -->
+  <div class="carrossel-gastro">
+    <div class="moldura-gastro">
+      <Img src="gastro-coffee-break.webp" alt="Coffee break servido no Leopoldo House" id="foto-gastro" width={800} style="object-position: 50% 65%;width:100%;height:100%;object-fit:cover" />
+    </div>
+    <div class="pontos-gastro" id="pontos-gastro">
+      <button type="button" class="ponto-gastro ativo" aria-label="Ver foto 1" data-indice="0"></button>
+      <button type="button" class="ponto-gastro" aria-label="Ver foto 2" data-indice="1"></button>
+      <button type="button" class="ponto-gastro" aria-label="Ver foto 3" data-indice="2"></button>
+      <button type="button" class="ponto-gastro" aria-label="Ver foto 4" data-indice="3"></button>
+    </div>
+  </div>
+</section>
+
+<!-- GALERIA -->
+<section id="galeria">
+  <div class="wrap grid-galeria-nova">
+    <div>
+      <p class="rotulo">Galeria</p>
+      <h2><span class="peso-book">Detalhes pensados</span><br>para valorizar<br>a sua noite.</h2>
+      <p class="legenda-galeria">Conheça o Leopoldo House.</p>
+    </div>
+
+    <div class="moldura-galeria" data-galeria-fotos={galeriaFotosJson}>
+      <Img src="galeria-01.jpg" alt="Festa de debutante no Leopoldo House — galeria 1" id="foto-galeria" width={1200} style="object-position: 50% 35%;width:100%;height:100%;object-fit:cover" />
+      <div class="controles-galeria">
+        <button type="button" class="btn-galeria btn-anterior" aria-label="Foto anterior">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 6 9 12 15 18"></polyline></svg>
+        </button>
+        <button type="button" class="btn-galeria btn-proximo" aria-label="Próxima foto">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"></polyline></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="carrossel-galeria-mobile">
+    <div class="moldura-galeria-mobile">
+      <Img src="galeria-01.jpg" alt="Festa de debutante no Leopoldo House — galeria 1" id="foto-galeria-mobile" width={900} style="object-position: 50% 35%;width:100%;height:100%;object-fit:cover" />
+      <div class="progresso-galeria" id="progresso-galeria-mobile">
+        <span class="ativo"></span><span></span><span></span><span></span><span></span>
+      </div>
+      <button type="button" class="btn-galeria-mobile btn-anterior-mobile" aria-label="Foto anterior">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 6 9 12 15 18"></polyline></svg>
+      </button>
+      <button type="button" class="btn-galeria-mobile btn-proximo-mobile" aria-label="Próxima foto">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"></polyline></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section id="contato">
+  <div class="wrap grid-contato">
+    <div class="texto-contato">
+      <p class="rotulo">Contato</p>
+      <h2><span class="peso-book">Pronta para protagonizar a </span>celebração mais inesquecível do ano?</h2>
+      <p class="subtexto-contato">Preencha o formulário e nossa equipe entra em contato.</p>
+    </div>
+
+    <form
+      class="form-contato"
+      data-form-id="debutantes-form-v2"
+      data-project={projectSlug}
+      data-submit-url={webhookUrl}
+      data-success-id="form-contato-success"
+    >
+      <!-- Honeypot anti-spam -->
+      <input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off" />
+
+      <div class="campo-full">
+        <label for="form-field-nome-contato">Nome</label>
+        <input type="text" id="form-field-nome-contato" name="nome" placeholder="Seu nome completo" required autocomplete="name">
+      </div>
+
+      <div>
+        <label for="form-field-telefone-contato">Telefone</label>
+        <input type="tel" id="form-field-telefone-contato" name="telefone" placeholder="(11) 90000-0000" required autocomplete="tel">
+      </div>
+      <div>
+        <label for="form-field-email-contato">E-mail</label>
+        <input type="email" id="form-field-email-contato" name="email" placeholder="seu@email.com" required autocomplete="email">
+      </div>
+
+      <div>
+        <label for="form-field-tipo_evento-contato">Tipo de evento</label>
+        <select id="form-field-tipo_evento-contato" name="tipo_evento" required>
+          <option value="" selected disabled>Selecione</option>
+          <option value="Aniversário">Aniversário</option>
+          <option value="Aniversário debutante">Aniversário debutante</option>
+          <option value="Confraternização social">Confraternização social</option>
+          <option value="Outros">Outros</option>
+        </select>
+      </div>
+      <div>
+        <label for="form-field-data_evento-contato">Data do evento</label>
+        <input type="date" id="form-field-data_evento-contato" name="data_evento" required>
+      </div>
+
+      <div class="campo-full">
+        <label for="form-field-convidados-contato">Número de convidados</label>
+        <input type="number" id="form-field-convidados-contato" name="convidados" min="1" placeholder="Ex: 150" required>
+      </div>
+
+      <div class="campo-full">
+        <label for="form-field-detalhes_adicionais-contato">Detalhes do evento (não obrigatório)</label>
+        <textarea id="form-field-detalhes_adicionais-contato" name="detalhes_adicionais" placeholder="Conte um pouco mais sobre a festa que você imagina"></textarea>
+      </div>
+
+      <div class="form-rodape">
+        <p class="aviso-privacidade">Ao enviar, você concorda com nossa política de privacidade.</p>
+        <button type="button" class="btn btn-claro form-submit">Enviar solicitação →</button>
+      </div>
+    </form>
+    <div id="form-contato-success" style="display:none;color:var(--cor-branco);padding:2rem;text-align:center;">
+      <h3 style="font-size:1.4rem;margin-bottom:12px;">Solicitação enviada!</h3>
+      <p>Obrigado. Em breve entraremos em contato para planejar a festa.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>Copyright &copy; 2026 Leopoldo House - Todos os direitos reservados</p>
+    <p class="logo-rodape-mobile">Leopoldo House</p>
+    <p>Desenvolvido por <a href="https://dmove.com.br" target="_blank" rel="noopener">Dmove</a></p>
+  </div>
+</footer>
+
+<!-- WhatsApp Widget (novo padrão) -->
+<WhatsAppWidget
+  phone={waPhone}
+  submitUrl={webhookUrl}
+  project={projectSlug}
+  showEmpresaField={false}
+/>
+
+<!-- Gatilho de interação para Pixel/CAPI -->
+<InteractionTrigger />
+
+</Base>
+
+<script>
+  import '../scripts/debutantes-v2.js';
+</script>
+<script>
+  import { initForms } from '../scripts/forms.ts';
+  initForms();
+</script>
