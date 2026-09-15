@@ -241,7 +241,7 @@ const waPhone = (config as any).whatsapp_popup?.phone || '5511974060363';
       </div>
       <div>
         <label for="form-field-data_evento">Data do evento</label>
-        <input type="date" id="form-field-data_evento" name="data_evento" required>
+        <input type="text" id="form-field-data_evento" name="data_evento" placeholder="dd/mm/aaaa" required readonly data-datepicker autocomplete="off">
       </div>
 
       <div class="campo-full">
@@ -278,6 +278,7 @@ const waPhone = (config as any).whatsapp_popup?.phone || '5511974060363';
 <!-- WhatsApp Widget (novo padrão) -->
 <WhatsAppWidget
   phone={waPhone}
+  displayName="Leopoldo House"
   submitUrl={webhookUrl}
   project={projectSlug}
   showEmpresaField={true}
@@ -294,4 +295,14 @@ const waPhone = (config as any).whatsapp_popup?.phone || '5511974060363';
 <script>
   import { initForms } from '../scripts/forms.ts';
   initForms();
+</script>
+<script>
+  import flatpickr from 'flatpickr';
+  import { Portuguese } from 'flatpickr/dist/l10n/pt.js';
+  import 'flatpickr/dist/flatpickr.min.css';
+  flatpickr.localize(Portuguese);
+  document.querySelectorAll<HTMLInputElement>('[data-datepicker]').forEach((el) => {
+    if ((el as any)._flatpickr) return;
+    flatpickr(el, { dateFormat: 'd/m/Y', minDate: 'today', disableMobile: true });
+  });
 </script>
