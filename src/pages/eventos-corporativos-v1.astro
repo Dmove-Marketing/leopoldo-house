@@ -1,0 +1,394 @@
+---
+// Gerado a partir de: index.html
+import Base from '../layouts/Base.astro';
+import config from '../../config.json';
+import LeadForm from '../components/forms/LeadForm.astro';
+import WhatsAppPopup from '../components/WhatsAppPopup.astro';
+import Img from '../components/ui/Img.astro';
+import '../styles/index.css';
+---
+
+<Base
+  title="Leopoldo House — Eventos Corporativos no Itaim Bibi"
+  description="Espaço para eventos corporativos no Itaim Bibi, São Paulo. Sofisticação, estrutura e alta gastronomia para fortalecer relacionamentos e valorizar sua marca."
+  ogImage="/images/og-index.jpg"
+  noWhatsappPopup={true}
+>
+<!-- ════════════ NAV ════════════ -->
+<!-- ════════════ HERO ════════════ -->
+<section class="hero" id="top">
+  <Img src="hero.png" alt="Salão do Leopoldo House em evento corporativo" priority width={1920} style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1" />
+  <div class="hero-overlay"></div>
+  <div class="hero-inner wrap">
+    <Img src="logo-leopoldo.png" alt="Leopoldo House" class="hero-logo" width={280} priority />
+    <h1 class="display"><span class="font-book">Faça seu evento corporativo</span><br>em um espaço que comunica<br>o valor da sua marca.</h1>
+    <p class="lede">Eventos corporativos no Itaim Bibi com estrutura premium para até 400 convidados.</p>
+    <div class="actions">
+      <a href="#contato" class="btn btn-primary">Solicite um orçamento <span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ SOBRE ════════════ -->
+<section class="about" id="sobre">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow center">O Espaço</span>
+      <h2 class="h2"><span class="font-book">Seu evento diz muito <br></span> sobre a sua marca.</h2>
+      <p class="lede">Do briefing à execução, uma estrutura preparada para transformar objetivos em experiências memoráveis.</p>
+    </div>
+    <div class="about-carousel reveal" data-carousel>
+      <div class="about-track-wrap">
+        <div class="about-track">
+          <div class="about-slide"><Img src="sobre-01.png" alt="Leopoldo House — vista do salão decorado" width={800} /></div>
+          <div class="about-slide"><Img src="sobre-02.jpg" alt="Leopoldo House — ambiente em evento" width={800} /></div>
+          <div class="about-slide"><Img src="sobre-03.jpg" alt="Leopoldo House — detalhe do espaço" width={800} /></div>
+          <div class="about-slide"><Img src="sobre-06.jpg" alt="Leopoldo House — lounge" width={800} /></div>
+          <div class="about-slide"><Img src="sobre-07.jpg" alt="Leopoldo House — área de convivência" width={800} /></div>
+          <div class="about-slide"><Img src="sobre-08.jpg" alt="Leopoldo House — espaço configurado" width={800} /></div>
+          <div class="about-slide"><Img src="sobre-09.jpg" alt="Leopoldo House — visão geral" width={800} /></div>
+          <div class="about-slide"><Img src="sobre-abertura-1.jpg" alt="Leopoldo House — abertura do espaço" width={800} /></div>
+          <div class="about-slide"><Img src="sobre-abertura-6.jpg" alt="Leopoldo House — abertura do espaço" width={800} /></div>
+          <div class="about-slide"><Img src="sobre-abertura-12.jpg" alt="Leopoldo House — abertura do espaço" width={800} /></div>
+          <div class="about-slide"><Img src="sobre-abertura-13.jpg" alt="Leopoldo House — abertura do espaço" width={800} /></div>
+        </div>
+      </div>
+
+      <button class="carousel-btn carousel-prev" aria-label="Anterior">&#8592;</button>
+      <button class="carousel-btn carousel-next" aria-label="Próxima">&#8594;</button>
+
+      <div class="carousel-dots" data-dots></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ TIPOS DE EVENTO ════════════ -->
+<section class="events" id="eventos">
+  <div class="wrap">
+    <div class="section-head light reveal">
+      <span class="eyebrow center light">Versatilidade</span>
+      <h2 class="h2"><span class="font-book">Diversas possibilidades.</span><br>O mesmo padrão de excelência.</h2>
+      <p class="lede">Com pé-direito de 7 metros e 450m² de área total, o Leopoldo House se destaca pela versatilidade do seu layout, que se adapta a diferentes formatos de eventos. O espaço acomoda até 400 convidados em coquetel, 250 em jantar e 130 em plenária.</p>
+    </div>
+
+    <div class="type-cards reveal">
+      <a href="#contato" class="type-card">
+        <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M16 2 8 2M12 14v7M12 21H8M12 21h4M3 8h18M12 14a7 7 0 0 0 7-7H5a7 7 0 0 0 7 7Z"/>
+        </svg>
+        <span>Coquetéis</span>
+      </a>
+      <a href="#contato" class="type-card">
+        <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 12V3M2 12h20M12 12l-4 9M12 12l4 9M4 3h16a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z"/>
+        </svg>
+        <span>Plenárias</span>
+      </a>
+      <a href="#contato" class="type-card">
+        <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A5 5 0 0 0 8 8c0 1.3.5 2.6 1.5 3.5.8.8 1.3 1.5 1.5 2.5"/>
+          <path d="M9 18h6M10 22h4"/>
+        </svg>
+        <span>Workshops</span>
+      </a>
+      <a href="#contato" class="type-card">
+        <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+          <circle cx="9" cy="7" r="4"/>
+          <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+          <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+        </svg>
+        <span>Convenções</span>
+      </a>
+      <a href="#contato" class="type-card">
+        <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+          <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/>
+        </svg>
+        <span>Treinamentos</span>
+      </a>
+      <a href="#contato" class="type-card">
+        <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/>
+          <path d="M7 2v20M21 15V2v0a5 5 0 0 0-5 5v8c0 1.1.9 2 2 2h3Z"/>
+          <path d="M18 22V15"/>
+        </svg>
+        <span>Jantares</span>
+      </a>
+      <a href="#contato" class="type-card">
+        <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275Z"/>
+          <path d="m5 3 1 2.5L8.5 6 6 7 5 9.5 4 7 1.5 6 4 5zM19 17l1 2.5 2.5.5-2.5 1-1 2.5-1-2.5-2.5-1 2.5-1z"/>
+        </svg>
+        <span>Confraternizações</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ GALERIA 3 FOTOS ════════════ -->
+<section class="gallery3">
+  <div class="gallery3-grid">
+    <div class="gallery3-item"><Img src="sobre-05.jpg" alt="Leopoldo House — mesas decoradas" width={900} style="width:100%;height:100%;object-fit:cover;display:block" /></div>
+    <div class="gallery3-item"><Img src="sobre-abertura-11.jpg" alt="Leopoldo House — abertura do espaço" width={900} style="width:100%;height:100%;object-fit:cover;display:block" /></div>
+    <div class="gallery3-item"><Img src="sobre-abertura-12.jpg" alt="Leopoldo House — iluminação do evento" width={900} style="width:100%;height:100%;object-fit:cover;display:block" /></div>
+  </div>
+</section>
+
+<!-- ════════════ ESTRUTURA ════════════ -->
+<section class="structure" id="estrutura">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow center">Estrutura</span>
+      <h2 class="h2"><span class="font-book">Uma estrutura que impressiona</span><br>já no primeiro contato.</h2>
+      <p class="lede">Conheça nossos ambientes.</p>
+    </div>
+
+    <div class="amb reveal">
+      <div class="amb-media"><Img src="salao.png" alt="Salão principal do Leopoldo House com pé-direito de 7 metros" width={900} style="width:100%;height:100%;object-fit:cover;border-radius:inherit" /></div>
+      <div class="amb-text">
+        <span class="amb-num">01</span>
+        <h3 class="h3">Salão amplo com 7m² <br>de pé direito</h3>
+        <p>Impacto visual e sensação de amplitude que impressionam logo na chegada, perfeito para cenografias imersivas, ativações de marca ou montagens especiais.</p>
+      </div>
+    </div>
+
+    <div class="amb reveal">
+      <div class="amb-media"><Img src="mezanino.atualizada.jpg" alt="Mezanino do Leopoldo House — lounge executivo" width={900} style="width:100%;height:100%;object-fit:cover;border-radius:inherit" /></div>
+      <div class="amb-text">
+        <span class="amb-num">02</span>
+        <h3 class="h3">Mezanino</h3>
+        <p>Espaço exclusivo com banheiro privativo, ideal para sala de apoio, reuniões paralelas ou uso executivo durante o evento.</p>
+      </div>
+    </div>
+
+    <div class="amb reveal">
+      <div class="amb-media"><Img src="rooftop.jpg" alt="Rooftop Garden do Leopoldo House com teto de vidro" width={900} style="width:100%;height:100%;object-fit:cover;border-radius:inherit" /></div>
+      <div class="amb-text">
+        <span class="amb-num">03</span>
+        <h3 class="h3">Rooftop Garden</h3>
+        <p>Com teto de vidro, é o cenário ideal para eventos diurnos, brunchs corporativos ou sessões de integração ao pôr do sol.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ GASTRONOMIA ════════════ -->
+<section class="gastro" id="gastronomia">
+  <div class="wrap">
+    <div class="gastro-inner reveal">
+      <span class="eyebrow center light">Gastronomia</span>
+      <h2 class="h2"><span class="font-book">A gastronomia também faz </span>parte da experiência da sua marca.</h2>
+      <p class="lede">Menus personalizados e apresentações impecáveis para surpreender convidados e valorizar cada encontro.</p>
+    </div>
+
+    <div class="gastro-cards reveal">
+      <a href="#contato" class="gastro-card">
+        <Img src="gastro-coffee-break.webp" alt="Coffee Break — Leopoldo House" width={600} style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" />
+        <span class="gastro-card-name">Coffee Break</span>
+      </a>
+      <a href="#contato" class="gastro-card">
+        <Img src="gastro-almoco-jantar.jpg" alt="Almoço e Jantar Executivo — Leopoldo House" width={600} style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" />
+        <span class="gastro-card-name">Almoço e Jantar Executivo</span>
+      </a>
+      <a href="#contato" class="gastro-card">
+        <Img src="gastro-ilhas.png" alt="Ilhas Gastronômicas — Leopoldo House" width={600} style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" />
+        <span class="gastro-card-name">Ilhas Gastronômicas</span>
+      </a>
+      <a href="#contato" class="gastro-card">
+        <Img src="gastro-coquetel-volante.jpg" alt="Coquetel Volante — Leopoldo House" width={600} style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" />
+        <span class="gastro-card-name">Coquetel Volante</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ PROVA SOCIAL ════════════ -->
+<section class="proof">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow center">Confiança</span>
+      <h2 class="h2"><span class="font-book">Empresas que confiaram<br></span> em nosso espaço de eventos.</h2>
+      <p class="lede">Conheça o Leopoldo House e viva uma experiência de sucesso.</p>
+    </div>
+    <div class="logos-track-wrap" aria-label="Empresas parceiras" role="region">
+      <div class="logos-track">
+        <div class="logos-inner">
+          <div class="logo-item"><Img src="empresa-1.png" alt="Empresa parceira 1" width={180} /></div>
+          <div class="logo-item"><Img src="empresa-2.png" alt="Empresa parceira 2" width={180} /></div>
+          <div class="logo-item"><Img src="empresa-3.png" alt="Empresa parceira 3" width={180} /></div>
+          <div class="logo-item"><Img src="empresa-4.png" alt="Empresa parceira 4" width={180} /></div>
+          <div class="logo-item"><Img src="empresa-5.png" alt="Empresa parceira 5" width={180} /></div>
+          <!-- duplicado para loop contínuo -->
+          <div class="logo-item" aria-hidden="true"><Img src="empresa-1.png" alt="" width={180} /></div>
+          <div class="logo-item" aria-hidden="true"><Img src="empresa-2.png" alt="" width={180} /></div>
+          <div class="logo-item" aria-hidden="true"><Img src="empresa-3.png" alt="" width={180} /></div>
+          <div class="logo-item" aria-hidden="true"><Img src="empresa-4.png" alt="" width={180} /></div>
+          <div class="logo-item" aria-hidden="true"><Img src="empresa-5.png" alt="" width={180} /></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ CONTATO ════════════ -->
+<section class="contact" id="contato">
+  <div class="wrap">
+    <div class="section-head light reveal">
+      <span class="eyebrow center light">Contato</span>
+      <h2 class="h2"><span class="font-book">Vamos começar a planejar</span> seu evento corporativo?</h2>
+      <p class="lede">Preencha o formulário para receber nosso contato.</p>
+    </div>
+
+    <div class="form reveal">
+      <LeadForm
+        showPrivacyNote={false}
+        formId="lead-form"
+        project={config.project_slug}
+        submitUrl={config.forms['lead-form'].webhooks[0]}
+        redirectUrl={config.forms['lead-form'].redirect_on_success}
+        submitText="Enviar solicitação →"
+        honeypot
+        successTitle="Solicitação enviada!"
+        successText="Obrigado. Em breve entraremos em contato."
+        fields={[
+          { name: 'Nome',     type: 'text',     placeholder: 'Seu nome completo',  required: true,  full: true, autocomplete: 'name' },
+          { type: 'row', fields: [
+            { name: 'WhatsApp', type: 'tel',    placeholder: '(11) 90000-0000',    required: true,  mask: 'phone', autocomplete: 'tel' },
+            { name: 'E-mail',   type: 'email',  placeholder: 'seu@email.com',      required: true,  autocomplete: 'email' },
+          ]},
+          { type: 'row', fields: [
+            { name: 'Data do evento', type: 'date',   placeholder: 'Data do evento', required: true },
+            { name: 'Convidados',     type: 'number', placeholder: 'Nº de convidados', required: true, min: '1' },
+          ]},
+          { name: 'Tipo de evento', type: 'select', full: true, required: true, options: [
+            { value: '', label: 'Tipo de evento', disabled: true, selected: true },
+            { value: 'Coquetel',          label: 'Coquetel' },
+            { value: 'Jantar',            label: 'Jantar' },
+            { value: 'Plenária',          label: 'Plenária' },
+            { value: 'Workshop',          label: 'Workshop' },
+            { value: 'Convenção',         label: 'Convenção' },
+            { value: 'Treinamento',       label: 'Treinamento' },
+            { value: 'Confraternização',  label: 'Confraternização' },
+            { value: 'Outro',             label: 'Outro' },
+          ]},
+          { name: 'Mensagem', type: 'textarea', placeholder: 'Conte um pouco sobre o que você imagina para o evento.', required: false, full: true, rows: 4 },
+        ]}
+      />
+      <p class="form-privacy-link">
+        Ao enviar, você concorda com nossa <a href="https://www.gov.br/governodigital/pt-br/privacidade-e-seguranca/ppsi/modelo_ppdp.pdf" target="_blank" rel="noopener noreferrer">política de privacidade (LGPD)</a>.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ RODAPÉ ════════════ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-bottom">
+      <span>Copyright © 2026 Leopoldo House - Todos os direitos reservados</span>
+      <div class="foot-logo">
+        <Img src="logo-leopoldo.png" alt="Leopoldo House" width={200} />
+      </div>
+      <span class="foot-dev">Desenvolvido por <a href="https://dmove.com.br" target="_blank" rel="noopener"><Img src="logo-dmove.avif" alt="Dmove" width={72} /></a></span>
+    </div>
+  </div>
+</footer>
+
+
+<WhatsAppPopup
+  formId="whats-popup-events"
+  project={config.project_slug}
+  submitUrl={config.forms['lead-form'].webhooks[0]}
+  redirectUrl={config.forms['lead-form'].redirect_on_success}
+  greeting="Olá! Gostaria de conhecer o Leopoldo House para o seu próximo evento corporativo? Preencha abaixo e nossa equipe entrará em contato pelo WhatsApp."
+  dataPlaceholder="Data do evento"
+  tipoOptions={[
+    { value: '',                  label: 'Tipo de evento',    disabled: true, selected: true },
+    { value: 'Coquetel',          label: 'Coquetel' },
+    { value: 'Jantar',            label: 'Jantar' },
+    { value: 'Plenária',          label: 'Plenária' },
+    { value: 'Workshop',          label: 'Workshop' },
+    { value: 'Convenção',         label: 'Convenção' },
+    { value: 'Treinamento',       label: 'Treinamento' },
+    { value: 'Confraternização',  label: 'Confraternização' },
+    { value: 'Outro',             label: 'Outro' },
+  ]}
+/>
+
+</Base>
+<script>
+  import '../scripts/index.js';
+</script>
+<script>
+  document.querySelectorAll<HTMLElement>('[data-carousel]').forEach(carousel => {
+    const wrap       = carousel.querySelector<HTMLElement>('.about-track-wrap')!;
+    const track      = carousel.querySelector<HTMLElement>('.about-track')!;
+    const slides     = Array.from(carousel.querySelectorAll<HTMLElement>('.about-slide'));
+    const dotsEl     = carousel.querySelector<HTMLElement>('[data-dots]')!;
+    const GAP        = parseInt(getComputedStyle(track).gap) || 18;
+    const total      = slides.length;
+    let visible      = window.innerWidth <= 760 ? 1 : 3;
+    let maxIdx       = total - visible;
+    let current      = 0;
+    let timer: ReturnType<typeof setInterval>;
+
+    function slideWidth() {
+      return (wrap.offsetWidth - GAP * (visible - 1)) / visible;
+    }
+
+    function resize() {
+      visible = window.innerWidth <= 760 ? 1 : 3;
+      maxIdx  = total - visible;
+      if (current > maxIdx) current = maxIdx;
+      const w = slideWidth();
+      slides.forEach(s => (s.style.width = w + 'px'));
+      render(false);
+    }
+
+    function render(animate = true) {
+      track.style.transition = animate ? 'transform .55s var(--ease)' : 'none';
+      track.style.transform  = `translateX(-${current * (slideWidth() + GAP)}px)`;
+      // stagger: slot do meio (current + 1) desce
+      slides.forEach((s, i) => s.classList.toggle('is-middle', i === current + 1));
+      dotsEl.querySelectorAll('.carousel-dot').forEach((d, i) =>
+        d.classList.toggle('is-active', i === current)
+      );
+    }
+
+    function goTo(n: number) {
+      current = Math.max(0, Math.min(n, maxIdx));
+      render();
+    }
+
+    // build dots (one per stop position)
+    function buildDots() {
+      dotsEl.innerHTML = '';
+      for (let i = 0; i <= maxIdx; i++) {
+        const dot = document.createElement('button');
+        dot.className = 'carousel-dot' + (i === 0 ? ' is-active' : '');
+        dot.setAttribute('aria-label', `Slide ${i + 1}`);
+        dot.addEventListener('click', () => { goTo(i); startTimer(); });
+        dotsEl.appendChild(dot);
+      }
+    }
+
+    function startTimer() {
+      clearInterval(timer);
+      timer = setInterval(() => goTo(current < maxIdx ? current + 1 : 0), 4500);
+    }
+
+    carousel.querySelector('.carousel-prev')?.addEventListener('click', () => {
+      goTo(current > 0 ? current - 1 : maxIdx); startTimer();
+    });
+    carousel.querySelector('.carousel-next')?.addEventListener('click', () => {
+      goTo(current < maxIdx ? current + 1 : 0); startTimer();
+    });
+
+    window.addEventListener('resize', () => { resize(); buildDots(); });
+
+    resize();
+    buildDots();
+    startTimer();
+  });
+</script>
